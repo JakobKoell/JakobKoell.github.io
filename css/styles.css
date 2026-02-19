@@ -1,22 +1,32 @@
+/* =========================================
+   GLOBAL RESET & BASE STYLES
+========================================= */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-/* Base Styles */
-body, html {
-  margin: 0;
+html, body {
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
   color: #e2e8f0;
   background: #0f172a;
 }
 
-a { text-decoration: none; color: #00bcd4; }
+a {
+  text-decoration: none;
+  color: #00bcd4;
+  transition: color 0.2s;
+}
+a:hover { color: #00e0ff; }
 
-/* Header */
+/* =========================================
+   HEADER / NAVBAR
+========================================= */
 header {
   position: fixed;
   top: 0;
@@ -32,15 +42,19 @@ header.scrolled { background: #111827; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* constrain navbar */
-  margin: 0 auto;     /* center it */
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  box-sizing: border-box; /* include padding */
+  padding: 0 1rem;
+}
+.nav a {
+  margin-left: 1rem;
+  white-space: nowrap;
 }
 
-.nav a { margin-left: 1rem; }
-
-/* Hero Section */
+/* =========================================
+   HERO SECTION
+========================================= */
 .hero {
   height: 100vh;
   display: flex;
@@ -51,6 +65,13 @@ header.scrolled { background: #111827; }
   background-position: center;
   position: relative;
 }
+.hero-content {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  max-width: 800px;
+}
 .btn {
   display: inline-block;
   margin-top: 1rem;
@@ -58,13 +79,16 @@ header.scrolled { background: #111827; }
   background: #00bcd4;
   color: #0f172a;
   border-radius: 5px;
+  font-weight: bold;
   transition: transform 0.2s;
 }
 .btn:hover { transform: scale(1.05); }
 
-/* Section Parallax */
+/* =========================================
+   SECTIONS / PARALLAX
+========================================= */
 .section.parallax {
-  min-height: 60vh;
+  min-height: 70vh;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -72,43 +96,95 @@ header.scrolled { background: #111827; }
   align-items: center;
   justify-content: center;
   padding: 5rem 2rem;
+  position: relative;
 }
 
 .section-content {
   max-width: 800px;
   text-align: center;
-  background: rgba(0,0,0,0.4); /* lighter overlay */
-  color: #fff;                 /* ensure text is light */
+  background: rgba(0,0,0,0.4);
+  color: #fff;
   padding: 2rem;
   border-radius: 12px;
-  z-index: 10;                  /* make sure it’s above background */
-  position: relative;           /* relative to allow z-index */
-}
-
-/* Hero content */
-.hero-content {
-  position: relative;
   z-index: 10;
+  position: relative;
+}
+
+/* Section headings */
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* =========================================
+   PROJECTS
+========================================= */
+.projects {
+  padding: 8rem 2rem;
+  min-height: 80vh;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects h2 {
+  margin-bottom: 3rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.project-card {
+  position: relative;
+  min-height: 350px;
   color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background-size: cover;
+  background-position: center;
 }
 
-.project-card h3, .project-card p {
-  color: #fff; /* force text to show on image backgrounds */
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* improves readability */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  z-index: 1;
 }
 
-/* Map */
+.project-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   MAP
+========================================= */
 #map {
-  height: 400px;
-  width: 90%;
-  margin: 2rem auto;
-  border-radius: 10px;
-  z-index: 1; /* ensure above background */
+  height: 600px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Fade-in animations */
-/* .fade-in { opacity: 0; transform: translateY(50px); transition: opacity 1s ease-out, transform 1s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); } */
+/* =========================================
+   FADE-IN ANIMATIONS
+========================================= */
 .fade-in { 
   opacity: 0; 
   transform: translateY(50px); 
@@ -118,21 +194,18 @@ header.scrolled { background: #111827; }
   opacity: 1; 
   transform: translateY(0); 
 }
-.project-card {
-  position: relative;
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+========================================= */
+@media(max-width: 768px) {
+  .nav { flex-direction: column; }
+  .nav a { margin-left: 0; margin-top: 0.5rem; }
+  .hero-content, .section-content { padding: 1.5rem; }
+  .project-grid { grid-template-columns: 1fr; }
 }
 
-.project-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4); /* dark overlay for readability */
-  border-radius: 12px;
-}
-
-.project-card > * {
-  position: relative; /* text above overlay */
-  z-index: 1;
+@media(max-width: 480px) {
+  .hero-content h1 { font-size: 2rem; }
+  .section h2 { font-size: 2rem; }
 }
