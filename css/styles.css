@@ -171,15 +171,49 @@ header.scrolled { background: #111827; }
 }
 
 /* =========================================
-   MAP
+   FOOTER
+========================================= */
+.footer {
+  background: #111827;
+  color: #e2e8f0;
+  padding: 3rem 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.footer a {
+  color: #00bcd4;
+  margin: 0 0.5rem;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: #00e0ff;
+}
+
+/* Optional: space footer from map */
+#map-section + .footer {
+  margin-top: 2rem;
+}
+
+/* =========================================
+   MAP (FULL SCREEN RESPONSIVE)
 ========================================= */
 #map {
-  height: 600px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 3rem auto;
+  width: 100%;                  /* full width */
+  height: 80vh;                 /* 80% of viewport height */
+  max-width: 1200px;            /* optional max width */
+  margin: 2rem auto;            /* center horizontally with spacing */
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Ensure map section content does not shrink map */
+#map-section .section-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* =========================================
@@ -208,4 +242,16 @@ header.scrolled { background: #111827; }
 @media(max-width: 480px) {
   .hero-content h1 { font-size: 2rem; }
   .section h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 60vh;  /* slightly smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  #map {
+    height: 50vh;  /* mobile-friendly height */
+  }
 }
