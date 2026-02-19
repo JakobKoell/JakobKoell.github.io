@@ -1,13 +1,30 @@
-body {
+/* Base Styles */
+body, html {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  scroll-behavior: smooth;
   color: #e2e8f0;
+  background: #0f172a;
 }
 
+a {
+  text-decoration: none;
+  color: #00bcd4;
+}
+
+/* Header */
 header {
-  background: #111827;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(17, 24, 39, 0.8);
   padding: 1rem 2rem;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+header.scrolled {
+  background: #111827;
 }
 
 .nav {
@@ -17,37 +34,84 @@ header {
 }
 
 .nav a {
-  color: #00bcd4;
-  text-decoration: none;
   margin-left: 1rem;
 }
 
+/* Hero Section */
 .hero {
-  text-align: center;
-  padding: 4rem 2rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
 }
 
-#map {
-  height: 400px;
-  margin: 2rem auto;
-  width: 90%;
-  border-radius: 12px;
+.hero-content {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 2rem;
+  border-radius: 10px;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.hero h1 { font-size: 3rem; margin: 0; }
+.hero p { font-size: 1.2rem; margin: 1rem 0; }
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #00bcd4;
+  color: #0f172a;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+/* Parallax sections */
+.parallax {
+  min-height: 60vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Project Grid */
+.projects {
+  padding: 5rem 2rem;
+  background: #0f172a;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 2rem;
 }
 
 .project-card {
   background: #1e293b;
   padding: 1.5rem;
-  border-radius: 10px;
-  transition: 0.2s;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-size: cover;
+  background-position: center;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
+
+/* Map Section */
+#map { height: 400px; width: 90%; margin: 2rem auto; border-radius: 10px; }
+
+/* Scroll Animations */
+@keyframes fadeIn { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
+.fade-in { opacity:0; animation: fadeIn 1s forwards; }

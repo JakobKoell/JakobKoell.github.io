@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <title>Your Name | Spatial Data Analyst</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
 
-<header>
+<header id="header">
   <div class="nav">
     <div class="logo">🛰 Spatial</div>
     <nav>
@@ -23,18 +20,34 @@
   </div>
 </header>
 
-<section class="hero">
-  <h1>Your Name</h1>
-  <p>Spatial Data Analyst</p>
-  <p>GIS • Remote Sensing • Spatial Modeling • Geostatistics</p>
+<section class="hero parallax" style="background-image: url('images/hero-bg.jpg');">
+  <div class="hero-content">
+    <h1>Your Name</h1>
+    <p>Spatial Data Analyst • GIS • Remote Sensing • Spatial Modeling</p>
+    <a href="#projects-section" class="btn">View Projects ↓</a>
+  </div>
 </section>
 
-<section class="map-section">
+<section id="projects-section" class="projects">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card" style="background-image:url('images/project1.jpg')">
+      <h3>Urban Heat Island Mapping</h3>
+      <p>GIS & Remote Sensing Analysis of urban temperature variations.</p>
+    </div>
+    <div class="project-card">
+      <h3>Deforestation Risk Modeling</h3>
+      <p>Predictive spatial modeling using satellite imagery and GIS.</p>
+    </div>
+  </div>
+</section>
+
+<section class="map-section parallax" style="background-image:url('images/section1-bg.jpg');">
+  <h2>Interactive Map</h2>
   <div id="map"></div>
 </section>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/map.js"></script>
-
+<script src="js/main.js"></script>
 </body>
 </html>
