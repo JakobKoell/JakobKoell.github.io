@@ -35,12 +35,6 @@ header.scrolled { background: #111827; }
   background-position: center;
   position: relative;
 }
-.hero-content {
-  text-align: center;
-  background: rgba(0,0,0,0.5);
-  padding: 2rem;
-  border-radius: 10px;
-}
 .btn {
   display: inline-block;
   margin-top: 1rem;
@@ -64,24 +58,58 @@ header.scrolled { background: #111827; }
   padding: 5rem 2rem;
 }
 
-/* Section Content */
-.section-content { max-width: 800px; text-align: center; background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 12px; }
-
-/* Project Grid */
-.projects { padding: 5rem 2rem; background: #0f172a; }
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-.project-card {
-  background-size: cover;
-  background-position: center;
-  padding: 1.5rem;
+.section-content {
+  max-width: 800px;
+  text-align: center;
+  background: rgba(0,0,0,0.4); /* lighter overlay */
+  color: #e2e8f0; /* force text to be light */
+  padding: 2rem;
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.hero-content {
+  color: #e2e8f0; /* force hero text to be light */
+}
+.project-card h3, .project-card p {
+  color: #fff; /* force text to show on image backgrounds */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* improves readability */
+}
 
 /* Map */
-#map { height: 400px; width: 90%; margin: 2rem auto; border-radius: 10px; }
+#map {
+  height: 400px;
+  width: 90%;
+  margin: 2rem auto;
+  border-radius: 10px;
+  z-index: 1; /* ensure above background */
+}
 
 /* Fade-in animations */
-.fade-in { opacity: 0; transform: translateY(50px); transition: opacity 1s ease-out, transform 1s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+/* .fade-in { opacity: 0; transform: translateY(50px); transition: opacity 1s ease-out, transform 1s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); } */
+.fade-in { 
+  opacity: 0; 
+  transform: translateY(50px); 
+  transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+.fade-in.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+.project-card {
+  position: relative;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* dark overlay for readability */
+  border-radius: 12px;
+}
+
+.project-card > * {
+  position: relative; /* text above overlay */
+  z-index: 1;
+}
