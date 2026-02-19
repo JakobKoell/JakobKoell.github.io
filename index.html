@@ -13,38 +13,60 @@
   <div class="nav">
     <div class="logo">🛰 Spatial</div>
     <nav>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#map-section">Map</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="hero parallax" style="background-image: url('images/hero-bg.jpg');">
-  <div class="hero-content">
+<!-- Hero Section -->
+<section class="hero parallax" style="background-image: url('https://picsum.photos/id/1018/1920/1080');">
+  <div class="hero-content fade-in">
     <h1>Your Name</h1>
     <p>Spatial Data Analyst • GIS • Remote Sensing • Spatial Modeling</p>
-    <a href="#projects-section" class="btn">View Projects ↓</a>
+    <a href="#projects" class="btn">View Projects ↓</a>
   </div>
 </section>
 
-<section id="projects-section" class="projects">
-  <h2>Projects</h2>
+<!-- About Section -->
+<section id="about" class="section parallax" style="background-image: url('https://picsum.photos/id/1025/1920/800');">
+  <div class="section-content fade-in">
+    <h2>About Me</h2>
+    <p>I specialize in GIS, geostatistics, remote sensing, and spatial modeling. I translate spatial data into actionable insights.</p>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+  <h2 class="fade-in">Projects</h2>
   <div class="project-grid">
-    <div class="project-card" style="background-image:url('images/project1.jpg')">
+    <div class="project-card fade-in" style="background-image: url('https://picsum.photos/id/1035/600/400');">
       <h3>Urban Heat Island Mapping</h3>
-      <p>GIS & Remote Sensing Analysis of urban temperature variations.</p>
+      <p>GIS & remote sensing analysis of urban temperature variations.</p>
     </div>
-    <div class="project-card">
+    <div class="project-card fade-in" style="background-image: url('https://picsum.photos/id/1042/600/400');">
       <h3>Deforestation Risk Modeling</h3>
       <p>Predictive spatial modeling using satellite imagery and GIS.</p>
     </div>
   </div>
 </section>
 
-<section class="map-section parallax" style="background-image:url('images/section1-bg.jpg');">
-  <h2>Interactive Map</h2>
-  <div id="map"></div>
+<!-- Interactive Map Section -->
+<section id="map-section" class="section parallax" style="background-image: url('https://picsum.photos/id/1050/1920/800');">
+  <div class="section-content fade-in">
+    <h2>Interactive Map</h2>
+    <div id="map"></div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section parallax" style="background-image: url('https://picsum.photos/id/1060/1920/800');">
+  <div class="section-content fade-in">
+    <h2>Contact</h2>
+    <p>Email: yourname@example.com</p>
+  </div>
 </section>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
