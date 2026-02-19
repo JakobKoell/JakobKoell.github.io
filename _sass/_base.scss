@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: $background;
+  color: $text;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.site-header {
+  background: #111827;
+  padding: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: $card-bg;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+#map {
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}

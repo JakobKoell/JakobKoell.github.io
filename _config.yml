@@ -1,0 +1,23 @@
+title: "Your Name | Spatial Data Analyst"
+description: "Spatial analytics, GIS, remote sensing, and geospatial modeling."
+url: "https://yourusername.github.io"
+baseurl: ""
+
+markdown: kramdown
+theme: null
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "page"
+
+sass:
+  sass_dir: _sass
+  style: compressed
