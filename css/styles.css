@@ -277,25 +277,8 @@ header.scrolled { background: #111827; }
 }
 
 /* =========================================
-   ABOUT PAGE BACKGROUND WITH GRADIENT
+   ABOUT PAGE
 ========================================= */
-
-.about-card{
-  max-width:1100px;
-  width:100%;
-
-  display:grid;
-  grid-template-columns:300px minmax(0,1fr);
-  gap:3rem;
-
-  background:#0f172a;
-  padding:3rem;
-
-  border-radius:14px;
-  box-shadow:0 25px 60px rgba(0,0,0,0.7);
-
-  align-items:center;
-}
 
 .about-page{
   min-height:100vh;
@@ -305,25 +288,84 @@ header.scrolled { background: #111827; }
   padding:8rem 2rem;
 
   background:
-    linear-gradient(
-      rgba(15,23,42,0.35),
-      rgba(15,23,42,0.55)
-    ),
-    url("https://picsum.photos/id/1015/1920/1080");
+  linear-gradient(
+    rgba(15,23,42,0.25),
+    rgba(15,23,42,0.45)
+  ),
+  url("https://picsum.photos/id/1015/1920/1080");
 
   background-size:cover;
   background-position:center;
-  background-repeat:no-repeat;
+}
+
+
+/* Floating card */
+
+.about-card{
+  max-width:1000px;
+  width:100%;
+
+  display:flex;
+  gap:3rem;
+
+  background:#0f172a;
+  padding:3rem;
+
+  border-radius:14px;
+
+  box-shadow:0 25px 60px rgba(0,0,0,0.7);
+}
+
+
+/* Photo column */
+
+.about-photo{
+  flex:0 0 320px;
+}
+
+.about-photo img{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  display:block;
+}
+
+
+/* Text column */
+
+.about-content{
+  flex:1;
+  max-width:520px;
+}
+
+.about-content h1{
+  font-size:2.5rem;
+  margin-bottom:1.5rem;
+}
+
+.about-content p{
+  line-height:1.7;
+  margin-bottom:1rem;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.about-card{
+  flex-direction:column;
+  text-align:center;
 }
 
 .about-photo{
-  width:100%;
-  max-width:300px;
+  max-width:350px;
+  margin:0 auto;
 }
 
 .about-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-width:0;
+  max-width:600px;
+  margin:0 auto;
+}
+
 }
