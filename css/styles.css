@@ -285,7 +285,7 @@ header.scrolled { background: #111827; }
   width:100%;
 
   display:grid;
-  grid-template-columns:400px 1fr;
+  grid-template-columns:320px 1fr;
   gap:3rem;
 
   background:#0f172a;
@@ -304,12 +304,25 @@ header.scrolled { background: #111827; }
 
   background:
     linear-gradient(
-      rgba(15,23,42,0.75),
-      rgba(15,23,42,0.9)
+      rgba(15,23,42,0.35),
+      rgba(15,23,42,0.55)
     ),
     url("https://picsum.photos/id/1015/1920/1080");
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+}
+
+.about-photo img{
+  width:100%;
+  height:auto;
+  border-radius:10px;
+  display:block;
+}
+
+.about-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
