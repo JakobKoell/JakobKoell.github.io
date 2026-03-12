@@ -277,22 +277,8 @@ header.scrolled { background: #111827; }
 }
 
 /* =========================================
-   ABOUT PAGE
+   ABOUT PAGE BACKGROUND WITH GRADIENT
 ========================================= */
-
-.about-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:8rem 2rem;
-
-  background-image:url("https://picsum.photos/id/1015/1920/1080");
-  background-size:cover;
-  background-position:center;
-}
-
-/* Floating navy card */
 
 .about-card{
   max-width:1100px;
@@ -306,42 +292,24 @@ header.scrolled { background: #111827; }
   padding:3rem;
 
   border-radius:14px;
-
-  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  box-shadow:0 25px 60px rgba(0,0,0,0.7);
 }
 
-/* Portrait image */
+.about-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8rem 2rem;
 
-.about-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:10px;
-}
+  background:
+    linear-gradient(
+      rgba(15,23,42,0.75),
+      rgba(15,23,42,0.9)
+    ),
+    url("https://picsum.photos/id/1015/1920/1080");
 
-/* Text content */
-
-.about-content h1{
-  font-size:2.5rem;
-  margin-bottom:1.5rem;
-}
-
-.about-content p{
-  line-height:1.7;
-  margin-bottom:1rem;
-}
-
-/* Mobile responsive */
-
-@media(max-width:900px){
-
-.about-card{
-  grid-template-columns:1fr;
-  text-align:center;
-}
-
-.about-photo img{
-  max-height:400px;
-}
-
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
