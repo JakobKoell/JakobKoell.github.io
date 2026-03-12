@@ -285,7 +285,7 @@ header.scrolled { background: #111827; }
   width:100%;
 
   display:grid;
-  grid-template-columns:320px 1fr;
+  grid-template-columns:300px minmax(0,1fr);
   gap:3rem;
 
   background:#0f172a;
@@ -293,6 +293,8 @@ header.scrolled { background: #111827; }
 
   border-radius:14px;
   box-shadow:0 25px 60px rgba(0,0,0,0.7);
+
+  align-items:center;
 }
 
 .about-page{
@@ -314,15 +316,14 @@ header.scrolled { background: #111827; }
   background-repeat:no-repeat;
 }
 
-.about-photo img{
+.about-photo{
   width:100%;
-  height:auto;
-  border-radius:10px;
-  display:block;
+  max-width:300px;
 }
 
 .about-content{
   display:flex;
   flex-direction:column;
   justify-content:center;
+  min-width:0;
 }
