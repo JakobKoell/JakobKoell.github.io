@@ -51,6 +51,75 @@ header.scrolled { background: #111827; }
   margin-left: 1rem;
   white-space: nowrap;
 }
+/* =========================================
+   HERO GRID
+========================================= */
+
+.hero-tagline{
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.hero-description{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.hero-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Card styling */
+
+.hero-card{
+  text-decoration: none;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.hero-card h3{
+  margin-bottom: 0.5rem;
+}
+
+.hero-card p{
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Hover effect */
+
+.hero-card:hover{
+  transform: translateY(-6px);
+  background: rgba(0,0,0,0.55);
+}
+
+/* Responsive */
+
+@media (max-width: 900px){
+  .hero-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-card:hover{
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
 
 /* =========================================
    HERO SECTION
