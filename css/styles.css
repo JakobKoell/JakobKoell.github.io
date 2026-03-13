@@ -62,10 +62,8 @@ margin-left:1rem;
 white-space:nowrap;
 }
 
-
-
 /* =========================================
-HERO SECTION (WITH GRID)
+   HERO SECTION (GIS GRID)
 ========================================= */
 
 .hero{
@@ -78,15 +76,16 @@ justify-content:center;
 
 position:relative;
 
-overflow:hidden;
+/* removed overflow hidden */
 
 background:
 radial-gradient(circle at 50% 50%, #1e293b, #020617);
 
+z-index:1;
+
 }
 
-
-/* LAT/LON GRID */
+/* GRID BACKGROUND */
 
 .hero::before{
 
@@ -103,7 +102,9 @@ background-size:80px 80px;
 
 animation:gridMove 120s linear infinite;
 
-z-index:1;
+z-index:0;
+
+pointer-events:none;
 
 }
 
@@ -114,8 +115,7 @@ to{background-position:800px 400px;}
 
 }
 
-
-/* TOPOGRAPHIC OVERLAY */
+/* TOPO OVERLAY */
 
 .topo-overlay{
 
@@ -128,7 +128,9 @@ opacity:.15;
 
 animation:topoMove 120s linear infinite;
 
-z-index:2;
+z-index:1;
+
+pointer-events:none;
 
 }
 
@@ -139,8 +141,24 @@ to{background-position:1200px 600px;}
 
 }
 
+/* HERO CONTENT ABOVE GRID */
 
-/* FLOATING DATA NODES */
+.hero-content{
+
+position:relative;
+z-index:10;
+
+text-align:center;
+
+max-width:900px;
+
+color:#fff;
+
+}
+
+/* =========================================
+   FLOATING DATA NODES
+========================================= */
 
 .nodes span{
 
@@ -157,7 +175,7 @@ box-shadow:0 0 10px #00e0ff;
 
 animation:floatNode 10s infinite ease-in-out;
 
-z-index:3;
+z-index:5;
 
 }
 
@@ -175,105 +193,34 @@ z-index:3;
 
 }
 
+/* =========================================
+   COORDINATE DISPLAY
+========================================= */
 
+.coordinates{
 
-/* HERO CONTENT */
+position:absolute;
 
-.hero-content{
+top:30px;
+left:40px;
 
-position:relative;
+font-family:monospace;
 
-z-index:10;
+font-size:0.9rem;
 
-text-align:center;
+color:#00e0ff;
 
-max-width:900px;
+opacity:0.85;
 
-color:#fff;
-
-}
-
-.hero-tagline{
-font-size:1.2rem;
-margin-top:.5rem;
-opacity:.9;
-}
-
-.hero-description{
-margin-top:1rem;
-margin-bottom:2rem;
-opacity:.85;
-}
-
-
-
-/* HERO GRID */
-
-.hero-grid{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:1rem;
-margin-top:2rem;
+z-index:12;
 
 }
 
-.hero-card{
+.coordinates div{
 
-text-decoration:none;
-color:white;
-
-padding:1.5rem;
-
-border-radius:10px;
-
-backdrop-filter:blur(10px);
-
-background:rgba(0,0,0,0.35);
-
-transition:transform .25s ease, background .25s ease;
+margin-bottom:4px;
 
 }
-
-.hero-card h3{
-margin-bottom:.5rem;
-}
-
-.hero-card p{
-font-size:.9rem;
-opacity:.9;
-}
-
-.hero-card:hover{
-
-transform:translateY(-6px) scale(1.03);
-
-background:rgba(0,0,0,0.55);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-
-}
-
-
-/* RESPONSIVE HERO */
-
-@media(max-width:900px){
-
-.hero-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:500px){
-
-.hero-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-
 
 /* =========================================
 BUTTON

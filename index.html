@@ -35,6 +35,22 @@
 
 <section class="hero">
 
+<div class="topo-overlay"></div>
+
+<div class="nodes">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="coordinates">
+<div>LAT <span id="lat">45.5017</span></div>
+<div>LON <span id="lon">-73.5673</span></div>
+<div>ELEV 35m</div>
+</div>
+
   <!-- FLOATING DATA NODES -->
   <div class="nodes">
     <span></span>
@@ -201,6 +217,22 @@ Hosted on
 <!-- ===================== SCRIPTS ===================== -->
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+function updateCoords(){
+
+let lat = 45.5017 + (Math.random()-0.5)/100;
+let lon = -73.5673 + (Math.random()-0.5)/100;
+
+document.getElementById("lat").textContent = lat.toFixed(4);
+document.getElementById("lon").textContent = lon.toFixed(4);
+
+}
+
+setInterval(updateCoords,2000);
+
+</script>
 
 <script>
 
