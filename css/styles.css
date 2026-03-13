@@ -1,5 +1,5 @@
 /* =========================================
-   GLOBAL RESET
+GLOBAL RESET & BASE STYLES
 ========================================= */
 
 *,
@@ -10,40 +10,100 @@ margin:0;
 padding:0;
 }
 
-body{
-
+html,body{
+height:100%;
 font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
 color:#e2e8f0;
+background:#0f172a;
+}
 
-/* GRID BACKGROUND */
+a{
+text-decoration:none;
+color:#00bcd4;
+transition:color .2s;
+}
+
+a:hover{
+color:#00e0ff;
+}
+
+
+/* =========================================
+HEADER / NAVBAR
+========================================= */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(17,24,39,0.8);
+padding:1rem 2rem;
+z-index:1000;
+transition:background .3s;
+}
+
+header.scrolled{
+background:#111827;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:0 auto;
+width:100%;
+padding:0 1rem;
+}
+
+.nav a{
+margin-left:1rem;
+white-space:nowrap;
+}
+
+
+
+/* =========================================
+HERO SECTION (WITH GRID)
+========================================= */
+
+.hero{
+
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+position:relative;
+
+overflow:hidden;
 
 background:
-radial-gradient(circle at center,#1e293b,#020617);
-
-min-height:100vh;
+radial-gradient(circle at 50% 50%, #1e293b, #020617);
 
 }
 
-/* animated grid */
 
-body::before{
+/* LAT/LON GRID */
+
+.hero::before{
 
 content:"";
 
-position:fixed;
+position:absolute;
 inset:0;
 
 background-image:
-linear-gradient(rgba(0,224,255,0.06) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,224,255,0.06) 1px,transparent 1px);
+linear-gradient(rgba(0,224,255,0.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,224,255,0.08) 1px,transparent 1px);
 
 background-size:80px 80px;
 
 animation:gridMove 120s linear infinite;
 
-z-index:-1;
-
-pointer-events:none;
+z-index:1;
 
 }
 
@@ -55,130 +115,32 @@ to{background-position:800px 400px;}
 }
 
 
+/* TOPOGRAPHIC OVERLAY */
 
-/* =========================================
-   HEADER
-========================================= */
+.topo-overlay{
 
-header{
+position:absolute;
+inset:0;
 
-position:fixed;
-top:0;
-width:100%;
+background-image:url("topography.svg");
 
-background:rgba(15,23,42,0.85);
+opacity:.15;
 
-padding:1rem 2rem;
+animation:topoMove 120s linear infinite;
 
-z-index:1000;
+z-index:2;
 
 }
 
-.nav{
+@keyframes topoMove{
 
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-max-width:1200px;
-margin:auto;
+from{background-position:0 0;}
+to{background-position:1200px 600px;}
 
 }
 
 
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-text-align:center;
-
-position:relative;
-
-}
-
-.hero-content{
-
-max-width:900px;
-
-padding:2rem;
-
-}
-
-.hero-content h1{
-
-font-size:3rem;
-
-margin-bottom:1rem;
-
-}
-
-.hero-tagline{
-
-font-size:1.2rem;
-
-margin-bottom:1rem;
-
-}
-
-.hero-description{
-
-max-width:650px;
-margin:0 auto 2rem;
-
-opacity:0.8;
-
-}
-
-
-
-/* HERO GRID */
-
-.hero-grid{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:1rem;
-
-}
-
-.hero-card{
-
-padding:1.5rem;
-
-border-radius:10px;
-
-background:rgba(15,23,42,0.7);
-
-backdrop-filter:blur(6px);
-
-transition:0.25s;
-
-}
-
-.hero-card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-
-}
-
-
-
-/* =========================================
-   NODES
-========================================= */
+/* FLOATING DATA NODES */
 
 .nodes span{
 
@@ -195,6 +157,8 @@ box-shadow:0 0 10px #00e0ff;
 
 animation:floatNode 10s infinite ease-in-out;
 
+z-index:3;
+
 }
 
 .nodes span:nth-child(1){top:20%;left:30%;}
@@ -205,161 +169,93 @@ animation:floatNode 10s infinite ease-in-out;
 
 @keyframes floatNode{
 
-0%{transform:translateY(0)}
-50%{transform:translateY(-18px)}
-100%{transform:translateY(0)}
+0%{transform:translateY(0);}
+50%{transform:translateY(-18px);}
+100%{transform:translateY(0);}
 
 }
 
 
 
-/* =========================================
-   COORDINATES
-========================================= */
+/* HERO CONTENT */
 
-.coordinates{
+.hero-content{
 
-position:absolute;
+position:relative;
 
-top:30px;
-left:40px;
-
-font-family:monospace;
-
-color:#00e0ff;
-
-font-size:0.9rem;
-
-opacity:0.8;
-
-}
-
-
-
-/* =========================================
-   SECTIONS
-========================================= */
-
-.section{
-
-padding:6rem 2rem;
-
-display:flex;
-justify-content:center;
-
-}
-
-.section-content{
-
-max-width:800px;
-
-background:rgba(15,23,42,0.8);
-
-padding:2rem;
-
-border-radius:12px;
-
-}
-
-
-
-/* =========================================
-   PROJECTS
-========================================= */
-
-.projects{
-
-padding:6rem 2rem;
+z-index:10;
 
 text-align:center;
 
+max-width:900px;
+
+color:#fff;
+
 }
 
-.project-grid{
+.hero-tagline{
+font-size:1.2rem;
+margin-top:.5rem;
+opacity:.9;
+}
+
+.hero-description{
+margin-top:1rem;
+margin-bottom:2rem;
+opacity:.85;
+}
+
+
+
+/* HERO GRID */
+
+.hero-grid{
 
 display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:2rem;
-
-max-width:1100px;
-margin:auto;
-
-}
-
-.project-card{
-
-padding:2rem;
-
-background:rgba(15,23,42,0.8);
-
-border-radius:12px;
-
-}
-
-
-
-/* =========================================
-   MAP
-========================================= */
-
-#map{
-
-width:100%;
-height:60vh;
-
+grid-template-columns:repeat(4,1fr);
+gap:1rem;
 margin-top:2rem;
 
-border-radius:12px;
+}
+
+.hero-card{
+
+text-decoration:none;
+color:white;
+
+padding:1.5rem;
+
+border-radius:10px;
+
+backdrop-filter:blur(10px);
+
+background:rgba(0,0,0,0.35);
+
+transition:transform .25s ease, background .25s ease;
+
+}
+
+.hero-card h3{
+margin-bottom:.5rem;
+}
+
+.hero-card p{
+font-size:.9rem;
+opacity:.9;
+}
+
+.hero-card:hover{
+
+transform:translateY(-6px) scale(1.03);
+
+background:rgba(0,0,0,0.55);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 
 }
 
 
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.btn{
-
-display:inline-block;
-
-margin-top:2rem;
-
-padding:0.8rem 1.5rem;
-
-background:#00bcd4;
-
-color:#0f172a;
-
-border-radius:6px;
-
-font-weight:bold;
-
-}
-
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer{
-
-padding:3rem;
-
-text-align:center;
-
-background:#111827;
-
-}
-
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* RESPONSIVE HERO */
 
 @media(max-width:900px){
 
@@ -375,8 +271,333 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:1fr;
 }
 
+}
+
+
+
+/* =========================================
+BUTTON
+========================================= */
+
+.btn{
+
+display:inline-block;
+
+margin-top:1rem;
+
+padding:.8rem 1.5rem;
+
+background:#00bcd4;
+
+color:#0f172a;
+
+border-radius:5px;
+
+font-weight:bold;
+
+transition:transform .2s;
+
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+
+
+/* =========================================
+SECTIONS / PARALLAX
+========================================= */
+
+.section.parallax{
+
+min-height:70vh;
+
+background-attachment:fixed;
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:5rem 2rem;
+
+position:relative;
+
+}
+
+.section-content{
+
+max-width:800px;
+
+text-align:center;
+
+background:rgba(0,0,0,.4);
+
+color:#fff;
+
+padding:2rem;
+
+border-radius:12px;
+
+z-index:10;
+
+position:relative;
+
+}
+
+.section h2{
+
+font-size:2.5rem;
+
+margin-bottom:2rem;
+
+text-align:center;
+
+}
+
+
+
+/* =========================================
+PROJECTS
+========================================= */
+
+.projects{
+
+padding:8rem 2rem;
+
+min-height:80vh;
+
+background:#0f172a;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+}
+
+.projects h2{
+margin-bottom:3rem;
+}
+
+.project-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:2rem;
+
+width:100%;
+max-width:1200px;
+
+}
+
+.project-card{
+
+position:relative;
+
+min-height:350px;
+
+color:#fff;
+
+text-shadow:1px 1px 4px rgba(0,0,0,.7);
+
+border-radius:12px;
+
+overflow:hidden;
+
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+
+padding:1.5rem;
+
+background-size:cover;
+background-position:center;
+
+}
+
+.project-card::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.4);
+
+border-radius:12px;
+
+z-index:1;
+
+}
+
+.project-card>*{
+
+position:relative;
+
+z-index:2;
+
+}
+
+
+
+/* =========================================
+MAP
+========================================= */
+
+#map{
+
+width:100vw;
+
+height:80vh;
+
+max-width:100%;
+
+margin:0 auto;
+
+border-radius:12px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+
+display:block;
+
+}
+
+@media(max-width:768px){
+
+#map{height:60vh;}
+
+}
+
+@media(max-width:480px){
+
+#map{height:50vh;}
+
+}
+
+
+
+/* =========================================
+FOOTER
+========================================= */
+
+.footer{
+
+background:linear-gradient(135deg,#111827,#1e293b);
+
+color:#e2e8f0;
+
+padding:3rem 2rem;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+gap:1rem;
+
+font-size:.95rem;
+
+text-align:center;
+
+}
+
+.footer a{
+
+color:#00bcd4;
+
+margin:0 .5rem;
+
+transition:color .2s;
+
+}
+
+.footer a:hover{
+color:#00e0ff;
+}
+
+.footer-content{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+align-items:center;
+
+gap:2rem;
+
+}
+
+.footer p{
+margin:0;
+}
+
+
+
+/* =========================================
+FADE-IN ANIMATION
+========================================= */
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(50px);
+
+transition:opacity 1s ease-out,transform 1s ease-out;
+
+}
+
+.fade-in.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+.nav{
+flex-direction:column;
+}
+
+.nav a{
+margin-left:0;
+margin-top:.5rem;
+}
+
+.hero-content,
+.section-content{
+padding:1.5rem;
+}
+
+.project-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:480px){
+
 .hero-content h1{
-font-size:2.2rem;
+font-size:2rem;
+}
+
+.section h2{
+font-size:2rem;
 }
 
 }
