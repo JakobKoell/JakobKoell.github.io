@@ -106,6 +106,54 @@ research or development opportunities.
 
 </div>
 
+<!-- PROJECTS MODAL CONTENT -->
+<div id="projectsModalContent" style="display:none;">
+
+<section id="projects" class="projects fade-in"
+style="background-image: url('https://images.pexels.com/photos/5442839/pexels-photo-5442839.jpeg');">
+
+<h2>Projects</h2>
+
+<div class="project-grid">
+
+<div class="project-card fade-in"
+style="background-image: url('https://picsum.photos/id/249/600/400');">
+
+<h3>NG911 Data Translation</h3>
+<p>
+Customized GIS and Python tools to apply essential schema changes
+to existing data, including translation and validation.
+</p>
+
+</div>
+
+<div class="project-card fade-in"
+style="background-image: url('https://picsum.photos/id/29/600/400');">
+
+<h3>Elevation and 3D Mapping</h3>
+<p>Predictive spatial modeling using satellite imagery and GIS.</p>
+
+</div>
+
+<div class="project-card fade-in"
+style="background-image: url('https://picsum.photos/id/267/600/400');">
+
+<h3>Watershed and Flood Assessment</h3>
+<p>
+Mapping flood-prone areas using change detection of raster images
+including historical and satellite data.
+</p>
+
+</div>
+
+<a href="projects.html" class="btn">See More Projects →</a>
+
+</div>
+
+</section>
+
+</div>
+
 <!-- FOOTER -->
 
 <footer class="footer">
@@ -393,24 +441,24 @@ draw();
 MODAL PANELS
 ========================================= */
 
-const panels = document.querySelectorAll(".panel");
 const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-content");
 const closeBtn = document.querySelector(".modal-close");
 
-panels.forEach(panel => {
+const projectPanel = document.querySelector(".panel.projects");
 
-panel.addEventListener("click", () => {
+projectPanel.addEventListener("click", () => {
 
-modal.classList.add("active");
+  const projectsHTML = document.querySelector("#projectsModalContent").innerHTML;
 
-});
+  modalContent.innerHTML = projectsHTML;
+
+  modal.classList.add("open");
 
 });
 
 closeBtn.addEventListener("click", () => {
-
-modal.classList.remove("active");
-
+  modal.classList.remove("open");
 });
 
 </script>
