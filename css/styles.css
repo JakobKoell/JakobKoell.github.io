@@ -61,11 +61,16 @@ HERO
 ========================================= */
 
 .hero{
-height:100vh;
+min-height:100vh;
 position:relative;
+
 display:flex;
-align-items:center;
+align-items:flex-start;
 justify-content:center;
+
+padding-top:120px;
+padding-bottom:80px;
+
 overflow:hidden;
 }
 
@@ -257,23 +262,25 @@ RESPONSIVE
 @media(max-width:900px){
 
 .dashboard{
+
 grid-template-columns:1fr;
+
+gap:1rem;
+
+width:92%;
+
+}
+
+.panel{
+
+padding:1.4rem;
+
 }
 
 .hero-content{
-padding:1.5rem;
-}
 
-}
+padding:1rem;
 
-@media(max-width:600px){
-
-.hero-content h1{
-font-size:2rem;
-}
-
-.coordinates{
-font-size:11px;
 }
 
 }

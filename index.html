@@ -15,36 +15,11 @@
 
 <body>
 
-
-<!-- HEADER -->
-
-<header>
-
-<div class="nav">
-
-<div class="logo">🛰 Spatial</div>
-
-<nav>
-
-<a href="about.html">About</a>
-<a href="projects.html">Projects</a>
-<a href="contact.html">Contact</a>
-
-</nav>
-
-</div>
-
-</header>
-
-
-
 <!-- HERO -->
 
 <section class="hero">
 
-
 <canvas id="gridCanvas"></canvas>
-
 
 <div class="coordinates">
 
@@ -52,7 +27,6 @@
 <div>Y <span id="coordY">0</span></div>
 
 </div>
-
 
 <div class="hero-content">
 
@@ -67,7 +41,6 @@ Building geospatial tools, automating spatial workflows,
 and transforming complex spatial data into actionable insights.
 </p>
 
-
 <div class="dashboard">
 
 <div class="panel about">
@@ -81,7 +54,6 @@ spatial analysis and GIS application design.
 
 </div>
 
-
 <div class="panel projects">
 
 <h2>Projects</h2>
@@ -94,7 +66,6 @@ and spatial analysis.
 
 </div>
 
-
 <div class="panel resume">
 
 <h2>Resume</h2>
@@ -105,7 +76,6 @@ education and GIS expertise.
 </p>
 
 </div>
-
 
 <div class="panel contact">
 
@@ -124,8 +94,6 @@ research or development opportunities.
 
 </section>
 
-
-
 <!-- MODAL -->
 
 <div class="modal">
@@ -141,8 +109,6 @@ research or development opportunities.
 
 </div>
 
-
-
 <!-- FOOTER -->
 
 <footer class="footer">
@@ -151,10 +117,7 @@ research or development opportunities.
 
 </footer>
 
-
-
 <script>
-
 /* ===============================
 GRID BACKGROUND
 =============================== */
@@ -176,7 +139,6 @@ canvas.height = canvas.offsetHeight;
 
 window.addEventListener("resize",resizeCanvas);
 
-
 /* TRACK MOUSE */
 
 window.addEventListener("mousemove",(e)=>{
@@ -190,7 +152,6 @@ document.getElementById("coordX").textContent = Math.floor(mouseX);
 document.getElementById("coordY").textContent = Math.floor(mouseY);
 
 });
-
 
 function draw(){
 
@@ -221,7 +182,6 @@ ctx.stroke();
 
 }
 
-
 /* CROSSHAIR */
 
 ctx.shadowBlur=15;
@@ -240,16 +200,12 @@ ctx.stroke();
 
 ctx.shadowBlur=0;
 
-
 requestAnimationFrame(draw);
 
 }
 
-
 resizeCanvas();
 draw();
-
-
 
 /* ===============================
 MODAL PANELS
