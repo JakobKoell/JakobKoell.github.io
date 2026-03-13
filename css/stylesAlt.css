@@ -351,6 +351,13 @@ font-weight:600;
 color:#00e0ff;
 }
 
+/* View More Button */
+
+.projects-more{
+text-align:center;
+margin-top:4rem;
+}
+
 /* =========================================
 MODAL
 ========================================= */
