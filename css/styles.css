@@ -395,9 +395,6 @@ font-size:3rem;
 margin-bottom:4rem;
 }
 
-
-/* Project rows */
-
 .project-row{
 display:flex;
 gap:2rem;
@@ -410,18 +407,12 @@ transition:0.3s;
 transform:translateX(8px);
 }
 
-
-/* Numbers */
-
 .project-number{
 font-size:2rem;
 font-weight:bold;
 color:#00bcd4;
 min-width:60px;
 }
-
-
-/* Project text */
 
 .project-details h2{
 font-size:1.5rem;
@@ -441,9 +432,6 @@ opacity:0.6;
 margin-bottom:0.5rem;
 }
 
-
-/* Link */
-
 .project-link{
 color:#00bcd4;
 font-weight:600;
@@ -459,5 +447,7 @@ margin-top:4rem;
 }
 
 #more-projects{
-display:none;
+max-height:0;
+overflow:hidden;
+transition:max-height 0.6s ease;
 }

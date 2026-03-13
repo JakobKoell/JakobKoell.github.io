@@ -4,34 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Jakob Koell</title>
+<title>Projects | JK</title>
 
 <link rel="stylesheet" href="css/styles.css">
 
 </head>
-
-<script>
-
-const button = document.getElementById("toggle-projects");
-const moreProjects = document.getElementById("more-projects");
-
-button.addEventListener("click", () => {
-
-if(moreProjects.style.display === "block"){
-
-moreProjects.style.display = "none";
-button.textContent = "View More Projects";
-
-} else {
-
-moreProjects.style.display = "block";
-button.textContent = "Show Less";
-
-}
-
-});
-
-</script>
 
 <body>
 
@@ -143,7 +120,7 @@ View More Projects
 
 <div class="footer-content">
 
-<p>© 2026 Jakob Koell | Spatial Data Analyst</p>
+<p>© 2026  | Spatial Data Analyst</p>
 
 <p>
 <a href="#">GitHub</a> |
@@ -153,6 +130,30 @@ View More Projects
 </div>
 
 </footer>
+
+
+<script>
+
+const button = document.getElementById("toggle-projects");
+const moreProjects = document.getElementById("more-projects");
+
+button.addEventListener("click", function(){
+
+if(moreProjects.style.maxHeight){
+
+moreProjects.style.maxHeight = null;
+button.textContent = "View More Projects";
+
+}else{
+
+moreProjects.style.maxHeight = moreProjects.scrollHeight + "px";
+button.textContent = "Show Less";
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
