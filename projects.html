@@ -10,6 +10,29 @@
 
 </head>
 
+<script>
+
+const button = document.getElementById("toggle-projects");
+const moreProjects = document.getElementById("more-projects");
+
+button.addEventListener("click", () => {
+
+if(moreProjects.style.display === "block"){
+
+moreProjects.style.display = "none";
+button.textContent = "View More Projects";
+
+} else {
+
+moreProjects.style.display = "block";
+button.textContent = "Show Less";
+
+}
+
+});
+
+</script>
+
 <body>
 
 <header id="header">
