@@ -116,53 +116,78 @@ research or development opportunities.
 <p>© 2026 Jakob Koell • Spatial Data Analyst</p>
 
 </footer>
-
 <script>
-/* ===============================
-GRID BACKGROUND
-=============================== */
 
+/* =========================================
+GRID BACKGROUND
+========================================= */
 const canvas = document.getElementById("gridCanvas");
 const ctx = canvas.getContext("2d");
+
+const coordX = document.getElementById("coordX");
+const coordY = document.getElementById("coordY");
 
 let mouseX = 0;
 let mouseY = 0;
 
 const gridSize = 40;
 
+/* ---------- Resize Canvas ---------- */
 function resizeCanvas(){
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
+/* start crosshair in center */
+mouseX = canvas.width / 2;
+mouseY = canvas.height / 2;
+}
+window.addEventListener("resize", resizeCanvas);
+
+/* ---------- Update Pointer ---------- */
+function updatePointer(x,y){
+
+mouseX = x;
+mouseY = y;
+
+coordX.textContent = Math.floor(mouseX);
+coordY.textContent = Math.floor(mouseY);
 }
 
-window.addEventListener("resize",resizeCanvas);
-
-/* TRACK MOUSE */
-
+/* ---------- Desktop Mouse ---------- */
 window.addEventListener("mousemove",(e)=>{
 
 const rect = canvas.getBoundingClientRect();
 
-mouseX = e.clientX - rect.left;
-mouseY = e.clientY - rect.top;
-
-document.getElementById("coordX").textContent = Math.floor(mouseX);
-document.getElementById("coordY").textContent = Math.floor(mouseY);
-
+updatePointer(
+e.clientX - rect.left,
+e.clientY - rect.top
+);
 });
 
+/* ---------- Mobile Touch ---------- */
+window.addEventListener("touchmove",(e)=>{
+
+const rect = canvas.getBoundingClientRect();
+const touch = e.touches[0];
+
+updatePointer(
+touch.clientX - rect.left,
+touch.clientY - rect.top
+);
+
+},{ passive:true });
+
+/* ---------- Draw Loop ---------- */
 function draw(){
 
-ctx.fillStyle="#0f172a";
+/* background */
+ctx.fillStyle = "#0f172a";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-
-/* GRID */
-
-ctx.strokeStyle="rgba(120,150,180,.25)";
-ctx.lineWidth=1;
+/* grid */
+ctx.strokeStyle = "rgba(120,150,180,0.25)";
+ctx.lineWidth = 1;
 
 for(let x=0;x<canvas.width;x+=gridSize){
 
@@ -170,7 +195,6 @@ ctx.beginPath();
 ctx.moveTo(x,0);
 ctx.lineTo(x,canvas.height);
 ctx.stroke();
-
 }
 
 for(let y=0;y<canvas.height;y+=gridSize){
@@ -179,14 +203,14 @@ ctx.beginPath();
 ctx.moveTo(0,y);
 ctx.lineTo(canvas.width,y);
 ctx.stroke();
-
 }
 
-/* CROSSHAIR */
 
-ctx.shadowBlur=15;
-ctx.shadowColor="#00e0ff";
-ctx.strokeStyle="#00e0ff";
+/* crosshair */
+
+ctx.shadowBlur = 15;
+ctx.shadowColor = "#00e0ff";
+ctx.strokeStyle = "#00e0ff";
 
 ctx.beginPath();
 ctx.moveTo(mouseX,0);
@@ -198,26 +222,25 @@ ctx.moveTo(0,mouseY);
 ctx.lineTo(canvas.width,mouseY);
 ctx.stroke();
 
-ctx.shadowBlur=0;
+ctx.shadowBlur = 0;
 
 requestAnimationFrame(draw);
-
 }
 
+/* initialize */
 resizeCanvas();
 draw();
 
-/* ===============================
+/* =========================================
 MODAL PANELS
-=============================== */
-
+========================================= */
 const panels = document.querySelectorAll(".panel");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".modal-close");
 
-panels.forEach(panel=>{
+panels.forEach(panel => {
 
-panel.addEventListener("click",()=>{
+panel.addEventListener("click", () => {
 
 modal.classList.add("active");
 
@@ -225,7 +248,7 @@ modal.classList.add("active");
 
 });
 
-closeBtn.addEventListener("click",()=>{
+closeBtn.addEventListener("click", () => {
 
 modal.classList.remove("active");
 

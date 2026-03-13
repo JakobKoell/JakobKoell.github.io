@@ -65,24 +65,22 @@ min-height:100vh;
 position:relative;
 
 display:flex;
-align-items:flex-start;
 justify-content:center;
-
-padding-top:120px;
-padding-bottom:80px;
+align-items:center;
 
 overflow:hidden;
 }
 
 
 /* GRID CANVAS */
-
 #gridCanvas{
 position:absolute;
 inset:0;
 width:100%;
 height:100%;
 z-index:0;
+
+pointer-events:none;
 }
 
 
@@ -261,26 +259,22 @@ RESPONSIVE
 
 @media(max-width:900px){
 
-.dashboard{
+.hero{
 
-grid-template-columns:1fr;
+align-items:flex-start;   /* start at top */
+padding-top:60px;         /* breathing room */
+padding-bottom:60px;
 
-gap:1rem;
-
-width:92%;
-
-}
-
-.panel{
-
-padding:1.4rem;
-
+min-height:auto;          /* allow page to grow */
 }
 
 .hero-content{
+margin-top:40px;
+}
 
-padding:1rem;
-
+.dashboard{
+grid-template-columns:1fr;
+gap:1rem;
 }
 
 }
