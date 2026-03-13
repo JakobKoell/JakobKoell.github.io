@@ -165,29 +165,21 @@ GitHub Pages
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-
-
 <script>
-
 /* ===============================
 INITIALIZE MAP
 =============================== */
-
 const map = L.map("heroMap",{
 zoomControl:false,
 attributionControl:false
 }).setView([20,0],2);
 
-
 /* TILE LAYER */
-
 L.tileLayer(
 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 {
 maxZoom:7
 }).addTo(map);
-
-
 
 /* ===============================
 COORDINATE TRACKING
@@ -203,94 +195,96 @@ e.latlng.lng.toFixed(4);
 
 });
 
+/* MOBILE TOUCH SUPPORT */
 
+map.on("touchmove",(e)=>{
 
+document.getElementById("lat").textContent =
+e.latlng.lat.toFixed(4);
+
+document.getElementById("lon").textContent =
+e.latlng.lng.toFixed(4);
+
+});
 /* ===============================
 PROJECT MARKERS
 =============================== */
-
 const projects = [
-
 {
 name:"Flood Risk Modeling",
 coords:[45.5,-73.6]
 },
-
 {
 name:"Urban Heat Island",
 coords:[40.7,-74.0]
 },
-
 {
 name:"Forest Change Detection",
 coords:[-3.1,-60.0]
 }
-
 ];
 
-
 projects.forEach(p=>{
-
 const marker = L.circleMarker(p.coords,{
 radius:6,
 color:"#00e0ff",
 weight:2,
 fillOpacity:.8
 }).addTo(map);
-
 marker.bindPopup(p.name);
-
 });
-
-
 
 /* ===============================
 MODAL PANELS
 =============================== */
-
 const panels = document.querySelectorAll(".panel");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".modal-close");
 
 panels.forEach(panel=>{
-
 panel.addEventListener("click",()=>{
-
 modal.classList.add("active");
 
 /* example map interaction */
-
 if(panel.classList.contains("projects")){
 
 map.flyTo([45,-30],3);
-
 }
-
 });
-
 });
-
 
 closeBtn.addEventListener("click",()=>{
-
 modal.classList.remove("active");
-
 });
-
-
 
 /* ===============================
 FIX MAP RENDER
 =============================== */
-
 setTimeout(()=>{
-
 map.invalidateSize();
-
 },200);
 
-</script>
+/* ===============================
+SMART SCROLL HANDLING
+=============================== */
+let mapLocked = true;
+map.on("zoomend",()=>{
+const zoom = map.getZoom();
 
+/* when fully zoomed out unlock scroll */
+if(zoom <= 2){
+mapLocked = false;
+document.body.style.overflowY = "auto";
+}
+});
+
+/* detect user scroll */
+window.addEventListener("wheel",(e)=>{
+if(mapLocked){
+map.zoomOut();
+}
+});
+</script>
 
 </body>
 </html>

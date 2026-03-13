@@ -15,7 +15,7 @@ height:100%;
 font-family:'Segoe UI',sans-serif;
 color:#e2e8f0;
 background:#0f172a;
-overflow:hidden;
+overflow-x:hidden;
 }
 
 a{
@@ -197,7 +197,7 @@ pointer-events:none;
 
 transition:.3s;
 
-z-index:200;
+z-index:2000;
 }
 
 .modal.active{
@@ -224,7 +224,7 @@ max-height:80vh;
 .modal-close{
 
 position:absolute;
-top:30px;
+top:90px;
 right:40px;
 
 font-size:28px;
@@ -338,6 +338,19 @@ padding:2rem;
 
 .coordinates{
 font-size:11px;
+}
+
+}
+
+@media(max-width:900px){
+
+.dashboard{
+grid-template-columns:1fr;
+gap:1rem;
+}
+
+.panel{
+padding:1.5rem;
 }
 
 }
