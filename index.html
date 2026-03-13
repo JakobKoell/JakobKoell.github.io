@@ -133,8 +133,10 @@
 </section>
 
 <!-- ===================== SCRIPTS ===================== -->
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/main.js"></script>
+
 <script>
 
 const canvas = document.getElementById("gridCanvas");
@@ -143,45 +145,66 @@ const ctx = canvas.getContext("2d");
 const coordX = document.getElementById("coordX");
 const coordY = document.getElementById("coordY");
 
-let mouseX = 0;
-let mouseY = 0;
+let mouseX = -100;
+let mouseY = -100;
 
 const gridSize = 40;
 
-function resizeCanvas(){
 
+/* =====================
+   CANVAS RESIZE
+===================== */
+
+function resizeCanvas(){
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-
 }
 
 window.addEventListener("resize", resizeCanvas);
 
-canvas.addEventListener("mousemove", (e)=>{
+
+/* =====================
+   GLOBAL MOUSE TRACKING
+===================== */
+
+window.addEventListener("mousemove", (e)=>{
 
   const rect = canvas.getBoundingClientRect();
 
   mouseX = e.clientX - rect.left;
   mouseY = e.clientY - rect.top;
 
-  coordX.textContent = Math.floor(mouseX);
-  coordY.textContent = Math.floor(mouseY);
+  /* only update if inside hero */
+
+  if(mouseX >= 0 && mouseX <= canvas.width &&
+     mouseY >= 0 && mouseY <= canvas.height){
+
+      coordX.textContent = Math.floor(mouseX);
+      coordY.textContent = Math.floor(mouseY);
+
+  }
 
 });
+
+
+/* =====================
+   GRID DRAW LOOP
+===================== */
 
 function draw(){
 
   /* background */
 
-  ctx.fillStyle = "#0b1a2a";
+  ctx.fillStyle = "#0f172a";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  /* grid */
+
+  /* grid lines */
 
   ctx.strokeStyle = "rgba(120,150,180,0.25)";
   ctx.lineWidth = 1;
 
-  for(let x=0;x<canvas.width;x+=gridSize){
+  for(let x=0; x<canvas.width; x+=gridSize){
 
     ctx.beginPath();
     ctx.moveTo(x,0);
@@ -190,7 +213,7 @@ function draw(){
 
   }
 
-  for(let y=0;y<canvas.height;y+=gridSize){
+  for(let y=0; y<canvas.height; y+=gridSize){
 
     ctx.beginPath();
     ctx.moveTo(0,y);
@@ -199,28 +222,38 @@ function draw(){
 
   }
 
-  /* glowing crosshair */
 
-  ctx.shadowBlur = 15;
-  ctx.shadowColor = "#00e0ff";
-  ctx.strokeStyle = "#00e0ff";
-  ctx.lineWidth = 1;
+  /* draw crosshair only inside hero */
 
-  ctx.beginPath();
-  ctx.moveTo(mouseX,0);
-  ctx.lineTo(mouseX,canvas.height);
-  ctx.stroke();
+  if(mouseX >= 0 && mouseX <= canvas.width &&
+     mouseY >= 0 && mouseY <= canvas.height){
 
-  ctx.beginPath();
-  ctx.moveTo(0,mouseY);
-  ctx.lineTo(canvas.width,mouseY);
-  ctx.stroke();
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = "#00e0ff";
+      ctx.strokeStyle = "#00e0ff";
+      ctx.lineWidth = 1;
 
-  ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.moveTo(mouseX,0);
+      ctx.lineTo(mouseX,canvas.height);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0,mouseY);
+      ctx.lineTo(canvas.width,mouseY);
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+
+  }
 
   requestAnimationFrame(draw);
-
 }
+
+
+/* =====================
+   INITIALIZE
+===================== */
 
 resizeCanvas();
 draw();
@@ -241,22 +274,6 @@ draw();
     </p>
   </div>
 </footer>
-
-<script>
-
-function updateCoords(){
-
-let lat = 45.5017 + (Math.random()-0.5)/100;
-let lon = -73.5673 + (Math.random()-0.5)/100;
-
-document.getElementById("lat").textContent = lat.toFixed(4);
-document.getElementById("lon").textContent = lon.toFixed(4);
-
-}
-
-setInterval(updateCoords,2000);
-
-</script>
 
 </body>
 </html>
