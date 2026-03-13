@@ -51,9 +51,51 @@ header.scrolled { background: #111827; }
   margin-left: 1rem;
   white-space: nowrap;
 }
+
+
 /* =========================================
    HERO GRID
 ========================================= */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Topographic overlay */
+.topo-overlay{
+  position: absolute;
+  inset: 0;
+  background-image: url("topography.svg"); /* replace with topo pattern */
+  opacity: 0.15;
+  animation: topoMove 120s linear infinite;
+  z-index: 1;
+}
+
+/* Make sure content sits above overlay */
+.hero-content{
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  max-width: 900px;
+}
+
+@keyframes topoMove{
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1200px 600px;
+  }
+}
 
 .hero-tagline{
   font-size: 1.2rem;
