@@ -52,6 +52,38 @@ header.scrolled { background: #111827; }
   white-space: nowrap;
 }
 
+/* =========================================
+   INTERACTIVE GRID BACKGROUND
+========================================= */
+
+#gridCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  background:#f3f4f6; /* light grey */
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+/* Coordinate display */
+
+#coords{
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  font-family:monospace;
+  font-size:14px;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  z-index:3;
+}
 
 /* =========================================
    HERO GRID
