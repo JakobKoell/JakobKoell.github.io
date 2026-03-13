@@ -441,24 +441,41 @@ draw();
 MODAL PANELS
 ========================================= */
 
+const panels = document.querySelectorAll(".panel");
 const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
 const closeBtn = document.querySelector(".modal-close");
 
-const projectPanel = document.querySelector(".panel.projects");
+panels.forEach(panel => {
 
-projectPanel.addEventListener("click", () => {
+panel.addEventListener("click", () => {
 
-  const projectsHTML = document.querySelector("#projectsModalContent").innerHTML;
+modal.classList.add("active");
 
-  modalContent.innerHTML = projectsHTML;
+/* load projects content */
 
-  modal.classList.add("open");
+if(panel.classList.contains("projects")){
+
+const projectsHTML =
+document.querySelector("#projectsModalContent").innerHTML;
+
+modalContent.innerHTML = projectsHTML;
+
+}
+
+});
 
 });
 
 closeBtn.addEventListener("click", () => {
-  modal.classList.remove("open");
+
+modal.classList.remove("active");
+
+modalContent.innerHTML = `
+<h2>Content</h2>
+<p>Panel content appears here.</p>
+`;
+
 });
 
 </script>
