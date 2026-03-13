@@ -502,73 +502,107 @@ box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
 /* =========================================
-   HOMEPAGE OVERVIEW
+   HOME NAVIGATION RECTANGLES
 ========================================= */
 
-.site-overview{
+.home-navigation{
 padding:6rem 2rem;
 background:#0f172a;
 text-align:center;
 }
 
-.site-overview h2{
-font-size:2.5rem;
+.home-intro{
+font-size:2.2rem;
 margin-bottom:3rem;
 }
 
-.overview-grid{
+
+/* Grid layout */
+
+.nav-rectangles{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(4,1fr);
 gap:2rem;
-max-width:1100px;
+max-width:1200px;
 margin:0 auto;
 }
 
 
-/* Cards */
+/* Rectangle cards */
 
-.overview-card{
+.nav-rectangle{
 position:relative;
-background:#111827;
-padding:2rem;
+height:260px;
+background-size:cover;
+background-position:center;
 border-radius:12px;
-text-align:left;
-transition:0.3s;
-border:1px solid rgba(255,255,255,0.05);
+overflow:hidden;
+display:flex;
+align-items:flex-end;
+text-decoration:none;
+transition:transform 0.35s ease;
 }
 
-.overview-card:hover{
+.nav-rectangle:hover{
 transform:translateY(-8px);
-border-color:#00bcd4;
 }
 
 
-.overview-card h3{
-margin-bottom:0.5rem;
+/* Overlay */
+
+.nav-overlay{
+width:100%;
+background:linear-gradient(to top,
+rgba(0,0,0,0.8),
+rgba(0,0,0,0.2));
+
+padding:1.5rem;
+color:white;
+text-align:left;
+}
+
+
+.nav-overlay h3{
+font-size:1.5rem;
+margin-bottom:0.4rem;
 color:#00bcd4;
 }
 
-.overview-card p{
-opacity:0.8;
+.nav-overlay p{
+font-size:0.9rem;
+opacity:0.9;
 }
 
 
-/* Preview Image */
+/* Hover effect */
 
-.overview-preview{
-position:fixed;
-top:0;
-left:0;
-width:420px;
-pointer-events:none;
-opacity:0;
-transform:translate(-50%,-50%) scale(0.9);
-transition:opacity 0.25s ease, transform 0.25s ease;
-z-index:9999;
+.nav-rectangle::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.3);
+transition:background 0.3s;
 }
 
-.overview-preview img{
-width:100%;
-border-radius:12px;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
+.nav-rectangle:hover::before{
+background:rgba(0,0,0,0.15);
+}
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.nav-rectangles{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.nav-rectangles{
+grid-template-columns:1fr;
+}
+
 }

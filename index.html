@@ -21,50 +21,29 @@
     </nav>
   </div>
 </header>
+<!-- ===================== HOME NAVIGATION ===================== -->
 
-<!-- ===================== HERO ===================== -->
+<section class="home-navigation">
 
-<section class="hero parallax" style="background-image:url('https://picsum.photos/id/1018/1920/1080');">
+<h2 class="home-intro">Explore the Site</h2>
 
-<div class="hero-content fade-in visible">
-
-<h1>JK</h1>
-
-<p class="hero-tagline">
-Spatial Data Analyst specializing in GIS development,
-remote sensing, and spatial modeling.
-</p>
-
-<p class="hero-description">
-I build geospatial tools and analyses that transform spatial
-data into meaningful insights for environmental and urban systems.
-</p>
-
-<a href="projects.html" class="btn">View My Work</a>
-
-</div>
-
-</section>
-
-
-
-<!-- ===================== SITE OVERVIEW ===================== -->
-
-<section class="site-overview">
-
-<h2>Explore My Work</h2>
-
-<div class="overview-grid">
+<div class="nav-rectangles">
 
 
 <!-- ABOUT -->
 
-<a href="about.html" class="overview-card"
-data-image="https://picsum.photos/600/400?random=21">
+<a href="about.html" class="nav-rectangle"
+style="background-image:url('https://picsum.photos/id/1011/800/600');">
 
-<div class="overview-content">
+<div class="nav-overlay">
+
 <h3>About</h3>
-<p>Background, experience, and my approach to geospatial analysis.</p>
+
+<p>
+Learn about my background, experience, and approach
+to spatial data analysis.
+</p>
+
 </div>
 
 </a>
@@ -72,12 +51,18 @@ data-image="https://picsum.photos/600/400?random=21">
 
 <!-- PROJECTS -->
 
-<a href="projects.html" class="overview-card"
-data-image="https://picsum.photos/600/400?random=22">
+<a href="projects.html" class="nav-rectangle"
+style="background-image:url('https://picsum.photos/id/1015/800/600');">
 
-<div class="overview-content">
+<div class="nav-overlay">
+
 <h3>Projects</h3>
-<p>GIS analyses, spatial modeling projects, and technical work.</p>
+
+<p>
+Explore GIS analyses, spatial modeling work,
+and geospatial research projects.
+</p>
+
 </div>
 
 </a>
@@ -85,12 +70,18 @@ data-image="https://picsum.photos/600/400?random=22">
 
 <!-- MAP -->
 
-<a href="#map-section" class="overview-card"
-data-image="https://picsum.photos/600/400?random=23">
+<a href="#map-section" class="nav-rectangle"
+style="background-image:url('https://picsum.photos/id/1016/800/600');">
 
-<div class="overview-content">
+<div class="nav-overlay">
+
 <h3>Interactive Map</h3>
-<p>Explore geospatial visualizations and interactive datasets.</p>
+
+<p>
+Visualize spatial data through interactive maps
+and geospatial visualizations.
+</p>
+
 </div>
 
 </a>
@@ -98,25 +89,23 @@ data-image="https://picsum.photos/600/400?random=23">
 
 <!-- CONTACT -->
 
-<a href="contact.html" class="overview-card"
-data-image="https://picsum.photos/600/400?random=24">
+<a href="contact.html" class="nav-rectangle"
+style="background-image:url('https://picsum.photos/id/1021/800/600');">
 
-<div class="overview-content">
+<div class="nav-overlay">
+
 <h3>Contact</h3>
-<p>Get in touch about collaborations or opportunities.</p>
+
+<p>
+Get in touch regarding collaboration,
+research, or career opportunities.
+</p>
+
 </div>
 
 </a>
 
-</div>
 
-
-
-<!-- Hover Preview Image -->
-
-<div class="overview-preview">
-<img id="overview-preview-img"
-src="https://picsum.photos/600/400?random=21">
 </div>
 
 </section>
@@ -139,39 +128,6 @@ src="https://picsum.photos/600/400?random=21">
     </p>
   </div>
 </footer>
-
-<script>
-
-const cards = document.querySelectorAll(".overview-card");
-const preview = document.querySelector(".overview-preview");
-const previewImg = document.getElementById("overview-preview-img");
-
-cards.forEach(card => {
-
-card.addEventListener("mouseenter", function(){
-
-previewImg.src = this.dataset.image;
-preview.style.opacity = "1";
-preview.style.transform = "translate(-50%, -50%) scale(1)";
-
-});
-
-card.addEventListener("mouseleave", function(){
-
-preview.style.opacity = "0";
-
-});
-
-card.addEventListener("mousemove", function(e){
-
-preview.style.left = e.clientX + "px";
-preview.style.top = e.clientY + "px";
-
-});
-
-});
-
-</script>
 
 </body>
 </html>
