@@ -166,7 +166,18 @@ e.clientY - rect.top
 });
 
 /* ---------- Mobile Touch ---------- */
-window.addEventListener("touchmove",(e)=>{
+document.addEventListener("touchmove",(e)=>{
+
+const rect = canvas.getBoundingClientRect();
+const touch = e.touches[0];
+
+updatePointer(
+touch.clientX - rect.left,
+touch.clientY - rect.top
+);
+
+},{ passive:true });
+document.addEventListener("touchstart",(e)=>{
 
 const rect = canvas.getBoundingClientRect();
 const touch = e.touches[0];
