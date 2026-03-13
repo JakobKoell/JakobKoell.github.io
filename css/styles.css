@@ -1,591 +1,343 @@
 /* =========================================
-   GLOBAL RESET
+GLOBAL RESET
 ========================================= */
+
 *,
 *::before,
 *::after{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 html,body{
-  height:100%;
-  font-family:'Segoe UI',sans-serif;
-  scroll-behavior:smooth;
-  color:#e2e8f0;
-  background:#0f172a;
+height:100%;
+font-family:'Segoe UI',sans-serif;
+color:#e2e8f0;
+background:#0f172a;
+overflow:hidden;
 }
 
 a{
-  text-decoration:none;
-  color:#00bcd4;
-  transition:.2s;
+color:#00bcd4;
+text-decoration:none;
+transition:.2s;
 }
 
 a:hover{color:#00e0ff;}
 
 
 /* =========================================
-   HEADER / NAV
+NAVBAR
 ========================================= */
+
 header{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:1rem 2rem;
-  background:rgba(17,24,39,.8);
-  z-index:1000;
-  transition:.3s;
+position:fixed;
+top:0;
+width:100%;
+padding:1rem 2rem;
+background:rgba(17,24,39,.85);
+backdrop-filter:blur(8px);
+z-index:1000;
 }
 
-header.scrolled{background:#111827;}
-
 .nav{
-  max-width:1200px;
-  margin:auto;
-  padding:0 1rem;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .nav a{
-  margin-left:1rem;
-  white-space:nowrap;
+margin-left:1rem;
 }
 
 
 /* =========================================
-   HERO
+HERO MAP
 ========================================= */
 
 .hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
 }
-
-/* Leaflet hero map */
 
 #heroMap{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-
-  filter:brightness(.45) contrast(1.1);
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+filter:brightness(.45) contrast(1.1);
 }
 
-/* Hero content above map */
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  max-width:900px;
-}
-
-/* Coordinates display */
+/* =========================================
+COORDINATES DISPLAY
+========================================= */
 
 .coordinates{
-  position:absolute;
-  bottom:20px;
-  right:20px;
+position:absolute;
+bottom:20px;
+right:20px;
 
-  background:rgba(0,0,0,.65);
-  color:#00e0ff;
+background:rgba(0,0,0,.65);
+color:#00e0ff;
 
-  padding:10px 14px;
-  border-radius:8px;
+padding:10px 14px;
+border-radius:8px;
 
-  font-family:monospace;
-  font-size:13px;
+font-family:monospace;
+font-size:13px;
 
-  z-index:3;
+z-index:20;
 }
 
 .coordinates div{line-height:1.4;}
 
 
-/* Floating nodes */
-
-.nodes span{
-  position:absolute;
-  width:6px;
-  height:6px;
-  background:#00bcd4;
-  border-radius:50%;
-  opacity:.6;
-  animation:nodePulse 4s infinite ease-in-out;
-}
-
-.nodes span:nth-child(1){top:20%;left:15%;}
-.nodes span:nth-child(2){top:60%;left:30%;}
-.nodes span:nth-child(3){top:40%;left:70%;}
-.nodes span:nth-child(4){top:75%;left:80%;}
-.nodes span:nth-child(5){top:30%;left:50%;}
-
-@keyframes nodePulse{
-  0%,100%{transform:scale(1);opacity:.4;}
-  50%{transform:scale(1.8);opacity:1;}
-}
-
 /* =========================================
-   HERO DASHBOARD PANELS
+HERO CONTENT
 ========================================= */
 
-.dashboard{
-  position:relative;
-  z-index:2;
-
-  width:90%;
-  max-width:1000px;
-
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  grid-template-rows:repeat(2,1fr);
-
-  gap:1.5rem;
+.hero-content{
+position:relative;
+z-index:10;
+text-align:center;
+max-width:900px;
+padding:2rem;
 }
-
-
-/* Panel style */
-
-.panel{
-  padding:2rem;
-
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(12px);
-
-  border-radius:14px;
-
-  border:1px solid rgba(255,255,255,0.05);
-
-  transition:all .25s ease;
-
-  cursor:pointer;
-}
-
-.panel h2{
-  margin-bottom:0.7rem;
-}
-
-.panel p{
-  opacity:0.85;
-  font-size:0.95rem;
-}
-
-
-/* Hover animation */
-
-.panel:hover{
-  transform:translateY(-6px);
-  background:rgba(0,0,0,0.65);
-  box-shadow:0 15px 35px rgba(0,0,0,0.6);
-}
-
-
-/* Layout areas */
-
-.about{grid-area:1/1;}
-.projects{grid-area:1/2;}
-.resume{grid-area:2/1;}
-.contact{grid-area:2/2;}
-
-/* =========================================
-   HERO TEXT
-========================================= */
 
 .hero-tagline{
-  font-size:1.2rem;
-  margin-top:.5rem;
-  opacity:.9;
+font-size:1.2rem;
+margin-top:.5rem;
+opacity:.9;
 }
 
 .hero-description{
-  margin:1rem 0 2rem;
-  opacity:.85;
+margin:1rem 0 2rem;
+opacity:.85;
 }
 
 
 /* =========================================
-   HERO CARDS
+DASHBOARD PANELS
 ========================================= */
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1rem;
-  margin-top:2rem;
+.dashboard{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:1.5rem;
+
+width:90%;
+max-width:900px;
+
+margin:auto;
 }
 
-.hero-card{
-  padding:1.5rem;
-  border-radius:10px;
+.panel{
 
-  color:#fff;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,.35);
+padding:2rem;
 
-  transition:.25s;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(14px);
+
+border-radius:14px;
+border:1px solid rgba(255,255,255,.05);
+
+cursor:pointer;
+
+transition:.25s;
 }
 
-.hero-card h3{margin-bottom:.5rem;}
+.panel:hover{
 
-.hero-card p{
-  font-size:.9rem;
-  opacity:.9;
+transform:translateY(-6px);
+
+background:rgba(0,0,0,.65);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.6),
+0 0 20px rgba(0,188,212,.2);
 }
 
-.hero-card:hover{
-  transform:translateY(-6px) scale(1.03);
-  background:rgba(0,0,0,.55);
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+.panel h2{
+margin-bottom:.6rem;
+}
+
+.panel p{
+opacity:.85;
+font-size:.95rem;
 }
 
 
 /* =========================================
-   PARALLAX SECTIONS
+MODAL PANELS (FULLSCREEN EXPAND)
 ========================================= */
 
-.section.parallax{
-  min-height:70vh;
-  padding:5rem 2rem;
+.modal{
 
-  background-attachment:fixed;
-  background-size:cover;
-  background-position:center;
+position:fixed;
+inset:0;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(10,15,30,.75);
+backdrop-filter:blur(12px);
+
+opacity:0;
+pointer-events:none;
+
+transition:.3s;
+
+z-index:200;
 }
 
-.section-content{
-  max-width:800px;
-  text-align:center;
-
-  background:rgba(0,0,0,.4);
-  padding:2rem;
-  border-radius:12px;
+.modal.active{
+opacity:1;
+pointer-events:auto;
 }
 
-.section h2{
-  font-size:2.5rem;
-  margin-bottom:2rem;
-  text-align:center;
+.modal-content{
+
+width:85%;
+max-width:900px;
+
+background:#0f172a;
+border-radius:16px;
+
+padding:3rem;
+
+box-shadow:0 30px 80px rgba(0,0,0,.8);
+
+overflow:auto;
+max-height:80vh;
+}
+
+.modal-close{
+
+position:absolute;
+top:30px;
+right:40px;
+
+font-size:28px;
+cursor:pointer;
+
+color:#00e0ff;
 }
 
 
 /* =========================================
-   PROJECTS
+MAP MARKERS
 ========================================= */
 
-.projects{
-  padding:8rem 2rem;
-  min-height:80vh;
-  background:#0f172a;
+.project-marker{
+width:14px;
+height:14px;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+background:#00e0ff;
+border-radius:50%;
+
+box-shadow:
+0 0 10px #00e0ff,
+0 0 20px rgba(0,224,255,.6);
+
+animation:pulse 2.5s infinite;
 }
 
-.projects h2{margin-bottom:3rem;}
+@keyframes pulse{
 
-.project-grid{
-  width:100%;
-  max-width:1200px;
+0%{transform:scale(1);opacity:.7;}
 
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:2rem;
-}
+50%{transform:scale(1.6);opacity:1;}
 
-.project-card{
-  position:relative;
-  min-height:350px;
+100%{transform:scale(1);opacity:.7;}
 
-  border-radius:12px;
-  overflow:hidden;
-
-  padding:1.5rem;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-
-  color:#fff;
-  text-shadow:1px 1px 4px rgba(0,0,0,.7);
-
-  background-size:cover;
-  background-position:center;
-}
-
-.project-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.4);
-}
-
-.project-card>*{
-  position:relative;
-  z-index:2;
 }
 
 
 /* =========================================
-   FOOTER
+PROJECT PREVIEW IMAGE
 ========================================= */
-
-.footer{
-  background:linear-gradient(135deg,#111827,#1e293b);
-  color:#e2e8f0;
-
-  padding:3rem 2rem;
-  text-align:center;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:1rem;
-}
-
-.footer-content{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:2rem;
-}
-
-.footer a{color:#00bcd4;}
-.footer a:hover{color:#00e0ff;}
-
-
-/* =========================================
-   MAP SECTION
-========================================= */
-
-#map{
-  width:100vw;
-  height:80vh;
-
-  max-width:100%;
-  margin:auto;
-
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
-}
-
-
-/* =========================================
-   FADE ANIMATION
-========================================= */
-
-.fade-in{
-  opacity:0;
-  transform:translateY(50px);
-  transition:opacity 1s,transform 1s;
-}
-
-.fade-in.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-
-/* =========================================
-   ABOUT PAGE
-========================================= */
-
-.about-page{
-  min-height:100vh;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:8rem 2rem;
-
-  background:
-  linear-gradient(rgba(15,23,42,.25),rgba(15,23,42,.45)),
-  url("https://picsum.photos/id/1015/1920/1080");
-
-  background-size:cover;
-  background-position:center;
-}
-
-.about-card{
-  max-width:1000px;
-  width:100%;
-
-  display:flex;
-  gap:3rem;
-
-  background:#0f172a;
-  padding:3rem;
-  border-radius:14px;
-
-  box-shadow:0 25px 60px rgba(0,0,0,.7);
-}
-
-.about-photo{flex:0 0 320px;}
-
-.about-photo img{
-  width:100%;
-  border-radius:12px;
-  box-shadow:0 15px 35px rgba(0,0,0,.6);
-}
-
-.about-content{flex:1;max-width:520px;}
-
-.about-content h1{
-  font-size:2.5rem;
-  margin-bottom:1.5rem;
-}
-
-.about-content p{
-  line-height:1.7;
-  margin-bottom:1rem;
-}
-
-
-/* =========================================
-   PROJECTS PAGE
-========================================= */
-
-.projects-page{
-  padding:10rem 2rem 6rem;
-  min-height:100vh;
-  background:#0f172a;
-}
-
-.projects-container{
-  max-width:900px;
-  margin:auto;
-}
-
-.projects-container h1{
-  font-size:3rem;
-  margin-bottom:4rem;
-}
-
-.project-row{
-  display:flex;
-  gap:2rem;
-  padding:2rem 0;
-
-  border-bottom:1px solid rgba(255,255,255,.08);
-  transition:.3s;
-  cursor:pointer;
-}
-
-.project-row:hover{transform:translateX(8px);}
-
-.project-number{
-  font-size:2rem;
-  font-weight:bold;
-  color:#00bcd4;
-  min-width:60px;
-}
-
-.project-details h2{
-  font-size:1.5rem;
-  margin-bottom:.4rem;
-}
-
-.project-details p{
-  opacity:.85;
-  max-width:600px;
-}
-
-.project-date{
-  display:block;
-  font-size:.9rem;
-  opacity:.6;
-  margin-bottom:.5rem;
-}
-
-.project-link{
-  color:#00bcd4;
-  font-weight:600;
-}
-
-.project-link:hover{color:#00e0ff;}
-
-.projects-more{
-  text-align:center;
-  margin-top:4rem;
-}
-
-#more-projects{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .6s ease;
-}
 
 .project-preview{
-  position:fixed;
-  top:0;
-  left:0;
 
-  width:420px;
+position:fixed;
 
-  pointer-events:none;
-  opacity:0;
+width:420px;
 
-  transform:translate(-50%,-50%) scale(.9);
-  transition:.25s;
+pointer-events:none;
 
-  z-index:9999;
+opacity:0;
+transform:translate(-50%,-50%) scale(.9);
+
+transition:.25s;
+
+z-index:500;
 }
 
 .project-preview img{
-  width:100%;
-  border-radius:10px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
+
+width:100%;
+border-radius:10px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.7);
 }
 
 
 /* =========================================
-   RESPONSIVE
+FOOTER
+========================================= */
+
+.footer{
+
+position:absolute;
+bottom:10px;
+left:0;
+width:100%;
+
+text-align:center;
+
+font-size:.9rem;
+opacity:.6;
+}
+
+
+/* =========================================
+RESPONSIVE
 ========================================= */
 
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:repeat(2,1fr);}
-  .about-card{flex-direction:column;text-align:center;}
+
+.dashboard{
+grid-template-columns:1fr;
 }
 
-@media(max-width:768px){
-
-  .nav{flex-direction:column;}
-  .nav a{margin:0.5rem 0 0;}
-
-  .hero-content,
-  .section-content{padding:1.5rem;}
-
-  .project-grid{grid-template-columns:1fr;}
-
-  #map{height:60vh;}
-
-  .footer-content{flex-direction:column;}
+.hero-content{
+padding:1.5rem;
 }
 
-@media(max-width:500px){
-  .hero-grid{grid-template-columns:1fr;}
 }
 
-@media(max-width:480px){
+@media(max-width:600px){
 
-  #map{height:50vh;}
+.hero-content h1{
+font-size:2rem;
+}
 
-  .hero-content h1{font-size:2rem;}
-  .section h2{font-size:2rem;}
+.modal-content{
+padding:2rem;
+}
+
+.coordinates{
+font-size:11px;
+}
+
 }
