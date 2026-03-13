@@ -136,9 +136,9 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/main.js"></script>
-
 <script>
 
+const hero = document.querySelector(".hero");
 const canvas = document.getElementById("gridCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -151,30 +151,24 @@ let mouseY = -100;
 const gridSize = 40;
 
 
-/* =====================
-   CANVAS RESIZE
-===================== */
+/* CANVAS SIZE */
 
 function resizeCanvas(){
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  canvas.width = hero.offsetWidth;
+  canvas.height = hero.offsetHeight;
 }
 
 window.addEventListener("resize", resizeCanvas);
 
 
-/* =====================
-   GLOBAL MOUSE TRACKING
-===================== */
+/* GLOBAL MOUSE TRACKING */
 
 window.addEventListener("mousemove", (e)=>{
 
-  const rect = canvas.getBoundingClientRect();
+  const rect = hero.getBoundingClientRect();
 
   mouseX = e.clientX - rect.left;
   mouseY = e.clientY - rect.top;
-
-  /* only update if inside hero */
 
   if(mouseX >= 0 && mouseX <= canvas.width &&
      mouseY >= 0 && mouseY <= canvas.height){
@@ -187,19 +181,15 @@ window.addEventListener("mousemove", (e)=>{
 });
 
 
-/* =====================
-   GRID DRAW LOOP
-===================== */
+/* DRAW LOOP */
 
 function draw(){
-
-  /* background */
 
   ctx.fillStyle = "#0f172a";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
 
-  /* grid lines */
+  /* GRID */
 
   ctx.strokeStyle = "rgba(120,150,180,0.25)";
   ctx.lineWidth = 1;
@@ -223,7 +213,7 @@ function draw(){
   }
 
 
-  /* draw crosshair only inside hero */
+  /* CROSSHAIR */
 
   if(mouseX >= 0 && mouseX <= canvas.width &&
      mouseY >= 0 && mouseY <= canvas.height){
@@ -231,7 +221,6 @@ function draw(){
       ctx.shadowBlur = 15;
       ctx.shadowColor = "#00e0ff";
       ctx.strokeStyle = "#00e0ff";
-      ctx.lineWidth = 1;
 
       ctx.beginPath();
       ctx.moveTo(mouseX,0);
@@ -249,11 +238,6 @@ function draw(){
 
   requestAnimationFrame(draw);
 }
-
-
-/* =====================
-   INITIALIZE
-===================== */
 
 resizeCanvas();
 draw();
