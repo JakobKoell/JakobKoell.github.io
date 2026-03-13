@@ -200,3 +200,83 @@
   }
 
 }
+
+/* =========================================
+   GIS HERO BACKGROUND ADD-ON
+   (safe addition, does not affect layout)
+========================================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+/* GIS grid */
+
+.gis-grid{
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(rgba(0,224,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,224,255,0.07) 1px, transparent 1px);
+
+  background-size:80px 80px;
+
+  animation:gisGridMove 120s linear infinite;
+
+  pointer-events:none;
+
+  z-index:1;
+}
+
+@keyframes gisGridMove{
+
+  from{
+    background-position:0 0;
+  }
+
+  to{
+    background-position:600px 300px;
+  }
+
+}
+
+/* Floating nodes */
+
+.gis-nodes span{
+
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  background:#00e0ff;
+
+  border-radius:50%;
+
+  box-shadow:0 0 8px #00e0ff;
+
+  animation:gisFloat 8s infinite ease-in-out;
+
+}
+
+.gis-nodes span:nth-child(1){top:25%;left:20%;}
+.gis-nodes span:nth-child(2){top:65%;left:70%;}
+.gis-nodes span:nth-child(3){top:45%;left:85%;}
+.gis-nodes span:nth-child(4){top:80%;left:35%;}
+
+@keyframes gisFloat{
+
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0);}
+
+}
+
+/* Ensure hero text stays above */
+
+.hero-content{
+  position:relative;
+  z-index:5;
+}
