@@ -1,282 +1,382 @@
 /* =========================================
-   GIS HERO SECTION
+   GLOBAL RESET
 ========================================= */
 
-.hero{
-  height:100vh;
-  position:relative;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-  radial-gradient(circle at 50% 50%, #1e293b, #020617);
-
-  overflow:hidden;
+*,
+*::before,
+*::after{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-/* =========================
-   LAT/LON GRID
-========================= */
+body{
 
-.map-grid{
-  position:absolute;
-  inset:0;
+font-family:'Segoe UI',sans-serif;
+color:#e2e8f0;
 
-  background-image:
-    linear-gradient(rgba(0,224,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,224,255,0.08) 1px, transparent 1px);
+/* GRID BACKGROUND */
 
-  background-size:80px 80px;
+background:
+radial-gradient(circle at center,#1e293b,#020617);
 
-  animation:gridMove 120s linear infinite;
+min-height:100vh;
 
-  z-index:1;
+}
+
+/* animated grid */
+
+body::before{
+
+content:"";
+
+position:fixed;
+inset:0;
+
+background-image:
+linear-gradient(rgba(0,224,255,0.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,224,255,0.06) 1px,transparent 1px);
+
+background-size:80px 80px;
+
+animation:gridMove 120s linear infinite;
+
+z-index:-1;
+
+pointer-events:none;
+
 }
 
 @keyframes gridMove{
-  from{ background-position:0 0; }
-  to{ background-position:800px 400px; }
+
+from{background-position:0 0;}
+to{background-position:800px 400px;}
+
 }
 
 
-/* =========================
-   FLOATING DATA NODES
-========================= */
 
-.nodes span{
-  position:absolute;
+/* =========================================
+   HEADER
+========================================= */
 
-  width:6px;
-  height:6px;
+header{
 
-  background:#00e0ff;
+position:fixed;
+top:0;
+width:100%;
 
-  border-radius:50%;
+background:rgba(15,23,42,0.85);
 
-  box-shadow:0 0 10px #00e0ff;
+padding:1rem 2rem;
 
-  animation:floatNode 10s infinite ease-in-out;
+z-index:1000;
+
 }
 
-.nodes span:nth-child(1){ top:20%; left:30%; }
-.nodes span:nth-child(2){ top:70%; left:60%; }
-.nodes span:nth-child(3){ top:40%; left:80%; }
-.nodes span:nth-child(4){ top:80%; left:20%; }
-.nodes span:nth-child(5){ top:10%; left:60%; }
+.nav{
 
-@keyframes floatNode{
-  0%{ transform:translateY(0px); }
-  50%{ transform:translateY(-18px); }
-  100%{ transform:translateY(0px); }
-}
+display:flex;
+justify-content:space-between;
+align-items:center;
 
+max-width:1200px;
+margin:auto;
 
-/* =========================
-   COORDINATE DISPLAY
-========================= */
-
-.coordinates{
-  position:absolute;
-
-  top:30px;
-  left:40px;
-
-  font-family:monospace;
-  font-size:0.9rem;
-
-  color:#00e0ff;
-
-  opacity:0.85;
-
-  z-index:3;
-}
-
-.coordinates div{
-  margin-bottom:4px;
 }
 
 
-/* =========================
-   HERO CONTENT
-========================= */
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+position:relative;
+
+}
 
 .hero-content{
-  position:relative;
 
-  z-index:5;
+max-width:900px;
 
-  text-align:center;
+padding:2rem;
 
-  max-width:900px;
-
-  padding:2rem;
-
-  color:#e2e8f0;
 }
 
 .hero-content h1{
-  font-size:3rem;
-  margin-bottom:0.8rem;
+
+font-size:3rem;
+
+margin-bottom:1rem;
+
 }
 
 .hero-tagline{
-  font-size:1.2rem;
-  margin-bottom:1rem;
-  opacity:0.85;
+
+font-size:1.2rem;
+
+margin-bottom:1rem;
+
 }
 
 .hero-description{
-  max-width:650px;
-  margin:0 auto 2rem;
-  opacity:0.75;
+
+max-width:650px;
+margin:0 auto 2rem;
+
+opacity:0.8;
+
 }
 
 
-/* =========================
-   HERO CARDS
-========================= */
+
+/* HERO GRID */
 
 .hero-grid{
-  display:grid;
 
-  grid-template-columns:repeat(4,1fr);
+display:grid;
 
-  gap:1rem;
+grid-template-columns:repeat(4,1fr);
+
+gap:1rem;
+
 }
 
 .hero-card{
-  padding:1.5rem;
 
-  border-radius:10px;
+padding:1.5rem;
 
-  background:rgba(15,23,42,0.6);
+border-radius:10px;
 
-  backdrop-filter:blur(8px);
+background:rgba(15,23,42,0.7);
 
-  transition:0.25s;
+backdrop-filter:blur(6px);
+
+transition:0.25s;
+
 }
 
 .hero-card:hover{
-  transform:translateY(-6px) scale(1.03);
 
-  background:rgba(15,23,42,0.9);
+transform:translateY(-6px);
 
-  box-shadow:0 15px 40px rgba(0,0,0,0.5);
-}
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 
-.hero-card h3{
-  margin-bottom:0.4rem;
-  color:#00e0ff;
-}
-
-.hero-card p{
-  font-size:0.9rem;
-  opacity:0.8;
 }
 
 
-/* =========================
+
+/* =========================================
+   NODES
+========================================= */
+
+.nodes span{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:#00e0ff;
+
+border-radius:50%;
+
+box-shadow:0 0 10px #00e0ff;
+
+animation:floatNode 10s infinite ease-in-out;
+
+}
+
+.nodes span:nth-child(1){top:20%;left:30%;}
+.nodes span:nth-child(2){top:70%;left:60%;}
+.nodes span:nth-child(3){top:40%;left:80%;}
+.nodes span:nth-child(4){top:80%;left:20%;}
+.nodes span:nth-child(5){top:10%;left:60%;}
+
+@keyframes floatNode{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-18px)}
+100%{transform:translateY(0)}
+
+}
+
+
+
+/* =========================================
+   COORDINATES
+========================================= */
+
+.coordinates{
+
+position:absolute;
+
+top:30px;
+left:40px;
+
+font-family:monospace;
+
+color:#00e0ff;
+
+font-size:0.9rem;
+
+opacity:0.8;
+
+}
+
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.section{
+
+padding:6rem 2rem;
+
+display:flex;
+justify-content:center;
+
+}
+
+.section-content{
+
+max-width:800px;
+
+background:rgba(15,23,42,0.8);
+
+padding:2rem;
+
+border-radius:12px;
+
+}
+
+
+
+/* =========================================
+   PROJECTS
+========================================= */
+
+.projects{
+
+padding:6rem 2rem;
+
+text-align:center;
+
+}
+
+.project-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:2rem;
+
+max-width:1100px;
+margin:auto;
+
+}
+
+.project-card{
+
+padding:2rem;
+
+background:rgba(15,23,42,0.8);
+
+border-radius:12px;
+
+}
+
+
+
+/* =========================================
+   MAP
+========================================= */
+
+#map{
+
+width:100%;
+height:60vh;
+
+margin-top:2rem;
+
+border-radius:12px;
+
+}
+
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn{
+
+display:inline-block;
+
+margin-top:2rem;
+
+padding:0.8rem 1.5rem;
+
+background:#00bcd4;
+
+color:#0f172a;
+
+border-radius:6px;
+
+font-weight:bold;
+
+}
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+padding:3rem;
+
+text-align:center;
+
+background:#111827;
+
+}
+
+
+
+/* =========================================
    RESPONSIVE
-========================= */
+========================================= */
 
 @media(max-width:900px){
 
-  .hero-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.hero-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
 @media(max-width:500px){
 
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-content h1{
-    font-size:2.2rem;
-  }
-
+.hero-grid{
+grid-template-columns:1fr;
 }
 
-/* =========================================
-   GIS HERO BACKGROUND ADD-ON
-   (safe addition, does not affect layout)
-========================================= */
-
-.hero{
-  position:relative;
-  overflow:hidden;
+.hero-content h1{
+font-size:2.2rem;
 }
 
-/* GIS grid */
-
-.gis-grid{
-  position:absolute;
-  inset:0;
-
-  background-image:
-    linear-gradient(rgba(0,224,255,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,224,255,0.07) 1px, transparent 1px);
-
-  background-size:80px 80px;
-
-  animation:gisGridMove 120s linear infinite;
-
-  pointer-events:none;
-
-  z-index:1;
-}
-
-@keyframes gisGridMove{
-
-  from{
-    background-position:0 0;
-  }
-
-  to{
-    background-position:600px 300px;
-  }
-
-}
-
-/* Floating nodes */
-
-.gis-nodes span{
-
-  position:absolute;
-
-  width:5px;
-  height:5px;
-
-  background:#00e0ff;
-
-  border-radius:50%;
-
-  box-shadow:0 0 8px #00e0ff;
-
-  animation:gisFloat 8s infinite ease-in-out;
-
-}
-
-.gis-nodes span:nth-child(1){top:25%;left:20%;}
-.gis-nodes span:nth-child(2){top:65%;left:70%;}
-.gis-nodes span:nth-child(3){top:45%;left:85%;}
-.gis-nodes span:nth-child(4){top:80%;left:35%;}
-
-@keyframes gisFloat{
-
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
-  100%{transform:translateY(0);}
-
-}
-
-/* Ensure hero text stays above */
-
-.hero-content{
-  position:relative;
-  z-index:5;
 }
