@@ -24,11 +24,13 @@ text-decoration:none;
 transition:.2s;
 }
 
-a:hover{color:#00e0ff;}
+a:hover{
+color:#00e0ff;
+}
 
 
 /* =========================================
-NAVBAR
+HEADER
 ========================================= */
 
 header{
@@ -55,58 +57,35 @@ margin-left:1rem;
 
 
 /* =========================================
-HERO MAP
+HERO
 ========================================= */
 
 .hero{
 height:100vh;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
+overflow:hidden;
 }
 
-#heroMap{
+
+/* GRID CANVAS */
+
+#gridCanvas{
 position:absolute;
 inset:0;
 width:100%;
 height:100%;
 z-index:0;
-filter:brightness(.45) contrast(1.1);
 }
 
 
-/* =========================================
-COORDINATES DISPLAY
-========================================= */
-
-.coordinates{
-position:absolute;
-bottom:20px;
-right:20px;
-
-background:rgba(0,0,0,.65);
-color:#00e0ff;
-
-padding:10px 14px;
-border-radius:8px;
-
-font-family:monospace;
-font-size:13px;
-
-z-index:20;
-}
-
-.coordinates div{line-height:1.4;}
-
-
-/* =========================================
-HERO CONTENT
-========================================= */
+/* HERO CONTENT */
 
 .hero-content{
 position:relative;
-z-index:10;
+z-index:5;
 text-align:center;
 max-width:900px;
 padding:2rem;
@@ -125,6 +104,28 @@ opacity:.85;
 
 
 /* =========================================
+COORDINATES
+========================================= */
+
+.coordinates{
+position:absolute;
+bottom:20px;
+right:20px;
+
+background:rgba(0,0,0,.65);
+color:#00e0ff;
+
+padding:10px 14px;
+border-radius:8px;
+
+font-family:monospace;
+font-size:13px;
+
+z-index:10;
+}
+
+
+/* =========================================
 DASHBOARD PANELS
 ========================================= */
 
@@ -136,8 +137,8 @@ gap:1.5rem;
 
 width:90%;
 max-width:900px;
-
 margin:auto;
+
 }
 
 .panel{
@@ -163,7 +164,8 @@ background:rgba(0,0,0,.65);
 
 box-shadow:
 0 20px 40px rgba(0,0,0,.6),
-0 0 20px rgba(0,188,212,.2);
+0 0 20px rgba(0,188,212,.25);
+
 }
 
 .panel h2{
@@ -177,7 +179,7 @@ font-size:.95rem;
 
 
 /* =========================================
-MODAL PANELS (FULLSCREEN EXPAND)
+MODAL
 ========================================= */
 
 .modal{
@@ -190,7 +192,7 @@ align-items:center;
 justify-content:center;
 
 background:rgba(10,15,30,.75);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 opacity:0;
 pointer-events:none;
@@ -207,8 +209,8 @@ pointer-events:auto;
 
 .modal-content{
 
-width:85%;
-max-width:900px;
+width:90%;
+max-width:800px;
 
 background:#0f172a;
 border-radius:16px;
@@ -217,78 +219,19 @@ padding:3rem;
 
 box-shadow:0 30px 80px rgba(0,0,0,.8);
 
-overflow:auto;
 max-height:80vh;
+overflow:auto;
 }
 
 .modal-close{
 
 position:absolute;
-top:90px;
+top:80px;
 right:40px;
 
 font-size:28px;
 cursor:pointer;
-
 color:#00e0ff;
-}
-
-
-/* =========================================
-MAP MARKERS
-========================================= */
-
-.project-marker{
-width:14px;
-height:14px;
-
-background:#00e0ff;
-border-radius:50%;
-
-box-shadow:
-0 0 10px #00e0ff,
-0 0 20px rgba(0,224,255,.6);
-
-animation:pulse 2.5s infinite;
-}
-
-@keyframes pulse{
-
-0%{transform:scale(1);opacity:.7;}
-
-50%{transform:scale(1.6);opacity:1;}
-
-100%{transform:scale(1);opacity:.7;}
-
-}
-
-
-/* =========================================
-PROJECT PREVIEW IMAGE
-========================================= */
-
-.project-preview{
-
-position:fixed;
-
-width:420px;
-
-pointer-events:none;
-
-opacity:0;
-transform:translate(-50%,-50%) scale(.9);
-
-transition:.25s;
-
-z-index:500;
-}
-
-.project-preview img{
-
-width:100%;
-border-radius:10px;
-
-box-shadow:0 20px 60px rgba(0,0,0,.7);
 }
 
 
@@ -297,14 +240,11 @@ FOOTER
 ========================================= */
 
 .footer{
-
 position:absolute;
 bottom:10px;
 left:0;
 width:100%;
-
 text-align:center;
-
 font-size:.9rem;
 opacity:.6;
 }
@@ -332,25 +272,8 @@ padding:1.5rem;
 font-size:2rem;
 }
 
-.modal-content{
-padding:2rem;
-}
-
 .coordinates{
 font-size:11px;
-}
-
-}
-
-@media(max-width:900px){
-
-.dashboard{
-grid-template-columns:1fr;
-gap:1rem;
-}
-
-.panel{
-padding:1.5rem;
 }
 
 }
