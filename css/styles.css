@@ -180,6 +180,20 @@ opacity:.85;
 font-size:.95rem;
 }
 
+/* =========================================
+Buttons
+========================================= */
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #00bcd4;
+  color: #0f172a;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+.btn:hover { transform: scale(1.05); }
 
 /* =========================================
 MODAL
