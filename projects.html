@@ -169,64 +169,28 @@ data-image="https://picsum.photos/600/400?random=6">
 
 </footer>
 
-<!--Scripts-->
+<!-- Scripts -->
 <script src="js/modal.js"></script>
+
 <script>
 
-/* Expand projects */
-const button = document.getElementById("toggle-projects");
-const moreProjects = document.getElementById("more-projects");
-
-button.addEventListener("click", function(){
-if(moreProjects.style.maxHeight){
-moreProjects.style.maxHeight = null;
-button.textContent = "View More Projects";
-}else{
-moreProjects.style.maxHeight = moreProjects.scrollHeight + "px";
-button.textContent = "Show Less";
-}
-});
-
-/* Hover preview */
-// const rows = document.querySelectorAll(".project-row");
-// const preview = document.querySelector(".project-preview");
-// const previewImg = document.getElementById("preview-image");
-
-rows.forEach(row => {
-
-row.addEventListener("mouseenter", () => {
-previewImg.src = row.dataset.image;
-preview.style.opacity = 1;
-preview.style.transform = "translate(-50%, -50%) scale(1)";
-});
-
-row.addEventListener("mouseleave", () => {
-preview.style.opacity = 0;
-preview.style.transform = "translate(-50%, -50%) scale(0.9)";
-});
-
-row.addEventListener("mousemove", (e) => {
-preview.style.left = e.clientX + 40 + "px";
-preview.style.top = e.clientY + 40 + "px";
-});
-});
-</script>
-<script>
 const btn = document.getElementById("toggle-projects");
-const more = document.getElementById("more-projects");
+const moreProjects = document.getElementById("more-projects");
 
 btn.addEventListener("click", () => {
 
-if(more.style.maxHeight){
-more.style.maxHeight = null;
+if(moreProjects.style.maxHeight){
+moreProjects.style.maxHeight = null;
 btn.textContent = "View More Projects";
 }
 else{
-more.style.maxHeight = more.scrollHeight + "px";
+moreProjects.style.maxHeight = moreProjects.scrollHeight + "px";
 btn.textContent = "Show Less Projects";
 }
 
 });
+
 </script>
+
 </body>
 </html>
