@@ -95,11 +95,8 @@ research or development opportunities.
 </section>
 
 <!-- MODAL -->
-
 <div class="modal">
-
 <div class="modal-close">✕</div>
-
 <div class="modal-content">
 
 <h2>Content</h2>
@@ -121,7 +118,7 @@ research or development opportunities.
 <script>
 
 /* =========================================
-GRID BACKGROUND
+GRID BACKGROUND SYSTEM
 ========================================= */
 
 const canvas = document.getElementById("gridCanvas");
@@ -130,18 +127,40 @@ const ctx = canvas.getContext("2d");
 const coordX = document.getElementById("coordX");
 const coordY = document.getElementById("coordY");
 
-/* pointer targets */
 let mouseX = 0;
 let mouseY = 0;
 
-/* rendered crosshair position (smoothed) */
 let renderX = 0;
 let renderY = 0;
 
-/* optional radar scan */
 let scanY = 0;
 
 const gridSize = 40;
+
+
+/* =========================================
+FLOATING DATA NODES
+========================================= */
+
+const nodes = [];
+const nodeCount = 25;
+
+function createNodes(){
+
+nodes.length = 0;
+
+for(let i=0;i<nodeCount;i++){
+
+nodes.push({
+x: Math.random()*canvas.width,
+y: Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.3,
+vy:(Math.random()-0.5)*0.3
+});
+
+}
+
+}
 
 
 /* =========================================
@@ -153,13 +172,15 @@ function resizeCanvas(){
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
-/* start centered */
+/* center crosshair */
 
 mouseX = canvas.width / 2;
 mouseY = canvas.height / 2;
 
 renderX = mouseX;
 renderY = mouseY;
+
+createNodes();
 
 }
 
@@ -182,7 +203,7 @@ coordY.textContent = Math.floor(mouseY);
 
 
 /* =========================================
-DESKTOP MOUSE
+DESKTOP POINTER
 ========================================= */
 
 window.addEventListener("mousemove",(e)=>{
@@ -198,7 +219,7 @@ e.clientY - rect.top
 
 
 /* =========================================
-MOBILE TOUCH
+MOBILE POINTER
 ========================================= */
 
 function handleTouch(e){
@@ -229,28 +250,74 @@ ctx.fillStyle = "#0f172a";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 
-/* grid */
+/* =========================================
+PARALLAX GRID
+========================================= */
+
+const offsetX = renderX * 0.03;
+const offsetY = renderY * 0.03;
 
 ctx.strokeStyle = "rgba(120,150,180,0.25)";
 ctx.lineWidth = 1;
 
-for(let x=0;x<canvas.width;x+=gridSize){
+for(let x=-gridSize;x<canvas.width+gridSize;x+=gridSize){
 
 ctx.beginPath();
-ctx.moveTo(x,0);
-ctx.lineTo(x,canvas.height);
+ctx.moveTo(x-offsetX%gridSize,0);
+ctx.lineTo(x-offsetX%gridSize,canvas.height);
 ctx.stroke();
+
+}
+
+for(let y=-gridSize;y<canvas.height+gridSize;y+=gridSize){
+
+ctx.beginPath();
+ctx.moveTo(0,y-offsetY%gridSize);
+ctx.lineTo(canvas.width,y-offsetY%gridSize);
+ctx.stroke();
+
+}
+
+
+/* =========================================
+COORDINATE TICKS
+========================================= */
+
+ctx.fillStyle="rgba(150,180,200,.6)";
+ctx.font="10px monospace";
+
+for(let x=0;x<canvas.width;x+=gridSize){
+
+ctx.fillText(x,x+2,10);
 
 }
 
 for(let y=0;y<canvas.height;y+=gridSize){
 
-ctx.beginPath();
-ctx.moveTo(0,y);
-ctx.lineTo(canvas.width,y);
-ctx.stroke();
+ctx.fillText(y,2,y-2);
 
 }
+
+
+/* =========================================
+FLOATING DATA NODES
+========================================= */
+
+ctx.fillStyle = "rgba(0,224,255,0.7)";
+
+nodes.forEach(n=>{
+
+n.x += n.vx;
+n.y += n.vy;
+
+if(n.x < 0 || n.x > canvas.width) n.vx *= -1;
+if(n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+ctx.beginPath();
+ctx.arc(n.x,n.y,2,0,Math.PI*2);
+ctx.fill();
+
+});
 
 
 /* =========================================
@@ -261,7 +328,9 @@ renderX += (mouseX - renderX) * 0.12;
 renderY += (mouseY - renderY) * 0.12;
 
 
-/* crosshair */
+/* =========================================
+CROSSHAIR
+========================================= */
 
 ctx.shadowBlur = 15;
 ctx.shadowColor = "#00e0ff";
@@ -280,8 +349,18 @@ ctx.stroke();
 ctx.shadowBlur = 0;
 
 
+/* crosshair ring */
+
+ctx.strokeStyle="rgba(0,224,255,.5)";
+ctx.lineWidth=1;
+
+ctx.beginPath();
+ctx.arc(renderX,renderY,18,0,Math.PI*2);
+ctx.stroke();
+
+
 /* =========================================
-OPTIONAL RADAR SCAN LINE
+RADAR SCAN LINE
 ========================================= */
 
 scanY += 0.4;
@@ -302,7 +381,9 @@ requestAnimationFrame(draw);
 }
 
 
-/* initialize */
+/* =========================================
+INITIALIZE
+========================================= */
 
 resizeCanvas();
 draw();
