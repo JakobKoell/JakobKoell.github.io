@@ -4,18 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | JK</title>
+<title>Projects | Jakob Koell</title>
 
 <link rel="stylesheet" href="css/stylesAbout.css">
 
 </head>
-
 <body>
-
-<header id="header">
-<div class="nav">
-<div class="logo">🛰 Spatial</div>
-
+<div class="modal">
+<div class="modal-close">✕</div>
+<div class="modal-content"></div>
+</div>
+<div id="contactModalContent" style="display:none;">
 <!-- ================= HEADER ================= -->
 <header id="header">
   <div class="nav">
@@ -29,26 +28,6 @@
   </div>
 </header>
 
-</div>
-</header>
-
-<div class="modal">
-<div class="modal-close">✕</div>
-<div class="modal-content"></div>
-</div>
-<div id="contactModalContent" style="display:none;">
-
-<h2>Contact</h2>
-
-<p>
-Interested in collaboration, GIS development, or spatial research?
-</p>
-
-<p>Email: your@email.com</p>
-<p>LinkedIn: linkedin.com/in/yourprofile</p>
-
-</div>
-
 <section class="projects-page">
 
 <div class="projects-container">
@@ -60,9 +39,7 @@ Interested in collaboration, GIS development, or spatial research?
 <img id="preview-image" src="https://picsum.photos/600/400?random=1">
 </div>
 
-
 <!-- PROJECT 1 -->
-
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=1">
 
@@ -77,9 +54,7 @@ data-image="https://picsum.photos/600/400?random=1">
 
 </div>
 
-
 <!-- PROJECT 2 -->
-
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=2">
 
@@ -94,9 +69,7 @@ data-image="https://picsum.photos/600/400?random=2">
 
 </div>
 
-
 <!-- PROJECT 3 -->
-
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=3">
 
@@ -111,11 +84,8 @@ data-image="https://picsum.photos/600/400?random=3">
 
 </div>
 
-
 <!-- HIDDEN PROJECTS -->
-
 <div id="more-projects">
-
 
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=4">
@@ -131,7 +101,6 @@ data-image="https://picsum.photos/600/400?random=4">
 
 </div>
 
-
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=5">
 
@@ -146,7 +115,6 @@ data-image="https://picsum.photos/600/400?random=5">
 
 </div>
 
-
 <div class="project-row"
 data-image="https://picsum.photos/600/400?random=6">
 
@@ -158,12 +126,9 @@ data-image="https://picsum.photos/600/400?random=6">
 <span class="project-date">May 2023</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
-
 </div>
 
-
 </div>
-
 
 <!-- VIEW MORE BUTTON -->
 
@@ -175,10 +140,8 @@ View More Projects
 
 </div>
 
-
 </div>
 </section>
-
 
 <footer class="footer">
 
@@ -195,33 +158,25 @@ View More Projects
 
 </footer>
 
-
+<!--Scripts-->
+<script src="js/modal.js"></script>
 <script>
 
 /* Expand projects */
-
 const button = document.getElementById("toggle-projects");
 const moreProjects = document.getElementById("more-projects");
 
 button.addEventListener("click", function(){
-
 if(moreProjects.style.maxHeight){
-
 moreProjects.style.maxHeight = null;
 button.textContent = "View More Projects";
-
 }else{
-
 moreProjects.style.maxHeight = moreProjects.scrollHeight + "px";
 button.textContent = "Show Less";
-
 }
-
 });
 
-
 /* Hover preview */
-
 const rows = document.querySelectorAll(".project-row");
 const preview = document.querySelector(".project-preview");
 const previewImg = document.getElementById("preview-image");
@@ -229,30 +184,22 @@ const previewImg = document.getElementById("preview-image");
 rows.forEach(row => {
 
 row.addEventListener("mouseenter", () => {
-
 previewImg.src = row.dataset.image;
 preview.style.opacity = 1;
 preview.style.transform = "translate(-50%, -50%) scale(1)";
-
 });
 
 row.addEventListener("mouseleave", () => {
-
 preview.style.opacity = 0;
 preview.style.transform = "translate(-50%, -50%) scale(0.9)";
-
 });
 
 row.addEventListener("mousemove", (e) => {
-
 preview.style.left = e.clientX + 40 + "px";
 preview.style.top = e.clientY + 40 + "px";
-
 });
-
 });
-
 </script>
-<script src="js/modal.js"></script>
+
 </body>
 </html>
