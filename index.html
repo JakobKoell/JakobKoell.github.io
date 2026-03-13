@@ -140,6 +140,39 @@ src="https://picsum.photos/600/400?random=21">
   </div>
 </footer>
 
+<script>
+
+const cards = document.querySelectorAll(".overview-card");
+const preview = document.querySelector(".overview-preview");
+const previewImg = document.getElementById("overview-preview-img");
+
+cards.forEach(card => {
+
+card.addEventListener("mouseenter", function(){
+
+previewImg.src = this.dataset.image;
+preview.style.opacity = "1";
+preview.style.transform = "translate(-50%, -50%) scale(1)";
+
+});
+
+card.addEventListener("mouseleave", function(){
+
+preview.style.opacity = "0";
+
+});
+
+card.addEventListener("mousemove", function(e){
+
+preview.style.left = e.clientX + "px";
+preview.style.top = e.clientY + "px";
+
+});
+
+});
+
+</script>
+
 </body>
 </html>
 
