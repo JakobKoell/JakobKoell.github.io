@@ -314,8 +314,10 @@ header.scrolled { background: #111827; }
   border-radius:14px;
 
   box-shadow:0 25px 60px rgba(0,0,0,0.7);
-}
 
+  backdrop-filter: blur(6px);
+
+}
 
 /* Photo column */
 
@@ -328,6 +330,9 @@ header.scrolled { background: #111827; }
   height:auto;
   border-radius:12px;
   display:block;
+
+  box-shadow:0 15px 35px rgba(0,0,0,0.6);
+
 }
 
 
@@ -368,4 +373,72 @@ header.scrolled { background: #111827; }
   margin:0 auto;
 }
 
+}
+
+/* =========================================
+   PROJECTS PAGE
+========================================= */
+
+.projects-page{
+padding:10rem 2rem 6rem;
+background:#0f172a;
+min-height:100vh;
+}
+
+.projects-container{
+max-width:900px;
+margin:0 auto;
+}
+
+.projects-container h1{
+font-size:3rem;
+margin-bottom:3rem;
+}
+
+
+/* Project row */
+
+.project-row{
+display:flex;
+gap:2rem;
+padding:2rem 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+
+/* Number */
+
+.project-number{
+font-size:2rem;
+color:#00bcd4;
+min-width:60px;
+}
+
+
+/* Text */
+
+.project-info h2{
+font-size:1.5rem;
+margin-bottom:0.5rem;
+}
+
+.project-info p{
+margin-bottom:0.5rem;
+opacity:0.85;
+}
+
+.project-date{
+display:block;
+font-size:0.9rem;
+opacity:0.6;
+margin-bottom:0.5rem;
+}
+
+.project-link{
+color:#00bcd4;
+font-weight:600;
+}
+
+.project-link:hover{
+color:#00e0ff;
 }
