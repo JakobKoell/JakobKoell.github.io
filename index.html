@@ -127,6 +127,54 @@ to existing data, including translation and validation.
 
 </div>
 
+<!-- ABOUT CONTENT -->
+<div id="aboutModalContent" style="display:none;">
+
+<h2>About Me</h2>
+
+<p>
+I specialize in geospatial application development, spatial analysis,
+and GIS automation using Python.
+</p>
+
+<p>
+My work focuses on building tools that streamline spatial workflows,
+translate complex datasets, and enable better decision making.
+</p>
+
+</div>
+
+
+<!-- RESUME CONTENT -->
+<div id="resumeModalContent" style="display:none;">
+
+<h2>Resume</h2>
+
+<p>
+Download my full resume or view professional experience,
+education, and technical expertise.
+</p>
+
+<a href="resume.pdf" class="btn">Download Resume</a>
+
+</div>
+
+
+<!-- CONTACT CONTENT -->
+<div id="contactModalContent" style="display:none;">
+
+<h2>Contact</h2>
+
+<p>
+Interested in collaboration, GIS development, or spatial research?
+</p>
+
+<p>Email: your@email.com</p>
+
+<p>LinkedIn: linkedin.com/in/yourname</p>
+
+</div>
+
 <div class="project-card fade-in"
 style="background-image: url('https://picsum.photos/id/29/600/400');">
 
@@ -436,7 +484,6 @@ INITIALIZE
 resizeCanvas();
 draw();
 
-
 /* =========================================
 MODAL PANELS
 ========================================= */
@@ -452,15 +499,28 @@ panel.addEventListener("click", () => {
 
 modal.classList.add("active");
 
-/* load projects content */
+let contentID = "";
 
-if(panel.classList.contains("projects")){
+/* determine which panel */
 
-const projectsHTML =
-document.querySelector("#projectsModalContent").innerHTML;
+if(panel.classList.contains("about"))
+contentID = "aboutModalContent";
 
-modalContent.innerHTML = projectsHTML;
+if(panel.classList.contains("projects"))
+contentID = "projectsModalContent";
 
+if(panel.classList.contains("resume"))
+contentID = "resumeModalContent";
+
+if(panel.classList.contains("contact"))
+contentID = "contactModalContent";
+
+/* load content */
+
+const content = document.getElementById(contentID);
+
+if(content){
+modalContent.innerHTML = content.innerHTML;
 }
 
 });
@@ -470,11 +530,6 @@ modalContent.innerHTML = projectsHTML;
 closeBtn.addEventListener("click", () => {
 
 modal.classList.remove("active");
-
-modalContent.innerHTML = `
-<h2>Content</h2>
-<p>Panel content appears here.</p>
-`;
 
 });
 
