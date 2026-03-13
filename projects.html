@@ -13,56 +13,79 @@
 <body>
 
 <header id="header">
-    
 <div class="nav">
-
 <div class="logo">🛰 Spatial</div>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </nav>
-</div>
 
+</div>
 </header>
 
+
 <section class="projects-page">
+
 <div class="projects-container">
+
 <h1>Projects</h1>
 
+<!-- Preview Image -->
+<div class="project-preview">
+<img id="preview-image" src="https://picsum.photos/600/400?random=1">
+</div>
 
-<!-- FIRST 3 PROJECTS (VISIBLE) -->
 
-<div class="project-row">
+<!-- PROJECT 1 -->
+
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=1">
+
 <div class="project-number">01</div>
+
 <div class="project-details">
 <h2>Urban Heat Island Mapping</h2>
 <p>GIS analysis of urban heat patterns using satellite imagery.</p>
 <span class="project-date">June 2024</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
+
 </div>
 
 
-<div class="project-row">
+<!-- PROJECT 2 -->
+
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=2">
+
 <div class="project-number">02</div>
+
 <div class="project-details">
 <h2>Deforestation Risk Modeling</h2>
 <p>Predictive spatial modeling using satellite imagery.</p>
 <span class="project-date">April 2024</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
+
 </div>
 
 
-<div class="project-row">
+<!-- PROJECT 3 -->
+
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=3">
+
 <div class="project-number">03</div>
+
 <div class="project-details">
 <h2>Flood Risk Assessment</h2>
 <p>Mapping flood-prone areas using terrain analysis.</p>
 <span class="project-date">January 2024</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
+
 </div>
 
 
@@ -70,49 +93,67 @@
 
 <div id="more-projects">
 
-<div class="project-row">
+
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=4">
+
 <div class="project-number">04</div>
+
 <div class="project-details">
 <h2>Wildfire Susceptibility Mapping</h2>
 <p>Identifying wildfire-prone areas using spatial analysis.</p>
 <span class="project-date">Nov 2023</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
+
 </div>
 
 
-<div class="project-row">
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=5">
+
 <div class="project-number">05</div>
+
 <div class="project-details">
 <h2>Urban Accessibility Analysis</h2>
 <p>Network analysis measuring transit accessibility.</p>
 <span class="project-date">Aug 2023</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
+
 </div>
 
 
-<div class="project-row">
+<div class="project-row"
+data-image="https://picsum.photos/600/400?random=6">
+
 <div class="project-number">06</div>
+
 <div class="project-details">
 <h2>Land Cover Classification</h2>
 <p>Machine learning classification of satellite imagery.</p>
 <span class="project-date">May 2023</span>
 <a href="#" class="project-link">View Project →</a>
 </div>
-</div>
 
 </div>
 
-<!--More Projects Button-->
+
+</div>
+
+
+<!-- VIEW MORE BUTTON -->
+
 <div class="projects-more">
+
 <button id="toggle-projects" class="btn">
 View More Projects
 </button>
-</div>
 
 </div>
 
+
+</div>
 </section>
 
 
@@ -120,7 +161,7 @@ View More Projects
 
 <div class="footer-content">
 
-<p>© 2026  | Spatial Data Analyst</p>
+<p>© 2026 | Spatial Data Analyst</p>
 
 <p>
 <a href="#">GitHub</a> |
@@ -133,6 +174,8 @@ View More Projects
 
 
 <script>
+
+/* Expand projects */
 
 const button = document.getElementById("toggle-projects");
 const moreProjects = document.getElementById("more-projects");
@@ -150,6 +193,39 @@ moreProjects.style.maxHeight = moreProjects.scrollHeight + "px";
 button.textContent = "Show Less";
 
 }
+
+});
+
+
+/* Hover preview */
+
+const rows = document.querySelectorAll(".project-row");
+const preview = document.querySelector(".project-preview");
+const previewImg = document.getElementById("preview-image");
+
+rows.forEach(row => {
+
+row.addEventListener("mouseenter", () => {
+
+previewImg.src = row.dataset.image;
+preview.style.opacity = 1;
+preview.style.transform = "translate(-50%, -50%) scale(1)";
+
+});
+
+row.addEventListener("mouseleave", () => {
+
+preview.style.opacity = 0;
+preview.style.transform = "translate(-50%, -50%) scale(0.9)";
+
+});
+
+row.addEventListener("mousemove", (e) => {
+
+preview.style.left = e.clientX + 40 + "px";
+preview.style.top = e.clientY + 40 + "px";
+
+});
 
 });
 

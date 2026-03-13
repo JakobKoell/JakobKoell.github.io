@@ -388,6 +388,7 @@ min-height:100vh;
 .projects-container{
 max-width:900px;
 margin:0 auto;
+position:relative;
 }
 
 .projects-container h1{
@@ -395,17 +396,24 @@ font-size:3rem;
 margin-bottom:4rem;
 }
 
+
+/* Project rows */
+
 .project-row{
 display:flex;
 gap:2rem;
 padding:2rem 0;
 border-bottom:1px solid rgba(255,255,255,0.08);
 transition:0.3s;
+cursor:pointer;
 }
 
 .project-row:hover{
 transform:translateX(8px);
 }
+
+
+/* Numbers */
 
 .project-number{
 font-size:2rem;
@@ -413,6 +421,9 @@ font-weight:bold;
 color:#00bcd4;
 min-width:60px;
 }
+
+
+/* Project text */
 
 .project-details h2{
 font-size:1.5rem;
@@ -432,6 +443,9 @@ opacity:0.6;
 margin-bottom:0.5rem;
 }
 
+
+/* Link */
+
 .project-link{
 color:#00bcd4;
 font-weight:600;
@@ -441,13 +455,48 @@ font-weight:600;
 color:#00e0ff;
 }
 
+
+/* View More Button */
+
 .projects-more{
 text-align:center;
 margin-top:4rem;
 }
 
+
+/* Hidden Projects */
+
 #more-projects{
 max-height:0;
 overflow:hidden;
 transition:max-height 0.6s ease;
+}
+
+
+/* Preview Image */
+
+.project-preview{
+position:fixed;
+top:0;
+left:0;
+
+width:420px;
+
+pointer-events:none;
+
+opacity:0;
+
+transform:translate(-50%, -50%) scale(0.9);
+
+transition:
+opacity 0.25s ease,
+transform 0.25s ease;
+
+z-index:999;
+}
+
+.project-preview img{
+width:100%;
+border-radius:10px;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
