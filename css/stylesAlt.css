@@ -40,7 +40,7 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(17,24,39,0.8);
+background:rgba(17,24,39,0.85);
 padding:1rem 2rem;
 z-index:1000;
 transition:background .3s;
@@ -58,15 +58,17 @@ max-width:1200px;
 margin:0 auto;
 width:100%;
 padding:0 1rem;
-gap:30px;
+gap:60px;
 }
 
 .nav a{
+margin-left:2rem;
 white-space:nowrap;
+font-weight:500;
 }
 
 /* =========================================
-GRID BACKGROUND
+GRID CANVAS BACKGROUND
 ========================================= */
 
 #gridCanvas{
@@ -82,7 +84,7 @@ position:relative;
 z-index:2;
 }
 
-/* Coordinate display */
+/* Coordinates display */
 
 #coords{
 position:absolute;
@@ -112,6 +114,8 @@ position:relative;
 overflow:hidden;
 }
 
+/* Moving topo overlay */
+
 .topo-overlay{
 position:absolute;
 inset:0;
@@ -129,6 +133,7 @@ to{background-position:1200px 600px;}
 .hero-content{
 max-width:900px;
 text-align:center;
+color:#fff;
 }
 
 .hero-tagline{
@@ -159,7 +164,7 @@ border-radius:10px;
 backdrop-filter:blur(10px);
 background:rgba(0,0,0,.35);
 color:white;
-transition:.25s;
+transition:.25s ease;
 }
 
 .hero-card h3{
@@ -270,6 +275,116 @@ border-radius:10px;
 }
 
 /* =========================================
+PROJECT LIST PAGE
+========================================= */
+
+.projects-page{
+padding:10rem 2rem 6rem;
+background:#0f172a;
+min-height:100vh;
+}
+
+.projects-container{
+max-width:900px;
+margin:0 auto;
+}
+
+.projects-container h1{
+font-size:3rem;
+margin-bottom:4rem;
+}
+
+.project-row{
+display:flex;
+gap:2rem;
+padding:2rem 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+cursor:pointer;
+transition:.25s;
+}
+
+.project-row:hover{
+transform:translateX(6px);
+background:rgba(255,255,255,0.02);
+}
+
+.project-number{
+font-size:2rem;
+font-weight:bold;
+color:#00bcd4;
+min-width:60px;
+}
+
+.project-details h2{
+font-size:1.5rem;
+margin-bottom:.4rem;
+}
+
+.project-details p{
+opacity:.85;
+margin-bottom:.4rem;
+max-width:600px;
+}
+
+.project-date{
+display:block;
+font-size:.9rem;
+opacity:.6;
+margin-bottom:.5rem;
+}
+
+.project-link{
+color:#00bcd4;
+font-weight:600;
+}
+
+.project-link:hover{
+color:#00e0ff;
+}
+
+/* =========================================
+MODAL
+========================================= */
+
+.modal{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(10,15,30,.75);
+backdrop-filter:blur(10px);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:2000;
+}
+
+.modal.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.modal-content{
+background:#111;
+padding:40px;
+border-radius:10px;
+width:90%;
+max-width:1100px;
+max-height:85vh;
+overflow-y:auto;
+}
+
+.modal-close{
+position:absolute;
+top:80px;
+right:40px;
+font-size:28px;
+cursor:pointer;
+color:#00e0ff;
+}
+
+/* =========================================
 ABOUT PAGE
 ========================================= */
 
@@ -320,83 +435,6 @@ margin-bottom:1.5rem;
 .about-content p{
 line-height:1.7;
 margin-bottom:1rem;
-}
-
-/* =========================================
-PROJECTS PAGE
-========================================= */
-
-.projects-page{
-padding:10rem 2rem 6rem;
-background:#0f172a;
-min-height:100vh;
-}
-
-.projects-container{
-max-width:900px;
-margin:0 auto;
-}
-
-.project-row{
-display:flex;
-gap:2rem;
-padding:2rem 0;
-border-bottom:1px solid rgba(255,255,255,.08);
-cursor:pointer;
-transition:.3s;
-}
-
-.project-row:hover{
-transform:translateX(8px);
-}
-
-.project-number{
-font-size:2rem;
-font-weight:bold;
-color:#00bcd4;
-min-width:60px;
-}
-
-/* =========================================
-MODAL
-========================================= */
-
-.modal{
-position:fixed;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(10,15,30,.75);
-backdrop-filter:blur(10px);
-opacity:0;
-pointer-events:none;
-transition:.3s;
-z-index:2000;
-}
-
-.modal.active{
-opacity:1;
-pointer-events:auto;
-}
-
-.modal-content{
-background:#111;
-padding:40px;
-border-radius:10px;
-width:90%;
-max-width:1100px;
-max-height:85vh;
-overflow-y:auto;
-}
-
-.modal-close{
-position:absolute;
-top:80px;
-right:40px;
-font-size:28px;
-cursor:pointer;
-color:#00e0ff;
 }
 
 /* =========================================
@@ -457,6 +495,15 @@ RESPONSIVE
 
 @media(max-width:900px){
 
+.nav{
+gap:25px;
+font-size:14px;
+}
+
+.nav a{
+margin-left:1rem;
+}
+
 .hero{
 align-items:flex-start;
 padding-top:80px;
@@ -466,11 +513,6 @@ height:auto;
 
 .hero-grid{
 grid-template-columns:repeat(2,1fr);
-}
-
-.nav{
-gap:15px;
-font-size:14px;
 }
 
 .about-card{
