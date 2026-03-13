@@ -142,6 +142,13 @@ My work focuses on building tools that streamline spatial workflows,
 translate complex datasets, and enable better decision making.
 </p>
 
+<div class="section-content">
+  <h2>About Me</h2>
+  <p>I specialize in GIS mapping, GIS application development, Python scripting, geostatistics, data analysis, visualization, remote sensing, and spatial modeling. I translate both spatial and tabular data into actionable insights to help solve your problems.</p>
+  
+  <a href="about.html" class="btn">Read More →</a>
+</div>
+
 </div>
 
 
@@ -151,8 +158,9 @@ translate complex datasets, and enable better decision making.
 <h2>Resume</h2>
 
 <p>
-Download my full resume or view professional experience,
-education, and technical expertise.
+<!-- Download my full resume or view professional experience,
+education, and technical expertise. -->
+Resume coming soon!
 </p>
 
 <a href="resume.pdf" class="btn">Download Resume</a>
@@ -169,9 +177,9 @@ education, and technical expertise.
 Interested in collaboration, GIS development, or spatial research?
 </p>
 
-<p>Email: your@email.com</p>
+<p>Email: JKoellGIS@gmail.com</p>
 
-<p>LinkedIn: linkedin.com/in/yourname</p>
+<p>LinkedIn: https://www.linkedin.com/in/jakob-koell/</p>
 
 </div>
 
@@ -524,6 +532,14 @@ modalContent.innerHTML = content.innerHTML;
 }
 
 });
+
+});
+
+modal.addEventListener("click", (e) => {
+
+if(e.target === modal){
+modal.classList.remove("active");
+}
 
 });
 
