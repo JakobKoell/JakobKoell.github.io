@@ -309,16 +309,13 @@ opacity:.6;
 /* =========================================
 RESPONSIVE
 ========================================= */
-
 @media(max-width:900px){
 
 .hero{
-
-align-items:flex-start;   /* start at top */
-padding-top:60px;         /* breathing room */
+align-items:flex-start;
+padding-top:60px;
 padding-bottom:60px;
-
-min-height:auto;          /* allow page to grow */
+min-height:auto;
 }
 
 .hero-content{
@@ -328,6 +325,32 @@ margin-top:40px;
 .dashboard{
 grid-template-columns:1fr;
 gap:1rem;
+}
+
+/* modal */
+
+.modal-content{
+width:95%;
+padding:20px;
+max-height:90vh;
+overflow-y:auto;
+}
+
+/* project layout */
+
+.project-grid{
+grid-template-columns:1fr;
+}
+
+.project-card{
+height:180px;
+padding:15px;
+}
+
+#projects{
+background-size:cover;
+background-position:center;
+padding:15px;
 }
 
 }
