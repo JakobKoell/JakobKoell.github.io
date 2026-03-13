@@ -13,7 +13,7 @@
 
 <!-- ================= HEADER ================= -->
 <header id="header">
-  <div class="nav">
+  <div class="nav-links">
     <div class="logo">🛰</div>
     <nav>
       <a href="index.html">Home</a>
@@ -94,6 +94,17 @@ data-image="https://picsum.photos/600/400?random=3">
 
 </div>
 
+
+<!-- VIEW MORE BUTTON -->
+
+<div class="projects-more">
+
+<button id="toggle-projects" class="btn">
+View More Projects
+</button>
+
+</div>
+
 <!-- HIDDEN PROJECTS -->
 <div id="more-projects">
 
@@ -140,16 +151,6 @@ data-image="https://picsum.photos/600/400?random=6">
 
 </div>
 
-<!-- VIEW MORE BUTTON -->
-
-<div class="projects-more">
-
-<button id="toggle-projects" class="btn">
-View More Projects
-</button>
-
-</div>
-
 </div>
 </section>
 
@@ -187,9 +188,9 @@ button.textContent = "Show Less";
 });
 
 /* Hover preview */
-const rows = document.querySelectorAll(".project-row");
-const preview = document.querySelector(".project-preview");
-const previewImg = document.getElementById("preview-image");
+// const rows = document.querySelectorAll(".project-row");
+// const preview = document.querySelector(".project-preview");
+// const previewImg = document.getElementById("preview-image");
 
 rows.forEach(row => {
 
