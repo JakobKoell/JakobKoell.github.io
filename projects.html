@@ -211,6 +211,22 @@ preview.style.top = e.clientY + 40 + "px";
 });
 });
 </script>
+<script>
+const btn = document.getElementById("toggle-projects");
+const more = document.getElementById("more-projects");
 
+btn.addEventListener("click", () => {
+
+if(more.style.maxHeight){
+more.style.maxHeight = null;
+btn.textContent = "View More Projects";
+}
+else{
+more.style.maxHeight = more.scrollHeight + "px";
+btn.textContent = "Show Less Projects";
+}
+
+});
+</script>
 </body>
 </html>
