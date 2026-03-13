@@ -109,34 +109,42 @@
 
 <script>
 
-const map = L.map('heroMap',{
+document.addEventListener("DOMContentLoaded", function(){
+
+const map = L.map("heroMap",{
   zoomControl:false,
-  attributionControl:false,
-  dragging:false,
-  scrollWheelZoom:false,
-  doubleClickZoom:false,
-  boxZoom:false,
-  keyboard:false
+  attributionControl:false
 }).setView([20,0],2);
 
 
-/* world tiles */
+/* TILE LAYER */
 
 L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {maxZoom:5}
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom:6
+  }
 ).addTo(map);
 
 
-/* coordinate tracking */
+/* UPDATE WGS84 COORDINATES */
 
-map.on('mousemove',function(e){
+map.on("mousemove", function(e){
 
   document.getElementById("lat").textContent =
     e.latlng.lat.toFixed(4);
 
   document.getElementById("lon").textContent =
     e.latlng.lng.toFixed(4);
+
+});
+
+
+/* Fix map sizing inside hero */
+
+setTimeout(()=>{
+  map.invalidateSize();
+},100);
 
 });
 
