@@ -1,10 +1,10 @@
 /* =========================================
-GLOBAL RESET & BASE STYLES
+GLOBAL RESET
 ========================================= */
 
 *,
 *::before,
-*::after{
+*::after {
 box-sizing:border-box;
 margin:0;
 padding:0;
@@ -21,12 +21,13 @@ background:#0f172a;
 a{
 text-decoration:none;
 color:#00bcd4;
-transition:color .2s;
+transition:0.2s;
 }
 
 a:hover{
 color:#00e0ff;
 }
+
 
 
 /* =========================================
@@ -37,14 +38,9 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(17,24,39,0.8);
+background:rgba(17,24,39,0.85);
 padding:1rem 2rem;
 z-index:1000;
-transition:background .3s;
-}
-
-header.scrolled{
-background:#111827;
 }
 
 .nav{
@@ -52,18 +48,18 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 max-width:1200px;
-margin:0 auto;
-width:100%;
-padding:0 1rem;
+margin:auto;
 }
 
-.nav a{
+.nav nav a{
 margin-left:1rem;
 white-space:nowrap;
 }
 
+
+
 /* =========================================
-   HERO SECTION (GIS GRID)
+HERO SECTION
 ========================================= */
 
 .hero{
@@ -76,88 +72,79 @@ justify-content:center;
 
 position:relative;
 
-/* removed overflow hidden */
+overflow:hidden;
 
 background:
-radial-gradient(circle at 50% 50%, #1e293b, #020617);
-
-z-index:1;
+radial-gradient(circle at center,#1e293b 0%,#0f172a 80%);
 
 }
 
-/* GRID BACKGROUND */
 
-.hero::before{
 
-content:"";
-
-position:absolute;
-inset:0;
-
-background-image:
-linear-gradient(rgba(0,224,255,0.08) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,224,255,0.08) 1px,transparent 1px);
-
-background-size:80px 80px;
-
-animation:gridMove 120s linear infinite;
-
-z-index:0;
-
-pointer-events:none;
-
-}
-
-@keyframes gridMove{
-
-from{background-position:0 0;}
-to{background-position:800px 400px;}
-
-}
-
-/* TOPO OVERLAY */
+/* =========================================
+TOPOGRAPHIC OVERLAY
+========================================= */
 
 .topo-overlay{
 
 position:absolute;
 inset:0;
 
-background-image:url("topography.svg");
+opacity:0.15;
 
-opacity:.15;
+background-image:
 
-animation:topoMove 120s linear infinite;
+repeating-linear-gradient(
+45deg,
+rgba(255,255,255,0.05) 0px,
+rgba(255,255,255,0.05) 1px,
+transparent 1px,
+transparent 8px
+),
+
+repeating-linear-gradient(
+-45deg,
+rgba(255,255,255,0.04) 0px,
+rgba(255,255,255,0.04) 1px,
+transparent 1px,
+transparent 10px
+);
 
 z-index:1;
 
-pointer-events:none;
-
 }
 
-@keyframes topoMove{
 
-from{background-position:0 0;}
-to{background-position:1200px 600px;}
-
-}
-
-/* HERO CONTENT ABOVE GRID */
-
-.hero-content{
-
-position:relative;
-z-index:10;
-
-text-align:center;
-
-max-width:900px;
-
-color:#fff;
-
-}
 
 /* =========================================
-   CURSOR GRID HIGHLIGHT
+GRID OVERLAY
+========================================= */
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+linear-gradient(rgba(0,255,255,0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,255,255,0.06) 1px, transparent 1px);
+
+background-size:70px 70px;
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+
+
+/* =========================================
+CURSOR GLOW
 ========================================= */
 
 .cursor-glow{
@@ -167,53 +154,41 @@ position:absolute;
 width:220px;
 height:220px;
 
-pointer-events:none;
-
 border-radius:50%;
 
-background: radial-gradient(
+background:radial-gradient(
 circle,
 rgba(0,188,212,0.35) 0%,
 rgba(0,188,212,0.15) 40%,
-rgba(0,188,212,0.05) 60%,
-transparent 75%
+transparent 70%
 );
-
-transform:translate(-50%,-50%);
-z-index:2;
-
-mix-blend-mode:screen;
-
-transition:
-transform 0.05s linear;
-
-}
-
-/* optional grid highlight */
-
-.hero::after{
-
-content:"";
-
-position:absolute;
-inset:0;
-
-background-image:
-
-linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
-
-background-size:60px 60px;
 
 pointer-events:none;
 
-z-index:1;
+transform:translate(-50%,-50%);
+
+z-index:2;
 
 }
 
+
+
 /* =========================================
-   FLOATING DATA NODES
+FLOATING NODES
 ========================================= */
+
+.nodes{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+z-index:2;
+
+}
 
 .nodes span{
 
@@ -226,56 +201,178 @@ background:#00e0ff;
 
 border-radius:50%;
 
-box-shadow:0 0 10px #00e0ff;
+box-shadow:0 0 8px #00e0ff;
 
-animation:floatNode 10s infinite ease-in-out;
-
-z-index:5;
+animation:floatNode 8s infinite ease-in-out;
 
 }
 
 .nodes span:nth-child(1){top:20%;left:30%;}
-.nodes span:nth-child(2){top:70%;left:60%;}
-.nodes span:nth-child(3){top:40%;left:80%;}
-.nodes span:nth-child(4){top:80%;left:20%;}
-.nodes span:nth-child(5){top:10%;left:60%;}
+.nodes span:nth-child(2){top:40%;left:70%;}
+.nodes span:nth-child(3){top:65%;left:25%;}
+.nodes span:nth-child(4){top:80%;left:60%;}
+.nodes span:nth-child(5){top:50%;left:50%;}
 
 @keyframes floatNode{
 
-0%{transform:translateY(0);}
-50%{transform:translateY(-18px);}
-100%{transform:translateY(0);}
+0%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+100%{transform:translateY(0)}
 
 }
 
+
+
 /* =========================================
-   COORDINATE DISPLAY
+COORDINATE DISPLAY
 ========================================= */
 
 .coordinates{
 
 position:absolute;
 
-top:30px;
+top:90px;
 left:40px;
-
-font-family:monospace;
 
 font-size:0.9rem;
 
 color:#00e0ff;
 
+font-family:monospace;
+
+z-index:3;
+
+opacity:0.9;
+
+}
+
+
+
+/* =========================================
+HERO CONTENT
+========================================= */
+
+.hero-content{
+
+position:relative;
+
+z-index:5;
+
+text-align:center;
+
+max-width:900px;
+
+padding:0 2rem;
+
+}
+
+.hero-content h1{
+
+font-size:3.2rem;
+margin-bottom:0.5rem;
+
+}
+
+.hero-tagline{
+
+font-size:1.2rem;
+opacity:0.9;
+margin-bottom:1rem;
+
+}
+
+.hero-description{
+
 opacity:0.85;
+margin-bottom:2rem;
 
-z-index:12;
+}
+
+
+
+/* =========================================
+HERO GRID
+========================================= */
+
+.hero-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:1rem;
+
+margin-top:2rem;
 
 }
 
-.coordinates div{
 
-margin-bottom:4px;
+
+/* HERO CARD */
+
+.hero-card{
+
+padding:1.5rem;
+
+background:rgba(0,0,0,0.35);
+
+backdrop-filter:blur(10px);
+
+border-radius:10px;
+
+transition:0.25s;
+
+color:white;
 
 }
+
+.hero-card:hover{
+
+transform:translateY(-6px) scale(1.03);
+
+background:rgba(0,0,0,0.55);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+}
+
+
+
+/* =========================================
+SECTIONS
+========================================= */
+
+.section{
+
+padding:7rem 2rem;
+
+display:flex;
+justify-content:center;
+
+text-align:center;
+
+}
+
+.section-content{
+
+max-width:800px;
+
+background:rgba(0,0,0,0.4);
+
+padding:2rem;
+
+border-radius:12px;
+
+}
+
+.section h2{
+
+font-size:2.5rem;
+margin-bottom:1.5rem;
+
+}
+
+
 
 /* =========================================
 BUTTON
@@ -285,9 +382,9 @@ BUTTON
 
 display:inline-block;
 
-margin-top:1rem;
+margin-top:1.5rem;
 
-padding:.8rem 1.5rem;
+padding:0.8rem 1.5rem;
 
 background:#00bcd4;
 
@@ -297,65 +394,11 @@ border-radius:5px;
 
 font-weight:bold;
 
-transition:transform .2s;
-
 }
 
 .btn:hover{
+
 transform:scale(1.05);
-}
-
-
-
-/* =========================================
-SECTIONS / PARALLAX
-========================================= */
-
-.section.parallax{
-
-min-height:70vh;
-
-background-attachment:fixed;
-background-size:cover;
-background-position:center;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-padding:5rem 2rem;
-
-position:relative;
-
-}
-
-.section-content{
-
-max-width:800px;
-
-text-align:center;
-
-background:rgba(0,0,0,.4);
-
-color:#fff;
-
-padding:2rem;
-
-border-radius:12px;
-
-z-index:10;
-
-position:relative;
-
-}
-
-.section h2{
-
-font-size:2.5rem;
-
-margin-bottom:2rem;
-
-text-align:center;
 
 }
 
@@ -369,18 +412,10 @@ PROJECTS
 
 padding:8rem 2rem;
 
-min-height:80vh;
-
-background:#0f172a;
-
 display:flex;
 flex-direction:column;
 align-items:center;
 
-}
-
-.projects h2{
-margin-bottom:3rem;
 }
 
 .project-grid{
@@ -391,57 +426,29 @@ grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 
 gap:2rem;
 
-width:100%;
 max-width:1200px;
+
+width:100%;
 
 }
 
 .project-card{
 
-position:relative;
-
-min-height:350px;
-
-color:#fff;
-
-text-shadow:1px 1px 4px rgba(0,0,0,.7);
-
-border-radius:12px;
-
-overflow:hidden;
-
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
+min-height:250px;
 
 padding:1.5rem;
 
-background-size:cover;
-background-position:center;
-
-}
-
-.project-card::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:rgba(0,0,0,.4);
+background:#1e293b;
 
 border-radius:12px;
 
-z-index:1;
+transition:0.3s;
 
 }
 
-.project-card>*{
+.project-card:hover{
 
-position:relative;
-
-z-index:2;
+transform:translateY(-6px);
 
 }
 
@@ -453,31 +460,14 @@ MAP
 
 #map{
 
-width:100vw;
+width:100%;
+height:500px;
 
-height:80vh;
-
-max-width:100%;
-
-margin:0 auto;
+margin-top:1.5rem;
 
 border-radius:12px;
 
-box-shadow:0 10px 30px rgba(0,0,0,.5);
-
-display:block;
-
-}
-
-@media(max-width:768px){
-
-#map{height:60vh;}
-
-}
-
-@media(max-width:480px){
-
-#map{height:50vh;}
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 
 }
 
@@ -491,18 +481,7 @@ FOOTER
 
 background:linear-gradient(135deg,#111827,#1e293b);
 
-color:#e2e8f0;
-
 padding:3rem 2rem;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-gap:1rem;
-
-font-size:.95rem;
 
 text-align:center;
 
@@ -512,54 +491,26 @@ text-align:center;
 
 color:#00bcd4;
 
-margin:0 .5rem;
-
-transition:color .2s;
-
-}
-
-.footer a:hover{
-color:#00e0ff;
-}
-
-.footer-content{
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-align-items:center;
-
-gap:2rem;
-
-}
-
-.footer p{
-margin:0;
 }
 
 
 
 /* =========================================
-FADE-IN ANIMATION
+FADE ANIMATION
 ========================================= */
 
 .fade-in{
 
 opacity:0;
+transform:translateY(40px);
 
-transform:translateY(50px);
-
-transition:opacity 1s ease-out,transform 1s ease-out;
+transition:1s;
 
 }
 
 .fade-in.visible{
 
 opacity:1;
-
 transform:translateY(0);
 
 }
@@ -570,36 +521,26 @@ transform:translateY(0);
 RESPONSIVE
 ========================================= */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
-.nav{
-flex-direction:column;
+.hero-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-.nav a{
-margin-left:0;
-margin-top:.5rem;
 }
 
-.hero-content,
-.section-content{
-padding:1.5rem;
-}
+@media(max-width:600px){
 
-.project-grid{
+.hero-grid{
 grid-template-columns:1fr;
 }
 
-}
-
-@media(max-width:480px){
-
 .hero-content h1{
-font-size:2rem;
+font-size:2.2rem;
 }
 
-.section h2{
-font-size:2rem;
+.coordinates{
+left:20px;
 }
 
 }
