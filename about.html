@@ -18,11 +18,28 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+      <!-- <a href="contact.html">Contact</a> -->
+      <a href="#" data-modal="contactModalContent">Contact</a>
     </nav>
   </div>
 </header>
 
+<div class="modal">
+<div class="modal-close">✕</div>
+<div class="modal-content"></div>
+</div>
+<div id="contactModalContent" style="display:none;">
+
+<h2>Contact</h2>
+
+<p>
+Interested in collaboration, GIS development, or spatial research?
+</p>
+
+<p>Email: your@email.com</p>
+<p>LinkedIn: linkedin.com/in/yourprofile</p>
+
+</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero fade-in visible"
@@ -227,6 +244,6 @@ Feel free to explore my projects or get in touch.
 </div>
 
 </footer>
-
+<script src="js/modal.js"></script>
 </body>
 </html>

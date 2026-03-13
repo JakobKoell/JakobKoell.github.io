@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects | JK</title>
 
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/stylesAbout.css">
 
 </head>
 
@@ -19,12 +19,29 @@
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!-- <a href="contact.html">Contact</a> -->
+<a href="#" data-modal="contactModalContent">Contact</a>
 </nav>
 
 </div>
 </header>
 
+<div class="modal">
+<div class="modal-close">✕</div>
+<div class="modal-content"></div>
+</div>
+<div id="contactModalContent" style="display:none;">
+
+<h2>Contact</h2>
+
+<p>
+Interested in collaboration, GIS development, or spatial research?
+</p>
+
+<p>Email: your@email.com</p>
+<p>LinkedIn: linkedin.com/in/yourprofile</p>
+
+</div>
 
 <section class="projects-page">
 
@@ -230,6 +247,6 @@ preview.style.top = e.clientY + 40 + "px";
 });
 
 </script>
-
+<script src="js/modal.js"></script>
 </body>
 </html>
