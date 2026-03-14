@@ -97,7 +97,7 @@ z-index:-1;
 pointer-events:none;
 
 } */
- 
+
 #gridCanvas {
   position: fixed;
   top: 0;
@@ -357,35 +357,35 @@ transform:scale(1.08);
 RESUME PAGE LAYOUT
 ========================================= */
 
-.resume-hero{
-position:relative;
-padding:10rem 2rem 4rem;
-text-align:center;
-background:transparent;
-overflow:hidden;
+.resume-hero {
+  position: relative;
+  padding: 10rem 2rem 4rem;
+  text-align: center;
+  background: transparent;
+  overflow: hidden;
 }
 
-.resume-hero canvas{
-position:absolute;
-inset:0;
-z-index:0;
+.resume-hero canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.resume-header{
-position:relative;
-z-index:5;
+.resume-header {
+  position: relative;
+  z-index: 5;
 }
 
-.resume-header h1{
-font-size:3rem;
-margin-bottom:.5rem;
-color:#ffffff;
+.resume-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 
-.resume-tagline{
-margin-bottom:2rem;
-opacity:.85;
-color:#cbd5f5;
+.resume-tagline {
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  color: #cbd5f5;
 }
 
 
@@ -393,13 +393,13 @@ color:#cbd5f5;
 RESUME CONTAINER
 ========================================= */
 
-.resume-container{
-max-width:950px;
-margin:auto;
-padding:2rem;
-display:flex;
-flex-direction:column;
-gap:3rem;
+.resume-container {
+  max-width: 950px;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 
@@ -407,10 +407,10 @@ gap:3rem;
 SECTION TITLES
 ========================================= */
 
-.resume-section h2{
-font-size:2rem;
-margin-bottom:1.5rem;
-color:#00bcd4;
+.resume-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #00bcd4;
 }
 
 
@@ -418,18 +418,23 @@ color:#00bcd4;
 CARD SYSTEM (WHITE PANELS)
 ========================================= */
 
+/* Common card styles for all sections (Resume, Skills, Timeline, etc.) */
 .resume-item,
 .skill-card,
-.timeline-content{
+.timeline-content {
+  background: #ffffff;
+  border-radius: 12px;
+  color: #1f2937; /* Dark text */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18); /* Default card shadow */
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* Transition effects */
+}
 
-background:#ffffff;
-
-border-radius:12px;
-
-color:#1f2937;
-
-box-shadow:0 8px 22px rgba(0,0,0,.18);
-
+/* Hover effect */
+.resume-item:hover,
+.skill-card:hover,
+.timeline-content:hover {
+  transform: translateY(-6px); /* Lift effect */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
 }
 
 
@@ -437,30 +442,36 @@ box-shadow:0 8px 22px rgba(0,0,0,.18);
 RESUME EXPERIENCE CARDS
 ========================================= */
 
-.resume-item{
-display:flex;
-gap:2rem;
-padding:1.6rem;
+.resume-item {
+  display: flex;
+  gap: 2rem;
+  padding: 1.6rem;
 }
 
-.resume-date{
-min-width:120px;
-font-weight:600;
-color:#0f172a;
+/* Dates and text color */
+.resume-date {
+  min-width: 120px;
+  font-weight: 600;
+  color: #0f172a; /* Dark text */
 }
 
-.resume-details h3{
-margin-bottom:.25rem;
-color:#111827;
+/* Job details */
+.resume-details {
+  color: #1f2937; /* Dark text */
 }
 
-.resume-company{
-margin-bottom:.5rem;
-color:#6b7280;
+.resume-details h3 {
+  margin-bottom: 0.25rem;
+  color: #111827; /* Darker text */
 }
 
-.resume-details p{
-color:#374151;
+.resume-company {
+  color: #6b7280; /* Lighter text */
+  margin-bottom: 0.5rem;
+}
+
+.resume-details p {
+  color: #374151; /* Mid-tone text */
 }
 
 
@@ -468,21 +479,22 @@ color:#374151;
 SKILLS GRID
 ========================================= */
 
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:1rem;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
 }
 
-.skill-card{
-padding:1.2rem;
-text-align:center;
-transition:.25s;
+.skill-card {
+  padding: 1.2rem;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.skill-card:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 25px rgba(0,0,0,.25);
+/* Hover effect for skills */
+.skill-card:hover {
+  transform: translateY(-4px); /* Lift effect */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
 }
 
 
@@ -490,47 +502,46 @@ box-shadow:0 12px 25px rgba(0,0,0,.25);
 TIMELINE
 ========================================= */
 
-.timeline{
-position:relative;
-margin-left:20px;
-padding-left:30px;
-border-left:2px solid rgba(0,188,212,.5);
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 30px;
+  border-left: 2px solid rgba(0, 188, 212, 0.5);
 }
 
-.timeline-item{
-position:relative;
-margin-bottom:2rem;
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-.timeline-dot{
-position:absolute;
-left:-11px;
-top:6px;
-
-width:14px;
-height:14px;
-
-background:#00bcd4;
-border-radius:50%;
-
-box-shadow:0 0 8px rgba(0,188,212,.7);
+/* Timeline dot (highlights each section) */
+.timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: #00bcd4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
 }
 
-.timeline-content{
-padding:1.5rem;
-transition:.25s;
+/* Timeline content (card-like style) */
+.timeline-content {
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.timeline-content:hover{
-transform:translateX(6px);
-box-shadow:0 14px 30px rgba(0,0,0,.3);
+.timeline-content:hover {
+  transform: translateX(6px); /* Subtle shift */
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
 
-.timeline-date{
-display:block;
-margin-bottom:.4rem;
-font-size:.9rem;
-color:#00bcd4;
+.timeline-date {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #00bcd4; /* Blue date color */
 }
 
 
@@ -538,16 +549,14 @@ color:#00bcd4;
 RESPONSIVE
 ========================================= */
 
-@media(max-width:700px){
+@media (max-width: 700px) {
+  .resume-item {
+    flex-direction: column;
+  }
 
-.resume-item{
-flex-direction:column;
-}
-
-.resume-date{
-min-width:auto;
-}
-
+  .resume-date {
+    min-width: auto;
+  }
 }
 
 /* =========================================
