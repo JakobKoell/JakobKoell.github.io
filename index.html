@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <title>Jakob Koell | GIS Developer and Analyst</title>
@@ -16,9 +15,7 @@
 <body>
 
 <!-- HERO -->
-
 <section class="hero">
-
 <canvas id="gridCanvas"></canvas>
 
 <div class="coordinates">
@@ -132,7 +129,6 @@ I strive to benefit the environments around me by improving the way data is used
 
 </div>
 
-
 <!-- RESUME CONTENT -->
 <div id="resumeModalContent" style="display:none;">
 
@@ -148,7 +144,6 @@ education, and technical expertise. -->
 <a href="resume.html" class="btn">View Resume</a>
 
 </div>
-
 
 <!-- CONTACT CONTENT -->
 <div id="contactModalContent" style="display:none;">
@@ -246,11 +241,9 @@ let scanY = 0;
 
 const gridSize = 40;
 
-
 /* =========================================
 FLOATING DATA NODES
 ========================================= */
-
 const nodes = [];
 const nodeCount = 25;
 
@@ -271,18 +264,15 @@ vy:(Math.random()-0.5)*0.3
 
 }
 
-
 /* =========================================
 RESIZE CANVAS
 ========================================= */
-
 function resizeCanvas(){
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 /* center crosshair */
-
 mouseX = canvas.width / 2;
 mouseY = canvas.height / 2;
 
@@ -290,16 +280,13 @@ renderX = mouseX;
 renderY = mouseY;
 
 createNodes();
-
 }
 
 window.addEventListener("resize", resizeCanvas);
 
-
 /* =========================================
 POINTER UPDATE
 ========================================= */
-
 function updatePointer(x,y){
 
 mouseX = x;
@@ -314,7 +301,6 @@ coordY.textContent = Math.floor(mouseY);
 /* =========================================
 DESKTOP POINTER
 ========================================= */
-
 window.addEventListener("mousemove",(e)=>{
 
 const rect = canvas.getBoundingClientRect();
@@ -326,11 +312,9 @@ e.clientY - rect.top
 
 });
 
-
 /* =========================================
 MOBILE POINTER
 ========================================= */
-
 function handleTouch(e){
 
 const rect = canvas.getBoundingClientRect();
@@ -346,11 +330,9 @@ touch.clientY - rect.top
 document.addEventListener("touchstart", handleTouch, {passive:true});
 document.addEventListener("touchmove", handleTouch, {passive:true});
 
-
 /* =========================================
 DRAW LOOP
 ========================================= */
-
 function draw(){
 
 /* background */
@@ -358,11 +340,9 @@ function draw(){
 ctx.fillStyle = "#0f172a";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-
 /* =========================================
 PARALLAX GRID
 ========================================= */
-
 const offsetX = renderX * 0.03;
 const offsetY = renderY * 0.03;
 
@@ -370,41 +350,32 @@ ctx.strokeStyle = "rgba(120,150,180,0.25)";
 ctx.lineWidth = 1;
 
 for(let x=-gridSize;x<canvas.width+gridSize;x+=gridSize){
-
 ctx.beginPath();
 ctx.moveTo(x-offsetX%gridSize,0);
 ctx.lineTo(x-offsetX%gridSize,canvas.height);
 ctx.stroke();
-
 }
 
 for(let y=-gridSize;y<canvas.height+gridSize;y+=gridSize){
-
 ctx.beginPath();
 ctx.moveTo(0,y-offsetY%gridSize);
 ctx.lineTo(canvas.width,y-offsetY%gridSize);
 ctx.stroke();
-
 }
 
 
 /* =========================================
 COORDINATE TICKS
 ========================================= */
-
 ctx.fillStyle="rgba(150,180,200,.6)";
 ctx.font="10px monospace";
 
 for(let x=0;x<canvas.width;x+=gridSize){
-
 ctx.fillText(x,x+2,10);
-
 }
 
 for(let y=0;y<canvas.height;y+=gridSize){
-
 ctx.fillText(y,2,y-2);
-
 }
 
 
@@ -415,7 +386,6 @@ FLOATING DATA NODES
 ctx.fillStyle = "rgba(0,224,255,0.7)";
 
 nodes.forEach(n=>{
-
 n.x += n.vx;
 n.y += n.vy;
 
@@ -425,14 +395,11 @@ if(n.y < 0 || n.y > canvas.height) n.vy *= -1;
 ctx.beginPath();
 ctx.arc(n.x,n.y,2,0,Math.PI*2);
 ctx.fill();
-
 });
-
 
 /* =========================================
 SMOOTH CROSSHAIR MOTION
 ========================================= */
-
 renderX += (mouseX - renderX) * 0.12;
 renderY += (mouseY - renderY) * 0.12;
 
@@ -440,7 +407,6 @@ renderY += (mouseY - renderY) * 0.12;
 /* =========================================
 CROSSHAIR
 ========================================= */
-
 ctx.shadowBlur = 15;
 ctx.shadowColor = "#00e0ff";
 ctx.strokeStyle = "#00e0ff";
@@ -457,9 +423,7 @@ ctx.stroke();
 
 ctx.shadowBlur = 0;
 
-
 /* crosshair ring */
-
 ctx.strokeStyle="rgba(0,224,255,.5)";
 ctx.lineWidth=1;
 
@@ -471,7 +435,6 @@ ctx.stroke();
 /* =========================================
 RADAR SCAN LINE
 ========================================= */
-
 scanY += 0.4;
 
 if(scanY > canvas.height) scanY = 0;
@@ -484,23 +447,19 @@ ctx.moveTo(0,scanY);
 ctx.lineTo(canvas.width,scanY);
 ctx.stroke();
 
-
 requestAnimationFrame(draw);
 
 }
 
-
 /* =========================================
 INITIALIZE
 ========================================= */
-
 resizeCanvas();
 draw();
 
 /* =========================================
 MODAL PANELS
 ========================================= */
-
 const panels = document.querySelectorAll(".panel");
 const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
@@ -515,7 +474,6 @@ modal.classList.add("active");
 let contentID = "";
 
 /* determine which panel */
-
 if(panel.classList.contains("about"))
 contentID = "aboutModalContent";
 
@@ -529,7 +487,6 @@ if(panel.classList.contains("contact"))
 contentID = "contactModalContent";
 
 /* load content */
-
 const content = document.getElementById(contentID);
 
 if(content){
@@ -537,7 +494,6 @@ modalContent.innerHTML = content.innerHTML;
 }
 
 });
-
 });
 
 modal.addEventListener("click", (e) => {
@@ -545,13 +501,11 @@ modal.addEventListener("click", (e) => {
 if(e.target === modal){
 modal.classList.remove("active");
 }
-
 });
 
 closeBtn.addEventListener("click", () => {
 
 modal.classList.remove("active");
-
 });
 
 </script>
