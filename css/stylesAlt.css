@@ -1,6 +1,14 @@
 /* =========================================
-GLOBAL RESET
+Alternative Page Style CSS
 ========================================= */
+/* Style the logo image to be circular */
+.logo img {
+  width: 50px;  /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%;
+  object-fit: cover; /* Ensures the image fills the circle without distortion */
+  display: inline-block; /* Makes sure it aligns nicely */
+}
 
 *,
 *::before,

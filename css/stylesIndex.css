@@ -1,6 +1,14 @@
 /* =========================================
-GLOBAL RESET
+Index Grid Style CSS
 ========================================= */
+/* Style the logo image to be circular */
+.logo img {
+  width: 50px;  /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%;
+  object-fit: cover; /* Ensures the image fills the circle without distortion */
+  display: inline-block; /* Makes sure it aligns nicely */
+}
 
 *,
 *::before,
@@ -302,251 +310,155 @@ border-radius:10px;
 RESUME PAGE
 ========================================= */
 
-.resume-hero{
-
-padding:10rem 2rem 4rem;
-
-text-align:center;
-
-background:transparent
-
+/* Resume Hero */
+.resume-hero {
+  position: relative;
+  padding: 10rem 2rem 4rem;
+  text-align: center;
+  background: transparent;
+  overflow: hidden;
 }
 
-.resume-header h1{
-
-font-size:3rem;
-margin-bottom:0.5rem;
-
+.resume-header {
+  position: relative;
+  z-index: 5;
 }
 
-.resume-tagline{
-
-opacity:0.9;
-margin-bottom:2rem;
-
+.resume-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #00bcd4; /* Accent color for heading */
 }
 
-
-
-/* Resume container */
-
-.resume-container{
-
-max-width:900px;
-
-margin:auto;
-
-padding:2rem;
-
-display:flex;
-flex-direction:column;
-gap:3rem;
-
+.resume-tagline {
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  color: #333333; /* Dark gray for text */
 }
 
-
-
-/* Resume section */
-
-.resume-section h2{
-
-font-size:2rem;
-margin-bottom:1.5rem;
-
+/* Resume Container */
+.resume-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-
-
-/* Resume items */
-
-.resume-item{
-
-display:flex;
-
-gap:2rem;
-
-padding:1.5rem;
-
-background:#1e293b;
-
-border-radius:12px;
-
+/* Resume Section */
+.resume-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #00bcd4; /* Accent color for section titles */
 }
 
-.resume-date{
-
-min-width:120px;
-
-font-weight:bold;
-
-color:#00bcd4;
-
+/* Resume Items */
+.resume-item {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: #1e293b;
+  border-radius: 12px;
 }
 
-
-
-/* Details */
-
-.resume-details h3{
-
-margin-bottom:0.3rem;
-
+.resume-date {
+  min-width: 120px;
+  font-weight: bold;
+  color: #00bcd4; /* Accent color for dates */
 }
 
-.resume-company{
-
-opacity:0.7;
-margin-bottom:0.5rem;
-
+.resume-details h3 {
+  margin-bottom: 0.3rem;
+  color: #333333; /* Dark gray for text */
 }
 
-
-
-/* Skills */
-
-.skills-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-gap:1rem;
-
+.resume-company {
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+  color: #6b6b6b; /* Light gray for company names */
 }
 
-.skill-card{
-
-padding:1.2rem;
-
-background:#1e293b;
-
-border-radius:10px;
-
-text-align:center;
-
-transition:0.25s;
-
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
 }
 
-.skill-card:hover{
-
-transform:translateY(-4px);
-
+.skill-card {
+  padding: 1.2rem;
+  background: #1e293b;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.25s;
 }
 
-
+.skill-card:hover {
+  transform: translateY(-4px);
+}
 
 /* Mobile */
-
-@media(max-width:700px){
-
-.resume-item{
-flex-direction:column;
+@media (max-width: 700px) {
+  .resume-item {
+    flex-direction: column;
+  }
+  .resume-date {
+    min-width: auto;
+  }
 }
 
-.resume-date{
-min-width:auto;
+/* Timeline (Resume) */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 30px;
+  border-left: 2px solid rgba(0, 188, 212, 0.4);
 }
 
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-/* =========================================
-TIMELINE (RESUME)
-========================================= */
-
-.timeline{
-
-position:relative;
-margin-left:20px;
-padding-left:30px;
-
-border-left:2px solid rgba(0,188,212,0.4);
-
+.timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: #00bcd4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00bcd4;
 }
 
-.timeline-item{
-position:relative;
-margin-bottom:2rem;
+.timeline-content {
+  background: #1e293b;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: 0.25s;
 }
 
-.timeline-dot{
-
-position:absolute;
-left:-11px;
-top:5px;
-
-width:14px;
-height:14px;
-
-background:#00bcd4;
-
-border-radius:50%;
-
-box-shadow:0 0 8px #00bcd4;
-
+.timeline-content:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-.timeline-content{
-
-background:#1e293b;
-
-padding:1.5rem;
-
-border-radius:10px;
-
-transition:.25s;
-
+.timeline-date {
+  font-size: 0.9rem;
+  color: #00bcd4;
+  display: block;
+  margin-bottom: 0.4rem;
 }
-
-.timeline-content:hover{
-
-transform:translateX(6px);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-
-}
-
-.timeline-date{
-
-font-size:0.9rem;
-color:#00bcd4;
-
-display:block;
-margin-bottom:0.4rem;
-
-}
-
-
 
 /* =========================================
 RESUME HERO GRID BACKGROUND
 ========================================= */
-
-.resume-hero{
-
-position:relative;
-padding:10rem 2rem 4rem;
-
-text-align:center;
-
-overflow:hidden;
-
+.resume-hero canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-
-.resume-hero canvas{
-
-position:absolute;
-inset:0;
-z-index:0;
-
-}
-
-.resume-header{
-position:relative;
-z-index:5;
-}
-
-
 
 /* =========================================
 PROJECT HIGHLIGHT HOVER
