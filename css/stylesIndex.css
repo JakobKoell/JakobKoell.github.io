@@ -292,6 +292,162 @@ border-radius:10px;
 }
 
 /* =========================================
+RESUME PAGE
+========================================= */
+
+.resume-hero{
+
+padding:10rem 2rem 4rem;
+
+text-align:center;
+
+background:linear-gradient(
+rgba(15,23,42,0.8),
+rgba(15,23,42,0.9)
+);
+
+}
+
+.resume-header h1{
+
+font-size:3rem;
+margin-bottom:0.5rem;
+
+}
+
+.resume-tagline{
+
+opacity:0.9;
+margin-bottom:2rem;
+
+}
+
+
+
+/* Resume container */
+
+.resume-container{
+
+max-width:900px;
+
+margin:auto;
+
+padding:2rem;
+
+display:flex;
+flex-direction:column;
+gap:3rem;
+
+}
+
+
+
+/* Resume section */
+
+.resume-section h2{
+
+font-size:2rem;
+margin-bottom:1.5rem;
+
+}
+
+
+
+/* Resume items */
+
+.resume-item{
+
+display:flex;
+
+gap:2rem;
+
+padding:1.5rem;
+
+background:#1e293b;
+
+border-radius:12px;
+
+}
+
+.resume-date{
+
+min-width:120px;
+
+font-weight:bold;
+
+color:#00bcd4;
+
+}
+
+
+
+/* Details */
+
+.resume-details h3{
+
+margin-bottom:0.3rem;
+
+}
+
+.resume-company{
+
+opacity:0.7;
+margin-bottom:0.5rem;
+
+}
+
+
+
+/* Skills */
+
+.skills-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:1rem;
+
+}
+
+.skill-card{
+
+padding:1.2rem;
+
+background:#1e293b;
+
+border-radius:10px;
+
+text-align:center;
+
+transition:0.25s;
+
+}
+
+.skill-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+.resume-item{
+flex-direction:column;
+}
+
+.resume-date{
+min-width:auto;
+}
+
+}
+
+
+/* =========================================
 FOOTER
 ========================================= */
 
