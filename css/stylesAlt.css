@@ -43,27 +43,54 @@ display:block;
 /* =========================================
 HEADER / NAVBAR
 ========================================= */
-header{
-position:fixed;
-top:0;
-width:100%;
-padding:1rem 2rem;
-background:rgba(17,24,39,.85);
-backdrop-filter:blur(8px);
-z-index:1000;
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(17,24,39,0.85);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  transition: background .3s;
 }
 
-/* NAV */
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+header.scrolled {
+  background: #111827;
 }
 
-.nav a{
-margin-left:1rem;
+/* NAVIGATION */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This ensures logo is on the left, links are on the right */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* LOGO */
+.nav .logo {
+  display: flex;
+  align-items: center; /* Ensure logo is vertically centered */
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 20px; /* Adjust the gap between links as needed */
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: white; /* Color for the links */
+  text-transform: uppercase; /* Optional: Add this if you want to style the links */
+}
+
+/* For individual links */
+.nav a {
+  margin-left: 2rem;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 /* =========================================
