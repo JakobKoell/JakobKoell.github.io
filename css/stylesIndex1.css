@@ -303,20 +303,30 @@ RESUME PAGE
 ========================================= */
 
 .resume-hero{
-position:relative;
+
 padding:10rem 2rem 4rem;
+
 text-align:center;
-background:transparent;
+
+background:linear-gradient(
+rgba(15,23,42,0.8),
+rgba(15,23,42,0.9)
+);
+
 }
 
 .resume-header h1{
+
 font-size:3rem;
 margin-bottom:0.5rem;
+
 }
 
 .resume-tagline{
+
 opacity:0.9;
 margin-bottom:2rem;
+
 }
 
 
@@ -516,10 +526,14 @@ RESUME HERO GRID BACKGROUND
 ========================================= */
 
 .resume-hero{
+
 position:relative;
 padding:10rem 2rem 4rem;
+
 text-align:center;
+
 overflow:hidden;
+
 }
 
 .resume-hero canvas{
@@ -613,4 +627,3 @@ padding:15px;
 }
 
 }
-
