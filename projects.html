@@ -191,6 +191,22 @@ btn.textContent = "Show Less Projects";
 });
 
 </script>
+<script>
 
+const rows = document.querySelectorAll(".project-row");
+
+rows.forEach(row => {
+
+const img = row.dataset.image;
+
+row.style.setProperty("--project-img", `url(${img})`);
+
+row.addEventListener("mouseenter", () => {
+row.style.setProperty("--project-img", `url(${img})`);
+});
+
+});
+
+</script>
 </body>
 </html>
