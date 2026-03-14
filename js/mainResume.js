@@ -19,10 +19,12 @@ let scanY = 0;
 function resizeCanvas(){
 
 width = canvas.width = window.innerWidth;
-height = canvas.height = window.innerHeight;
+
+height = canvas.height = document.documentElement.scrollHeight;
 
 }
 
+window.addEventListener("scroll", resizeCanvas);
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
