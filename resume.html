@@ -7,7 +7,7 @@
 <title>Resume | Jakob Koell</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/stylesIndex.css">
+<link rel="stylesheet" href="css/styles.css">
 
 </head>
 
@@ -40,7 +40,9 @@
 
 <section class="resume-hero">
 
-<div class="resume-hero-content">
+<canvas id="gridCanvas"></canvas>
+
+<div class="resume-header">
 
 <h1>Jakob Koell</h1>
 
@@ -60,15 +62,13 @@ Download PDF Resume
 
 <!-- ===================== EXPERIENCE ===================== -->
 
-<section class="section">
+<section class="resume-container">
 
-<div class="section-content">
+<div class="resume-section">
 
 <h2>Experience</h2>
 
 <div class="timeline">
-
-<!-- Job -->
 
 <div class="timeline-item">
 
@@ -84,19 +84,17 @@ Download PDF Resume
 
 <ul>
 
-<li>Design and maintain GIS mapping applications using VertiGIS to improve access to organizational spatial data.</li>
+<li>Design and maintain GIS mapping applications using VertiGIS.</li>
 
-<li>Manage authoritative datasets including infrastructure assets, parcels, civic addressing, land use, and environmental layers.</li>
+<li>Manage municipal datasets including infrastructure assets, parcels, addressing, and land use layers.</li>
 
-<li>Develop Python automation scripts to streamline ETL pipelines, geodatabase updates, backups, and quality control workflows.</li>
+<li>Develop Python automation scripts for ETL workflows and geodatabase maintenance.</li>
 
-<li>Create and maintain ArcGIS Pro toolboxes using ArcPy.</li>
+<li>Create ArcGIS Pro toolboxes using ArcPy.</li>
 
-<li>Integrate external data sources including ParcelMap BC, ICI Society, GeoBC, and DRA.</li>
+<li>Integrate external datasets including ParcelMap BC, ICI Society, GeoBC, and DRA.</li>
 
-<li>Deploy ESRI Enterprise Portal and AGOL solutions enabling mobile data collection using Field Maps.</li>
-
-<li>Coordinate schema alignment across organizations to support spatial data integration.</li>
+<li>Deploy ESRI Enterprise Portal and AGOL solutions supporting mobile data collection.</li>
 
 </ul>
 
@@ -104,8 +102,6 @@ Download PDF Resume
 
 </div>
 
-
-<!-- Capstone -->
 
 <div class="timeline-item">
 
@@ -123,11 +119,11 @@ Capstone Project — Regional District of East Kootenay
 
 <ul>
 
-<li>Developed an ArcGIS Pro Python toolbox to translate address point schema to NENA NG911 standards.</li>
+<li>Developed ArcGIS Pro Python toolbox translating address point schema to NENA NG911 standards.</li>
 
-<li>Analyzed the NG911 GIS Data Model documentation and summarized implementation requirements.</li>
+<li>Analyzed NG911 GIS Data Model documentation to guide implementation.</li>
 
-<li>Produced technical documentation supporting adoption of NG911 spatial standards.</li>
+<li>Produced technical documentation supporting NG911 adoption.</li>
 
 </ul>
 
@@ -139,84 +135,105 @@ Capstone Project — Regional District of East Kootenay
 
 </div>
 
-</section>
-
 
 
 <!-- ===================== SKILLS ===================== -->
 
-<section class="section">
-
-<div class="section-content">
+<div class="resume-section">
 
 <h2>Technical Skills</h2>
 
 <div class="skills-grid">
 
-
 <div class="skill-card">
-<h3>GIS & Spatial Analysis</h3>
-<p>
-ArcGIS Pro • QGIS • Spatial Data Analysis • Cartography • Geodatabase Management • Enterprise Portal Administration
-</p>
+<h3>GIS</h3>
+<p>ArcGIS Pro • QGIS • Cartography • Spatial Analysis • Geodatabases</p>
 </div>
-
 
 <div class="skill-card">
 <h3>GIS Development</h3>
-<p>
-Python (ArcPy) • VertiGIS Studio Web • VertiGIS Studio Workflow • ESRI Development • ETL Automation
-</p>
+<p>Python • ArcPy • VertiGIS Studio Web • VertiGIS Workflow</p>
 </div>
-
 
 <div class="skill-card">
 <h3>Programming</h3>
-<p>
-Python • JavaScript • SQL • PostgreSQL • Node.js • REST APIs
-</p>
+<p>Python • JavaScript • SQL • PostgreSQL • Node.js</p>
 </div>
-
 
 <div class="skill-card">
 <h3>Web Mapping</h3>
-<p>
-Leaflet • Mapbox • HTML • CSS • React
-</p>
+<p>Leaflet • Mapbox • HTML • CSS • React</p>
 </div>
-
 
 <div class="skill-card">
-<h3>Tools & Platforms</h3>
-<p>
-FME • VS Code • Azure • PowerShell • JSON
-</p>
+<h3>Tools</h3>
+<p>FME • VS Code • Azure • REST APIs • PowerShell</p>
 </div>
-
 
 <div class="skill-card">
-<h3>Professional Skills</h3>
+<h3>Professional</h3>
+<p>Project Management • Technical Writing • Leadership</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ===================== HIGHLIGHTED PROJECTS ===================== -->
+
+<div class="resume-section">
+
+<h2>Highlighted Projects</h2>
+
+<div class="project-grid">
+
+<div class="project-card" style="background-image:url('images/ng911.jpg')">
+
+<h3>NG911 Data Translation Toolkit</h3>
+
 <p>
-Project Management • Technical Writing • Leadership Fundamentals
+Python toolbox translating municipal address schema to NENA NG911 standards.
 </p>
+
 </div>
+
+
+<div class="project-card" style="background-image:url('images/elevation.jpg')">
+
+<h3>Elevation & Terrain Analysis</h3>
+
+<p>
+Spatial modeling and terrain analysis using remote sensing data.
+</p>
+
+</div>
+
+
+<div class="project-card" style="background-image:url('images/flood.jpg')">
+
+<h3>Watershed Flood Assessment</h3>
+
+<p>
+Flood risk mapping using raster change detection and spatial analysis.
+</p>
+
+</div>
+
+<a href="projects.html" class="btn">View Full Project Portfolio →</a>
 
 </div>
 
 </div>
-
-</section>
 
 
 
 <!-- ===================== EDUCATION ===================== -->
 
-<section class="section">
-
-<div class="section-content">
+<div class="resume-section">
 
 <h2>Education</h2>
-
 
 <div class="resume-item">
 
@@ -235,7 +252,6 @@ British Columbia Institute of Technology
 </div>
 
 
-
 <div class="resume-item">
 
 <div class="resume-date">2019</div>
@@ -252,7 +268,6 @@ Lethbridge College
 
 </div>
 
-
 </div>
 
 </section>
@@ -263,24 +278,12 @@ Lethbridge College
 
 <footer class="footer">
 
-<div class="footer-content">
-
-<p>&copy; 2026 Jakob Koell | Spatial Data Analyst</p>
-
-<p>
-Hosted on
-<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
-</p>
-
-</div>
+<p>© 2026 Jakob Koell | Spatial Data Analyst</p>
 
 </footer>
 
 
-
-<!-- ===================== JS ===================== -->
-
-<script src="js/main.js"></script>
+<script src="js/mainResume.js"></script>
 
 </body>
 </html>
