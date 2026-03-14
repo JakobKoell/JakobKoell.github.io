@@ -379,13 +379,13 @@ RESUME PAGE LAYOUT
 .resume-header h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: #ffffff;
+  color: #ffffff; /* White text */
 }
 
 .resume-tagline {
   margin-bottom: 2rem;
   opacity: 0.85;
-  color: #cbd5f5;
+  color: #cbd5f5; /* Light blue text */
 }
 
 
@@ -410,31 +410,32 @@ SECTION TITLES
 .resume-section h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #00bcd4;
+  color: #00bcd4; /* Light blue text */
 }
 
 
 /* =========================================
-CARD SYSTEM (WHITE PANELS)
+CARD SYSTEM (BLACK TRANSPARENT BACKGROUND & WHITE TEXT)
 ========================================= */
 
-/* Common card styles for all sections (Resume, Skills, Timeline, etc.) */
+/* Applied to all cards including resume items, skills, timeline, etc. */
 .resume-item,
 .skill-card,
 .timeline-content {
-  background: #ffffff;
+  background: rgba(0, 0, 0, 0.45); /* Black transparent background */
+  color: #ffffff; /* White text */
   border-radius: 12px;
-  color: #1f2937; /* Dark text */
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18); /* Default card shadow */
-  transition: transform 0.25s ease, box-shadow 0.25s ease; /* Transition effects */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18); /* Shadow for depth */
+  padding: 1.6rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* Hover transition */
 }
 
-/* Hover effect */
+/* Hover effect for all cards */
 .resume-item:hover,
 .skill-card:hover,
 .timeline-content:hover {
-  transform: translateY(-6px); /* Lift effect */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+  transform: translateY(-6px); /* Lift effect on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
 }
 
 
@@ -445,33 +446,32 @@ RESUME EXPERIENCE CARDS
 .resume-item {
   display: flex;
   gap: 2rem;
-  padding: 1.6rem;
 }
 
-/* Dates and text color */
+/* Dates */
 .resume-date {
   min-width: 120px;
   font-weight: 600;
-  color: #0f172a; /* Dark text */
+  color: #e2e8f0; /* Light text for dates */
 }
 
 /* Job details */
 .resume-details {
-  color: #1f2937; /* Dark text */
+  color: #ffffff; /* White text */
 }
 
 .resume-details h3 {
   margin-bottom: 0.25rem;
-  color: #111827; /* Darker text */
+  color: #ffffff; /* White text */
 }
 
 .resume-company {
-  color: #6b7280; /* Lighter text */
   margin-bottom: 0.5rem;
+  color: #d1d5db; /* Light grey for company names */
 }
 
 .resume-details p {
-  color: #374151; /* Mid-tone text */
+  color: #ffffff; /* White text */
 }
 
 
@@ -494,7 +494,7 @@ SKILLS GRID
 /* Hover effect for skills */
 .skill-card:hover {
   transform: translateY(-4px); /* Lift effect */
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Stronger shadow */
 }
 
 
@@ -514,7 +514,7 @@ TIMELINE
   margin-bottom: 2rem;
 }
 
-/* Timeline dot (highlights each section) */
+/* Timeline dot */
 .timeline-dot {
   position: absolute;
   left: -11px;
@@ -526,7 +526,7 @@ TIMELINE
   box-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
 }
 
-/* Timeline content (card-like style) */
+/* Timeline content */
 .timeline-content {
   padding: 1.5rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -534,14 +534,14 @@ TIMELINE
 
 .timeline-content:hover {
   transform: translateX(6px); /* Subtle shift */
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
 }
 
 .timeline-date {
   display: block;
   margin-bottom: 0.4rem;
   font-size: 0.9rem;
-  color: #00bcd4; /* Blue date color */
+  color: #00bcd4; /* Light blue */
 }
 
 
