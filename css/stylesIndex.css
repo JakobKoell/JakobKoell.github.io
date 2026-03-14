@@ -344,10 +344,8 @@ transform:scale(1.08);
 }
 
 /* =========================================
-RESUME PAGE
+RESUME PAGE LAYOUT
 ========================================= */
-
-/* Hero */
 
 .resume-hero{
 position:relative;
@@ -355,6 +353,12 @@ padding:10rem 2rem 4rem;
 text-align:center;
 background:transparent;
 overflow:hidden;
+}
+
+.resume-hero canvas{
+position:absolute;
+inset:0;
+z-index:0;
 }
 
 .resume-header{
@@ -369,8 +373,8 @@ color:#ffffff;
 }
 
 .resume-tagline{
-opacity:.85;
 margin-bottom:2rem;
+opacity:.85;
 color:#cbd5f5;
 }
 
@@ -380,16 +384,12 @@ RESUME CONTAINER
 ========================================= */
 
 .resume-container{
-
 max-width:950px;
 margin:auto;
-
 padding:2rem;
-
 display:flex;
 flex-direction:column;
 gap:3rem;
-
 }
 
 
@@ -398,53 +398,45 @@ SECTION TITLES
 ========================================= */
 
 .resume-section h2{
-
 font-size:2rem;
 margin-bottom:1.5rem;
-
 color:#00bcd4;
+}
+
+
+/* =========================================
+CARD SYSTEM (WHITE PANELS)
+========================================= */
+
+.resume-item,
+.skill-card,
+.timeline-content{
+
+background:#ffffff;
+
+border-radius:12px;
+
+color:#1f2937;
+
+box-shadow:0 8px 22px rgba(0,0,0,.18);
 
 }
 
 
 /* =========================================
-RESUME ITEMS (WHITE CARDS)
+RESUME EXPERIENCE CARDS
 ========================================= */
 
 .resume-item{
-
 display:flex;
 gap:2rem;
-
 padding:1.6rem;
-
-background:#ffffff;
-
-border-radius:14px;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.25);
-
 }
-
-
-/* Dates */
 
 .resume-date{
-
 min-width:120px;
-
 font-weight:600;
-
 color:#0f172a;
-
-}
-
-
-/* Details */
-
-.resume-details{
-color:#1f2937;
 }
 
 .resume-details h3{
@@ -453,8 +445,8 @@ color:#111827;
 }
 
 .resume-company{
-color:#6b7280;
 margin-bottom:.5rem;
+color:#6b7280;
 }
 
 .resume-details p{
@@ -463,43 +455,24 @@ color:#374151;
 
 
 /* =========================================
-SKILLS
+SKILLS GRID
 ========================================= */
 
 .skills-grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
 gap:1rem;
-
 }
 
 .skill-card{
-
 padding:1.2rem;
-
-background:#ffffff;
-
-border-radius:10px;
-
 text-align:center;
-
-color:#1f2937;
-
-box-shadow:0 6px 18px rgba(0,0,0,.18);
-
 transition:.25s;
-
 }
 
 .skill-card:hover{
-
 transform:translateY(-4px);
-
 box-shadow:0 12px 25px rgba(0,0,0,.25);
-
 }
 
 
@@ -508,14 +481,10 @@ TIMELINE
 ========================================= */
 
 .timeline{
-
 position:relative;
-
 margin-left:20px;
 padding-left:30px;
-
 border-left:2px solid rgba(0,188,212,.5);
-
 }
 
 .timeline-item{
@@ -524,9 +493,7 @@ margin-bottom:2rem;
 }
 
 .timeline-dot{
-
 position:absolute;
-
 left:-11px;
 top:6px;
 
@@ -534,51 +501,31 @@ width:14px;
 height:14px;
 
 background:#00bcd4;
-
 border-radius:50%;
 
 box-shadow:0 0 8px rgba(0,188,212,.7);
-
 }
 
 .timeline-content{
-
-background:#ffffff;
-
 padding:1.5rem;
-
-border-radius:10px;
-
-color:#1f2937;
-
-box-shadow:0 8px 22px rgba(0,0,0,.2);
-
 transition:.25s;
-
 }
 
 .timeline-content:hover{
-
 transform:translateX(6px);
-
 box-shadow:0 14px 30px rgba(0,0,0,.3);
-
 }
 
 .timeline-date{
-
-font-size:.9rem;
-
-color:#00bcd4;
-
 display:block;
 margin-bottom:.4rem;
-
+font-size:.9rem;
+color:#00bcd4;
 }
 
 
 /* =========================================
-MOBILE
+RESPONSIVE
 ========================================= */
 
 @media(max-width:700px){
@@ -591,15 +538,6 @@ flex-direction:column;
 min-width:auto;
 }
 
-}
-
-/* =========================================
-RESUME HERO GRID BACKGROUND
-========================================= */
-.resume-hero canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
 }
 
 /* =========================================
