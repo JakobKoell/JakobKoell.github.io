@@ -14,16 +14,16 @@ const triggers = document.querySelectorAll("[data-modal]");
 
 triggers.forEach(trigger => {
 
-  // Check if the clicked trigger is for the "resume" panel (no modal)
+  // Check if it's the "resume" panel
   if (trigger.classList.contains("resume")) {
     trigger.addEventListener("click", function(e) {
-      e.preventDefault(); // Prevent any modal behavior
-      window.location.href = "resume.html"; // Directly navigate to the resume page
+      e.preventDefault();  // Prevent default behavior
+      window.location.href = "resume.html";  // Navigate directly to resume.html
     });
   } else {
-    // For other panels, continue with the modal behavior
+    // For all other panels, continue modal behavior
     trigger.addEventListener("click", function(e) {
-      e.preventDefault(); // Prevent default action
+      e.preventDefault();  // Prevent default behavior
 
       const modalID = this.dataset.modal;
       const content = document.getElementById(modalID);
