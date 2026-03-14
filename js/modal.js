@@ -13,24 +13,27 @@ MODAL TRIGGERS
 const triggers = document.querySelectorAll("[data-modal]");
 
 triggers.forEach(trigger => {
-  trigger.addEventListener("click", function(e) {
-    e.preventDefault(); // Prevent default action for all triggers
 
-    // Check if the clicked trigger is for the "resume" panel
-    if (this.classList.contains("resume")) {
-      // If it's for the resume, directly navigate to the resume page
-      window.location.href = "resume.html"; // Replace with actual path to resume page
-    } else {
-      // Handle other modals if needed
+  // Check if the clicked trigger is for the "resume" panel (no modal)
+  if (trigger.classList.contains("resume")) {
+    trigger.addEventListener("click", function(e) {
+      e.preventDefault(); // Prevent any modal behavior
+      window.location.href = "resume.html"; // Directly navigate to the resume page
+    });
+  } else {
+    // For other panels, continue with the modal behavior
+    trigger.addEventListener("click", function(e) {
+      e.preventDefault(); // Prevent default action
+
       const modalID = this.dataset.modal;
       const content = document.getElementById(modalID);
 
-      if(content && modal && modalContent) {
+      if (content && modal && modalContent) {
         modalContent.innerHTML = content.innerHTML;
         modal.classList.add("active");
       }
-    }
-  });
+    });
+  }
 });
 
 /* =========================
