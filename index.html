@@ -16,82 +16,52 @@
 <body>
 
 <!-- HERO -->
-
 <section class="hero">
+  <canvas id="gridCanvas"></canvas>
 
-<canvas id="gridCanvas"></canvas>
+  <div class="coordinates">
+    <div>X <span id="coordX">0</span></div>
+    <div>Y <span id="coordY">0</span></div>
+  </div>
 
-<div class="coordinates">
+  <div class="hero-content">
+    <h1>Jakob Koell  |  GIS Analyst and Developer</h1>
 
-<div>X <span id="coordX">0</span></div>
-<div>Y <span id="coordY">0</span></div>
+    <p class="hero-tagline">
+      GIS Application Development • Python Automation • Spatial Data Analysis
+    </p>
 
-</div>
+    <p class="hero-description">
+      Building customized GIS applications, automating spatial & ETL workflows, and providing solutions to transform complex spatial data into valuable information. If you bring me data, I will bring you actionable insights!
+    </p>
 
-<div class="hero-content">
+    <div class="dashboard">
+      <div class="panel about">
+        <h2>About Me</h2>
+        <p>
+          Learn more about my passion for geospatial development, workflow automation, spatial analysis, and GIS application design.
+        </p>
+      </div>
 
-<h1>Jakob Koell  |  GIS Analyst and Developer</h1>
+      <div class="panel projects">
+        <h2>Projects</h2>
+        <p>
+          Interactive mapping tools, automation workflows, solution development, and spatial analysis.
+        </p>
+      </div>
 
-<p class="hero-tagline">
-GIS Application Development • Python Automation • Spatial Data Analysis
-</p>
+      <!-- Resume Panel without the modal trigger -->
+      <div class="panel resume" onclick="window.location.href='resume.html';">
+        <h2>Resume</h2>
+        <p>Professional experience, education, and areas of expertise.</p>
+      </div>
 
-<p class="hero-description">
-Building customized GIS applications, automating spatial & ETL workflows,
- and providing solutions to transform complex spatial data into valuable information. If you bring me data, I will bring you actionable insights!
-</p>
-
-<div class="dashboard">
-
-<div class="panel about">
-
-<h2>About Me</h2>
-
-<p>
-Learn more about my passion for geospatial development, workflow automation
-spatial analysis and GIS application design.
-</p>
-
-</div>
-
-<div class="panel projects">
-
-<h2>Projects</h2>
-
-<p>
-Interactive mapping tools,
-automation workflows,
-solution development,
-and spatial analysis.
-</p>
-
-</div>
-
-<div class="panel resume">
-
-<h2>Resume</h2>
-
-<p>
-Professional experience,
-education and areas of expertise.
-</p>
-
-</div>
-
-<div class="panel contact">
-
-<h2>Contact</h2>
-
-<p>
-Interested in collaborating? Reach out here!
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="panel contact">
+        <h2>Contact</h2>
+        <p>Interested in collaborating? Reach out here!</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- MODAL -->
