@@ -41,29 +41,47 @@ display:block;
 }
 
 /* =========================================
-HEADER
+HEADER / NAVBAR
 ========================================= */
 
 header{
-position:fixed;
-top:0;
-width:100%;
-padding:1rem 2rem;
-background:rgba(17,24,39,.85);
-backdrop-filter:blur(8px);
-z-index:1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(17,24,39,0.85);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  transition: background .3s;
 }
 
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+header.scrolled{
+  background: #111827;
 }
 
-.nav a{
-margin-left:1rem;
+/* NAV */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will space the logo and links apart */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px; /* Adjust this gap as needed */
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: white; /* Optional: Set the text color of the links */
+}
+
+.nav a {
+  margin-left: 2rem; /* Optional: Add spacing between links */
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 /* =========================================
