@@ -127,8 +127,8 @@ COORDINATES
 
 .coordinates{
 position:absolute;
-bottom:20px;
-right:20px;
+top:45px;
+left:90px;
 
 background:rgba(0,0,0,.65);
 color:#00e0ff;
@@ -313,8 +313,8 @@ FLOATING LOGO
 .floating-logo{
 position:fixed;
 
-top:90px;
-left:30px;
+top:45px;
+left:45px;
 
 z-index:1000;
 
