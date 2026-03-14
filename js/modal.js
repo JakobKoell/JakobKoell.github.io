@@ -14,11 +14,11 @@ const triggers = document.querySelectorAll("[data-modal]");
 
 triggers.forEach(trigger => {
   trigger.addEventListener("click", function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default action for all triggers
 
     // Check if the clicked trigger is for the "resume" panel
     if (this.classList.contains("resume")) {
-      // If it's for the resume, open the resume.html page
+      // If it's for the resume, directly navigate to the resume page
       window.location.href = "resume.html"; // Replace with actual path to resume page
     } else {
       // Handle other modals if needed
