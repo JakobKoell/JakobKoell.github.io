@@ -1,7 +1,6 @@
 /* =========================================
 GRID CANVAS BACKGROUND
 ========================================= */
-
 const canvas = document.getElementById("gridCanvas");
 
 if (canvas) {
@@ -22,7 +21,6 @@ const majorEvery = 5; // major grid every 5 cells
 /* =========================================
 CANVAS RESIZE
 ========================================= */
-
 function resizeCanvas(){
 
 const dpr = window.devicePixelRatio || 1;
@@ -47,7 +45,6 @@ resizeCanvas();
 /* =========================================
 MOUSE TRACKING
 ========================================= */
-
 document.addEventListener("mousemove",(e)=>{
 
 mouseX = e.clientX;
@@ -59,14 +56,12 @@ mouseY = e.clientY;
 /* =========================================
 DRAW LOOP
 ========================================= */
-
 function draw(){
 
 ctx.clearRect(0,0,width,height);
 
 
 /* GRID LINES */
-
 for(let x=0,i=0;x<width;x+=gridSize,i++){
 
 ctx.beginPath();
@@ -101,7 +96,6 @@ ctx.stroke();
 
 
 /* MOUSE CELL HIGHLIGHT */
-
 const cellX = Math.floor(mouseX/gridSize)*gridSize;
 const cellY = Math.floor(mouseY/gridSize)*gridSize;
 
@@ -113,7 +107,6 @@ ctx.strokeRect(cellX,cellY,gridSize,gridSize);
 
 
 /* CURSOR GLOW */
-
 const gradient = ctx.createRadialGradient(
 mouseX,
 mouseY,
@@ -134,7 +127,6 @@ ctx.fill();
 
 
 /* SCAN LINE */
-
 scanY += 0.6;
 
 if(scanY > height){
@@ -150,9 +142,7 @@ scanGradient.addColorStop(1,"rgba(0,0,0,0)");
 ctx.fillStyle = scanGradient;
 ctx.fillRect(0,scanY-40,width,80);
 
-
 /* LOOP */
-
 requestAnimationFrame(draw);
 
 }
