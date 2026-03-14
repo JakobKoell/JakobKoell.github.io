@@ -30,54 +30,12 @@ color:#00e0ff;
 
 
 /* =========================================
-HEADER
+GLOBAL GRID BACKGROUND
 ========================================= */
-
-header{
-position:fixed;
-top:0;
-width:100%;
-padding:1rem 2rem;
-background:rgba(17,24,39,.85);
-backdrop-filter:blur(8px);
-z-index:1000;
-}
-
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.nav a{
-margin-left:1rem;
-}
-
-
-/* =========================================
-HERO
-========================================= */
-
-.hero{
-min-height:100vh;
-position:relative;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-overflow:hidden;
-}
-
-
-/* GLOBAL GRID BACKGROUND */
 
 #gridCanvas{
 
 position:fixed;
-
 top:0;
 left:0;
 
@@ -91,25 +49,80 @@ pointer-events:none;
 }
 
 
-/* HERO CONTENT */
+/* =========================================
+HEADER
+========================================= */
+
+header{
+
+position:fixed;
+top:0;
+
+width:100%;
+
+padding:1rem 2rem;
+
+background:rgba(17,24,39,.85);
+backdrop-filter:blur(8px);
+
+z-index:1000;
+
+}
+
+.nav{
+
+max-width:1200px;
+margin:auto;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.nav a{
+margin-left:1rem;
+}
+
+
+/* =========================================
+HERO
+========================================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:120px 20px 60px;
+
+}
 
 .hero-content{
-position:relative;
-z-index:5;
-text-align:center;
+
 max-width:900px;
-padding:2rem;
+z-index:5;
+
 }
 
 .hero-tagline{
+
 font-size:1.2rem;
 margin-top:.5rem;
 opacity:.9;
+
 }
 
 .hero-description{
+
 margin:1rem 0 2rem;
 opacity:.85;
+
 }
 
 
@@ -118,6 +131,7 @@ COORDINATES
 ========================================= */
 
 .coordinates{
+
 position:absolute;
 bottom:20px;
 right:20px;
@@ -126,12 +140,14 @@ background:rgba(0,0,0,.65);
 color:#00e0ff;
 
 padding:10px 14px;
+
 border-radius:8px;
 
 font-family:monospace;
 font-size:13px;
 
 z-index:10;
+
 }
 
 
@@ -143,40 +159,55 @@ DASHBOARD PANELS
 
 display:grid;
 grid-template-columns:repeat(2,1fr);
+
 gap:1.5rem;
 
 width:90%;
 max-width:900px;
+
 margin:auto;
 
 }
 
-.panel{
 
-padding:2rem;
+/* Shared panel style */
 
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(14px);
+.panel,
+.skill-card,
+.timeline-content,
+.resume-item{
 
-border-radius:14px;
+padding:1.5rem;
+
+background:rgba(15,23,42,0.75);
+
+backdrop-filter:blur(10px);
+
+border-radius:12px;
+
 border:1px solid rgba(255,255,255,.05);
 
-cursor:pointer;
-
 transition:.25s;
+
 }
 
-.panel:hover{
+
+/* Hover elevation */
+
+.panel:hover,
+.skill-card:hover,
+.timeline-content:hover{
 
 transform:translateY(-6px);
-
-background:rgba(0,0,0,.65);
 
 box-shadow:
 0 20px 40px rgba(0,0,0,.6),
 0 0 20px rgba(0,188,212,.25);
 
 }
+
+
+/* Panel text */
 
 .panel h2{
 margin-bottom:.6rem;
@@ -187,20 +218,34 @@ opacity:.85;
 font-size:.95rem;
 }
 
+
 /* =========================================
-Buttons
+BUTTONS
 ========================================= */
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  background: #00bcd4;
-  color: #0f172a;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: transform 0.2s;
+
+.btn{
+
+display:inline-block;
+
+margin-top:1rem;
+
+padding:.8rem 1.5rem;
+
+background:#00bcd4;
+color:#0f172a;
+
+border-radius:5px;
+
+font-weight:bold;
+
+transition:.2s;
+
 }
-.btn:hover { transform: scale(1.05); }
+
+.btn:hover{
+transform:scale(1.05);
+}
+
 
 /* =========================================
 MODAL
@@ -224,6 +269,7 @@ pointer-events:none;
 transition:.3s;
 
 z-index:2000;
+
 }
 
 .modal.active{
@@ -232,15 +278,20 @@ pointer-events:auto;
 }
 
 .modal-content{
+
 background:#111;
+
 padding:40px;
+
 border-radius:10px;
 
 width:90%;
 max-width:1100px;
 
 max-height:85vh;
+
 overflow-y:auto;
+
 }
 
 .modal-close{
@@ -250,18 +301,32 @@ top:80px;
 right:40px;
 
 font-size:28px;
+
 cursor:pointer;
+
 color:#00e0ff;
+
 }
 
+
+/* =========================================
+PROJECT GRID
+========================================= */
+
 .project-grid{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
 gap:25px;
+
 margin-top:30px;
+
 }
 
 .project-card{
+
 height:220px;
 
 background-size:cover;
@@ -278,64 +343,70 @@ padding:20px;
 background-blend-mode:overlay;
 background-color:rgba(0,0,0,.55);
 
-transition:transform .25s ease;
+transition:.25s;
+
 }
 
 .project-card:hover{
 transform:translateY(-6px);
 }
 
-.project-grid .btn{
-grid-column:1/-1;
-justify-self:center;
-margin-top:10px;
+.project-card h3{
+margin-bottom:6px;
 }
 
-#projects{
-background-size:cover;
-background-position:center;
-padding:20px;
-border-radius:10px;
+.project-card p{
+font-size:.9rem;
+opacity:.9;
 }
+
+.project-grid .btn{
+
+grid-column:1/-1;
+
+justify-self:center;
+
+margin-top:10px;
+
+}
+
 
 /* =========================================
-RESUME PAGE
+RESUME HERO
 ========================================= */
 
 .resume-hero{
 
-padding:10rem 2rem 4rem;
+padding:160px 20px 80px;
 
 text-align:center;
-
-background:linear-gradient(
-rgba(15,23,42,0.8),
-rgba(15,23,42,0.9)
-);
 
 }
 
 .resume-header h1{
 
 font-size:3rem;
-margin-bottom:0.5rem;
+
+margin-bottom:.5rem;
 
 }
 
 .resume-tagline{
 
-opacity:0.9;
+opacity:.9;
+
 margin-bottom:2rem;
 
 }
 
 
-
-/* Resume container */
+/* =========================================
+RESUME LAYOUT
+========================================= */
 
 .resume-container{
 
-max-width:900px;
+max-width:1000px;
 
 margin:auto;
 
@@ -343,36 +414,16 @@ padding:2rem;
 
 display:flex;
 flex-direction:column;
+
 gap:3rem;
 
 }
 
-
-
-/* Resume section */
-
 .resume-section h2{
 
 font-size:2rem;
+
 margin-bottom:1.5rem;
-
-}
-
-
-
-/* Resume items */
-
-.resume-item{
-
-display:flex;
-
-gap:2rem;
-
-padding:1.5rem;
-
-background:#1e293b;
-
-border-radius:12px;
 
 }
 
@@ -386,81 +437,43 @@ color:#00bcd4;
 
 }
 
-
-
-/* Details */
-
 .resume-details h3{
-
-margin-bottom:0.3rem;
-
+margin-bottom:.3rem;
 }
 
 .resume-company{
-
-opacity:0.7;
-margin-bottom:0.5rem;
-
+opacity:.7;
+margin-bottom:.5rem;
 }
 
 
-
-/* Skills */
+/* =========================================
+SKILLS
+========================================= */
 
 .skills-grid{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 
 gap:1rem;
 
-}
-
-.skill-card{
-
-padding:1.2rem;
-
-background:#1e293b;
-
-border-radius:10px;
-
 text-align:center;
 
-transition:0.25s;
-
 }
 
-.skill-card:hover{
-
-transform:translateY(-4px);
-
-}
-
-
-
-/* Mobile */
-
-@media(max-width:700px){
-
-.resume-item{
-flex-direction:column;
-}
-
-.resume-date{
-min-width:auto;
-}
-
-}
 
 /* =========================================
-TIMELINE (RESUME)
+TIMELINE
 ========================================= */
 
 .timeline{
 
 position:relative;
+
 margin-left:20px;
+
 padding-left:30px;
 
 border-left:2px solid rgba(0,188,212,0.4);
@@ -468,13 +481,17 @@ border-left:2px solid rgba(0,188,212,0.4);
 }
 
 .timeline-item{
+
 position:relative;
+
 margin-bottom:2rem;
+
 }
 
 .timeline-dot{
 
 position:absolute;
+
 left:-11px;
 top:5px;
 
@@ -489,127 +506,49 @@ box-shadow:0 0 8px #00bcd4;
 
 }
 
-.timeline-content{
-
-background:#1e293b;
-
-padding:1.5rem;
-
-border-radius:10px;
-
-transition:.25s;
-
-}
-
-.timeline-content:hover{
-
-transform:translateX(6px);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-
-}
-
 .timeline-date{
 
-font-size:0.9rem;
+font-size:.9rem;
+
 color:#00bcd4;
 
 display:block;
-margin-bottom:0.4rem;
+
+margin-bottom:.4rem;
 
 }
 
-
-
-/* =========================================
-RESUME HERO GRID BACKGROUND
-========================================= */
-
-.resume-hero{
-
-position:relative;
-padding:10rem 2rem 4rem;
-
-text-align:center;
-
-overflow:hidden;
-
-}
-
-.resume-hero canvas{
-
-position:absolute;
-inset:0;
-z-index:0;
-
-}
-
-.resume-header{
-position:relative;
-z-index:5;
-}
-
-
-
-/* =========================================
-PROJECT HIGHLIGHT HOVER
-========================================= */
-
-.project-card h3{
-margin-bottom:6px;
-}
-
-.project-card p{
-font-size:.9rem;
-opacity:.9;
-}
 
 /* =========================================
 FOOTER
 ========================================= */
 
 .footer{
-position:absolute;
-bottom:10px;
-left:0;
-width:100%;
+
 text-align:center;
+
 font-size:.9rem;
+
 opacity:.6;
+
+padding:40px 0;
+
 }
 
 
 /* =========================================
 RESPONSIVE
 ========================================= */
+
 @media(max-width:900px){
-
-.hero{
-align-items:flex-start;
-padding-top:60px;
-padding-bottom:60px;
-min-height:auto;
-}
-
-.hero-content{
-margin-top:40px;
-}
 
 .dashboard{
 grid-template-columns:1fr;
-gap:1rem;
 }
 
-/* modal */
-
-.modal-content{
-width:95%;
-padding:20px;
-max-height:90vh;
-overflow-y:auto;
+.hero{
+padding-top:140px;
 }
-
-/* project layout */
 
 .project-grid{
 grid-template-columns:1fr;
@@ -617,14 +556,6 @@ grid-template-columns:1fr;
 
 .project-card{
 height:180px;
-padding:15px;
-}
-
-#projects{
-background-size:cover;
-background-position:center;
-padding:15px;
 }
 
 }
-
